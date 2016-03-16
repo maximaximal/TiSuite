@@ -1,0 +1,188 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Types / Strings conversions
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="ticables_model_to_string"></a>ticables_model_to_string</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 const char *TICALL ticables_model_to_string(CableModel model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Do an integer to string conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a cable model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a string like "BlackLink".
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_string_to_model"></a>ticables_string_to_model</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 CableModel TICALL ticables_string_to_model(const char *str)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Do a string to integer conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">str :<br></td>
+<td style="vertical-align: top;">a cable model as string like "BlackLink".
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a cable model.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_port_to_string"></a>ticables_port_to_string</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 const char *TICALL ticables_port_to_string(CablePort port)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Do an integer to string conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">port :<br></td>
+<td style="vertical-align: top;">a link port.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a string like "#1".
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_string_to_port"></a>ticables_string_to_port</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 CablePort TICALL ticables_string_to_port(const char *str)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Do a string to integer conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">str :<br></td>
+<td style="vertical-align: top;">a link port as string like "#1".
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a link port.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_usbpid_to_string"></a>ticables_usbpid_to_string</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 const char *TICALL ticables_usbpid_to_string(UsbPid pid)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Do an integer to string conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">pid :<br></td>
+<td style="vertical-align: top;">a Usb Product Id.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a string like "SilverLink".
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_usbpid_to_port"></a>ticables_usbpid_to_port</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 UsbPid TICALL ticables_string_to_usbpid(const char *str)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Do a string to integer conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">str :<br></td>
+<td style="vertical-align: top;">a Usb Product Id as string like "SilverLink".
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a Usb Product Id.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

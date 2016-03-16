@@ -1,0 +1,1474 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Hand-held management layer
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="ticalcs_calc_features"></a>ticalcs_calc_features</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 CalcFeatures TICALL ticalcs_calc_features(CalcHandle* handle)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the features and operations supported by the hand-held.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a mask of features (CalcFeatures).
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_isready"></a>ticalcs_calc_isready</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_isready(CalcHandle* handle)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Check whether calc is ready.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if ready else ERR_NOT_READY.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_key"></a>ticalcs_calc_send_key</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_key(CalcHandle* handle, uint16_t key)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Check whether calc is ready.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">key :<br></td>
+<td style="vertical-align: top;">a TI scancode
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_execute"></a>ticalcs_calc_execute</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_execute(CalcHandle* handle, VarEntry* ve, const char* args)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Remotely execute a program or a FLASH application.
+Restrictions: execution of FLASH applications is supported thru D-USB only.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ve :<br></td>
+<td style="vertical-align: top;">folder and variable name with type
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">args :<br></td>
+<td style="vertical-align: top;">argument to pass to program (in TI-charset, aka native)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_recv_screen"></a>ticalcs_calc_recv_screen</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_recv_screen(CalcHandle* handle, CalcScreenCoord* sc, uint8_t** bitmap)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request a screenshot and receive a raw B&W bitmap (1 bit per pixel).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">sc :<br></td>
+<td style="vertical-align: top;">a structure which contains required screen format and returns screen sizes
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">bitmap :<br></td>
+<td style="vertical-align: top;">adress of pointer for allocated bitmap. Must be freed when no longer needed.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_get_dirlist"></a>ticalcs_calc_get_dirlist</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_get_dirlist(CalcHandle* handle, GNode** vars, GNode **apps)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request a directory listing.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">vars :<br></td>
+<td style="vertical-align: top;">a tree of folder & variables
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">apps :<br></td>
+<td style="vertical-align: top;">a tree of FLASH apps
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_get_memfree"></a>ticalcs_calc_get_memfree</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_get_memfree(CalcHandle* handle, uint32_t* ram, uint32_t *flash)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request free memory. Do a dirlist to update value.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ram :<br></td>
+<td style="vertical-align: top;">RAM memory available
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">flash :<br></td>
+<td style="vertical-align: top;">Flash memory available
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_recv_backup"></a>ticalcs_calc_recv_backup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_recv_backup(CalcHandle* handle, BackupContent* content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request a backup and receive it.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">backup content
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_backup"></a>ticalcs_calc_send_backup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_backup(CalcHandle* handle, BackupContent* content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send a backup.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">backup content
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_var"></a>ticalcs_calc_send_var</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_var(CalcHandle* handle, CalcMode mode, FileContent* content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send one or more variables (silent mode).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">mode :<br></td>
+<td style="vertical-align: top;">to document
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">file content to send
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_recv_var"></a>ticalcs_calc_recv_var</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_recv_var(CalcHandle* handle, CalcMode mode, FileContent* content, VarRequest* vr)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request receiving of _one_ variable (silent mode).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">mode:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">where to store variable content
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">var :<br></td>
+<td style="vertical-align: top;">a #VarEntry structure got with dirlist
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_var_ns"></a>ticalcs_calc_send_var_ns</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_var_ns(CalcHandle* handle, CalcMode mode, FileContent* content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send one or more variable (non-silent mode).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">mode:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">file content to send
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_recv_var_ns"></a>ticalcs_calc_recv_var_ns</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_recv_var_ns(CalcHandle* handle, CalcMode mode, FileContent* content, VarEntry** var)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Receive one or more variable (non-silent mode).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">mode:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">where to store variables
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">var :<br></td>
+<td style="vertical-align: top;">information on the received variable (if single) or NULL (if group)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_app"></a>ticalcs_calc_send_app</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_app(CalcHandle* handle, FlashContent* content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send a FLASH app.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">content to send
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_recv_app"></a>ticalcs_calc_recv_app</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_recv_app(CalcHandle* handle, FlashContent* content, VarRequest* var)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request receiving of a FLASH app.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">where to store content
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">var :<br></td>
+<td style="vertical-align: top;">FLASH app to request
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_os"></a>ticalcs_calc_send_os</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_os(CalcHandle* handle, FlashContent* content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send a FLASH os.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">content to send
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_recv_idlist"></a>ticalcs_calc_recv_idlist</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_recv_idlist(CalcHandle* handle, uint8_t* idlist)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request ID-LIST of hand-held.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">idlist :<br></td>
+<td style="vertical-align: top;">static buffer (32 chars) where to store ID-LIST
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_dump_rom_1"></a>ticalcs_calc_dump_rom_1</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_dump_rom_1(CalcHandle* handle)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send a ROM dumping program to hand-held.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_dump_rom_2"></a>ticalcs_calc_dump_rom_2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_dump_rom_2(CalcHandle* handle, CalcDumpSize size, const char *filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Start dumping (if possible).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">size :<br></td>
+<td style="vertical-align: top;">optional size of dump
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">where to store the dump
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_set_clock"></a>ticalcs_calc_set_clock</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_set_clock(CalcHandle* handle, CalcClock* _clock)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Set date & time of hand-held (if AMS >= 2.09).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">clock :<br></td>
+<td style="vertical-align: top;">a #CalcClock structure
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_get_clock"></a>ticalcs_calc_get_clock</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_get_clock(CalcHandle* handle, CalcClock* _clock)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Get date & time of hand-held (if AMS >= 2.09).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">clock :<br></td>
+<td style="vertical-align: top;">a #CalcClock structure
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_cert"></a>ticalcs_calc_send_cert</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_cert(CalcHandle* handle, FlashContent* content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send a certificate.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">content to send
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_recv_cert"></a>ticalcs_calc_recv_cert</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_recv_cert(CalcHandle* handle, FlashContent* content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request receiving of a FLASH app.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">where to store content
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_recv_backup2"></a>ticalcs_calc_recv_backup2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_recv_backup2(CalcHandle* handle, const char *filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request a backup and receive it to file.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of file where to store backup
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_backup2"></a>ticalcs_calc_send_backup2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_backup2(CalcHandle* handle, const char* filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send a backup from file.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of file which contains backup to send
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_var2"></a>ticalcs_calc_send_var2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_var2(CalcHandle* handle, CalcMode mode, const char* filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send one or more variables (silent mode) from file.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">mode :<br></td>
+<td style="vertical-align: top;">to document
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_recv_var2"></a>ticalcs_calc_recv_var2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_recv_var2(CalcHandle* handle, CalcMode mode, const char* filename, VarRequest* vr)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request receiving of _one_ variable (silent mode).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">mode:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">where to store variable content
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">var :<br></td>
+<td style="vertical-align: top;">a #VarEntry structure got with dirlist
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_var_ns2"></a>ticalcs_calc_send_var_ns2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_var_ns2(CalcHandle* handle, CalcMode mode, const char* filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send one or more variable (non-silent mode).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">mode:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_recv_var_ns2"></a>ticalcs_calc_recv_var_ns2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_recv_var_ns2(CalcHandle* handle, CalcMode mode, const char* filename, VarEntry** vr)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Receive one or more variable (non-silent mode).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">mode:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">where to store variables
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">var :<br></td>
+<td style="vertical-align: top;">information on the received variable (if single) or NULL (if group)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_app2"></a>ticalcs_calc_send_app2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_app2(CalcHandle* handle, const char* filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send a FLASH app or os.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_recv_app2"></a>ticalcs_calc_recv_app2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_recv_app2(CalcHandle* handle, const char* filename, VarRequest* vr)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request receiving of a FLASH app.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">where to store content
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">var :<br></td>
+<td style="vertical-align: top;">FLASH app to request
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_new_fld"></a>ticalcs_calc_new_fld</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_new_fld(CalcHandle* handle, VarRequest* vr)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request creation of a folder. Beware: %vr.name may be modified !
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">vr :<br></td>
+<td style="vertical-align: top;">name of folder to create (vr->folder)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_del_var"></a>ticalcs_calc_del_var</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_del_var(CalcHandle* handle, VarRequest* vr)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request deleting of a variable (if possible).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">var :<br></td>
+<td style="vertical-align: top;">var to delete
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_rename_var"></a>ticalcs_calc_rename_var</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_rename_var(CalcHandle* handle, VarRequest* oldname, VarRequest *newname)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Remotely rename a variable, and/or move it to a different folder.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">oldname :<br></td>
+<td style="vertical-align: top;">existing name and folder
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">newname :<br></td>
+<td style="vertical-align: top;">new name and folder
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_change_attr"></a>ticalcs_calc_change_attr</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_change_attr(CalcHandle* handle, VarRequest* vr, FileAttr attr)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Remotely change a variable's archive/lock state.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">vr :<br></td>
+<td style="vertical-align: top;">variable to modify
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">attr :<br></td>
+<td style="vertical-align: top;">new attributes for variable
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_get_version"></a>ticalcs_calc_get_version</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_get_version(CalcHandle* handle, CalcInfos* infos)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request version info.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">infos :<br></td>
+<td style="vertical-align: top;">where to store version information
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_cert2"></a>ticalcs_calc_send_cert2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_cert2(CalcHandle* handle, const char* filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send a certificate.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_recv_cert2"></a>ticalcs_calc_recv_cert2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_recv_cert2(CalcHandle* handle, const char* filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Request certificate. Depending on extension, saves it as *.9Xq or *.cer.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_os2"></a>ticalcs_calc_send_os2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_os2(CalcHandle* handle, const char* filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send a FLASH app.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_send_tigroup2"></a>ticalcs_calc_send_tigroup2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_send_tigroup2(CalcHandle* handle, const char* filename, TigMode mode)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Send a TiGroup file.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">mode :<br></td>
+<td style="vertical-align: top;">which vars/apps to send
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_calc_recv_tigroup2"></a>ticalcs_calc_recv_tigroup2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_calc_recv_tigroup2(CalcHandle* handle, const char* filename, TigMode mode)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Receive a TiGroup file.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">mode :<br></td>
+<td style="vertical-align: top;">which vars/apps to receive
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

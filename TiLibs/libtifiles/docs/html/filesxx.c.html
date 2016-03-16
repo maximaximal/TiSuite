@@ -1,0 +1,616 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Operations on TI files (single/group only)
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="tifiles_content_create_regular"></a>tifiles_content_create_regular</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 FileContent* TICALL tifiles_content_create_regular(CalcModel model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocates a #FileContent structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model (required).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the allocated block.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_delete_regular"></a>tifiles_content_delete_regular</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_content_delete_regular(FileContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Free the whole content of a #FileContent structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_dup_regular"></a>tifiles_content_dup_regular</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 FileContent* TICALL tifiles_content_dup_regular(FileContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocates and copies a new #FileContent structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_read_regular"></a>tifiles_file_read_regular</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int tifiles_file_read_regular(const char *filename, FileContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Load the single/group file into a FileContent structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of single/group file to open.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">where to store the file content.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_write_regular"></a>tifiles_file_write_regular</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int tifiles_file_write_regular(const char *filename, FileContent *content, char **real_fname)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Write one (or several) variable(s) into a single (group) file. If filename is set to NULL,
+the function build a filename from varname and allocates resulting filename in %real_fname.
+%filename and %real_filename can be NULL but not both !
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of single/group file where to write or NULL.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">the file content to write.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">real_fname :<br></td>
+<td style="vertical-align: top;">pointer address or NULL. Must be freed if needed when no longer needed.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_display_regular"></a>tifiles_file_display_regular</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_file_display_regular(FileContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Display file content information.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">the file content to show.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_create_backup"></a>tifiles_content_create_backup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 BackupContent* TICALL tifiles_content_create_backup(CalcModel model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocates a BackupContent structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model or CALC_NONE.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the allocated block.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_delete_backup"></a>tifiles_content_delete_backup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_content_delete_backup(BackupContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Free the whole content of a BackupContent structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_read_backup"></a>tifiles_file_read_backup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int tifiles_file_read_backup(const char *filename, BackupContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Load the backup file into a BackupContent structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of backup file to open.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">where to store the file content.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_write_backup"></a>tifiles_file_write_backup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int tifiles_file_write_backup(const char *filename, BackupContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Write backup into file.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of backup file where to write.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">the file content to write.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_display_backup"></a>tifiles_file_display_backup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_file_display_backup(BackupContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Display file content information.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">the file content to show.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_create_flash"></a>tifiles_content_create_flash</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 FlashContent* TICALL tifiles_content_create_flash(CalcModel model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocates a #FlashContent structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model (compulsory).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the allocated block.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_delete_flash"></a>tifiles_content_delete_flash</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_content_delete_flash(FlashContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Free the whole content of a #FlashContent structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_read_flash"></a>tifiles_file_read_flash</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int tifiles_file_read_flash(const char *filename, FlashContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Load the FLASH file into a FlashContent structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of FLASH file to open.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">where to store the file content.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_write_flash2"></a>tifiles_file_write_flash2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int tifiles_file_write_flash2(const char *filename, FlashContent *content, char **real_fname)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Write a FLASH content to a file. If filename is set to NULL, the function build a filename 
+from appname and allocates resulting filename in %real_fname.
+%filename and %real_fname can be NULL but not both !
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of flash file where to write or NULL.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">the file content to write.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">real_fname :<br></td>
+<td style="vertical-align: top;">pointer address or NULL. Must be freed if needed when no longer needed.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_write_flash"></a>tifiles_file_write_flash</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int tifiles_file_write_flash(const char *filename, FlashContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Write a FLASH content to a file. If filename is set to NULL, the function build a filename 
+from appname.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">name of flash file where to write or NULL.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">the file content to write.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_dup_flash"></a>tifiles_content_dup_flash</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 FlashContent* TICALL tifiles_content_dup_flash(FlashContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocates and copies a new FlashContent structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_display_flash"></a>tifiles_file_display_flash</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_file_display_flash(FlashContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Display file content information.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">the file content to show.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_display"></a>tifiles_file_display</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_file_display(const char *filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Determine file class and display internal content.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">a TI file.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_create_table_of_entries"></a>tifiles_create_table_of_entries</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int** tifiles_create_table_of_entries(FileContent *content, int *nfolders)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+The goal of this function is to parse the file content structure in order to build
+a table of entries so that it's easy to write it just after the header in a group
+file. Mainly used as an helper.
+The returned 'table' is an NULL-terminated array of int* pointers.
+Each pointers points on an integer array. Each cell are an index on the 'VarEntry*  
+entries' array.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">a TI file content structure.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">nfolders :<br></td>
+<td style="vertical-align: top;">returns the number of folders in the file.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a 2-dimensions allocated integer array. Must be freed with g_free when
+no longer used.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

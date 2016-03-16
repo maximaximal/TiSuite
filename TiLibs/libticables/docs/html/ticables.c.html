@@ -1,0 +1,302 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Entry Points
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="ticables_library_init"></a>ticables_library_init</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 int TICALL ticables_library_init(void)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function must be the first one to call. It inits library internals.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the instance count.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_library_exit"></a>ticables_library_exit</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 int
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function must be the last one to call. Used to release internal resources.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the instance count.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_version_get"></a>ticables_version_get</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 const char *TICALL ticables_version_get(void)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function returns the library version like "X.Y.Z".
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a string.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_handle_new"></a>ticables_handle_new</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 CableHandle* TICALL ticables_handle_new(CableModel model, CablePort port)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Create a new handle associated with the given cable on the given port.
+Must be freed with ticables_handle_del when no longer needed.
+Note: the handle is a pointer on an opaque structure and should not be modified.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a cable model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">port :<br></td>
+<td style="vertical-align: top;">the generic port on which cable is attached.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">NULL if error, an handle otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_handle_del"></a>ticables_handle_del</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 int TICALL ticables_handle_del(CableHandle* handle)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Release the cable and free the associated resources.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">the handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">always 0.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_options_set_timeout"></a>ticables_options_set_timeout</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 int TICALL ticables_options_set_timeout(CableHandle* handle, int timeout)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Set timeout for any cable.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">the handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">timeout :<br></td>
+<td style="vertical-align: top;">timeout value in tenth of seconds
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the previous timeout.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_options_set_delay"></a>ticables_options_set_delay</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 int TICALL ticables_options_set_delay(CableHandle* handle, int delay)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Set inter-bit delay for parallel or BlackLink cable.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">the handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">delay :<br></td>
+<td style="vertical-align: top;">delay in micro-seconds
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the previous delay.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_get_model"></a>ticables_get_model</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 CableModel TICALL ticables_get_model(CableHandle* handle)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Retrieve link cable model.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">the handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the previous #CableModel value.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_get_port"></a>ticables_get_port</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 CablePort TICALL ticables_get_port(CableHandle* handle)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Retrieve link port.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">the handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a #CablePort value.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_handle_show"></a>ticables_handle_show</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 int TICALL ticables_handle_show(CableHandle* handle)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Show information stored in the handle.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">the handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">always 0.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

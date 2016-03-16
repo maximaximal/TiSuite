@@ -1,0 +1,367 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Types and strings conversions
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="tifiles_vartype2string"></a>tifiles_vartype2string</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 const char *TICALL tifiles_vartype2string(CalcModel model, uint8_t data)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the type of variable (REAL, EQU, PRGM, ...).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">data :<br></td>
+<td style="vertical-align: top;">a type ID.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a string like "REAL".
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_string2vartype"></a>tifiles_string2vartype</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 uint8_t TICALL tifiles_string2vartype(CalcModel model, const char *s)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the type of variable.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">s :<br></td>
+<td style="vertical-align: top;">a type as string (like "REAL").
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a type ID.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_vartype2fext"></a>tifiles_vartype2fext</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 const char *TICALL tifiles_vartype2fext(CalcModel model, uint8_t data)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the file extension tipcially used to store this kind of variable(REAL, EQU, PRGM, ...).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">data :<br></td>
+<td style="vertical-align: top;">a type ID.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a string like "REAL".
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_fext2vartype"></a>tifiles_fext2vartype</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 uint8_t TICALL tifiles_fext2vartype(CalcModel model, const char *s)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the type ID of variable (REAL, EQU, PRGM, ...).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">s :<br></td>
+<td style="vertical-align: top;">a file extension as string (like 89p).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a string like "PRGM".
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_vartype2type"></a>tifiles_vartype2type</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 const char *TICALL tifiles_vartype2type(CalcModel model, uint8_t vartype)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the type ID of variable as string ("Real", "Program", ...).
+The function is localized.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">id :<br></td>
+<td style="vertical-align: top;">a vartype ID.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a string like "Assembly Program".
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_vartype2icon"></a>tifiles_vartype2icon</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 const char *TICALL tifiles_vartype2icon(CalcModel model, uint8_t vartype)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the type ID of variable as string ("Real", "Program", ...).
+Same as #tifiles_vartype2type but un-localized.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">id :<br></td>
+<td style="vertical-align: top;">a vartype ID.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a string like "Assembly Program".
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_folder_type
+"></a>tifiles_folder_type
+</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 uint8_t TICALL tifiles_folder_type(CalcModel model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the variable type ID used for encoding folders.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model in #CalcModel enumeration.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a type ID.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_flash_type
+"></a>tifiles_flash_type
+</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 uint8_t TICALL tifiles_flash_type(CalcModel model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the variable type ID used for encoding FLASH apps.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model in #CalcModel enumeration.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a type ID.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_idlist_type
+"></a>tifiles_idlist_type
+</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 uint8_t TICALL tifiles_idlist_type(CalcModel model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the variable type ID used for encoding IDLIST variable.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model in #CalcModel enumeration.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a type ID.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_calctype2signature"></a>tifiles_calctype2signature</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 const char *TICALL tifiles_calctype2signature(CalcModel model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the signature used at the top of a TI file depending on the
+calculator model.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a string like "**TI89**".
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_signature2calctype"></a>tifiles_signature2calctype</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 CalcModel TICALL tifiles_signature2calctype(const char *s)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the calculator model contained in the signature.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">s :<br></td>
+<td style="vertical-align: top;">a TI file signature like "**TI89**".
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Header File Index</title>
+  <link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+  <tbody>
+    <tr>
+      <td class="NOBORDER" width="40"><img src="info.gif" border="0"
+ height="32" width="32"> </td>
+      <td class="TITLE">TiFiles Library API</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<p>The tifiles library provide a complete API (Application Programming
+Interface) &nbsp;which makes use of TI files easy and transparent. <br>
+<br>
+Functions and data types are grouped in different topics, depending on
+their purpose. Click on a topic for the description of all functions
+and
+data types defined in this topic.<br>
+</p>
+<p><span
+ style="text-decoration: underline; font-style: italic; font-weight: bold;">Important
+note:</span> due to the fact that TiLP &amp; TiEmu heavily use the GLib
+library, the tifiles2 library use the '<span
+ style="font-style: italic; font-weight: bold;">glib filename encoding</span>'
+for filenames.<br>
+The 'glib filename encoding' encodes filenames with the following
+charsets:<br>
+- <span style="font-weight: bold;">UTF-8</span> charset on <span
+ style="font-weight: bold;">Windows</span>,<br>
+- <span style="font-weight: bold;">locale </span>charset on <span
+ style="font-weight: bold;">Linux </span>(usually UTF-8 but this is <span
+ style="font-weight: bold;">not </span>always true).<br>
+</p>
+<p>Please note that UTF-8 does not change encoding of ASCII characters
+(0x00-0x7f). For more information, take a look at &lt;<a
+ href="http://www.unicode.org/charts">http://www.unicode.org/charts</a>&gt;
+and &lt;<a href="http://www.czyborra.com/utf">http://www.czyborra.com/utf</a>&gt;<br>
+</p>
+<p><span style="font-style: italic;"></span><span
+ style="text-decoration: underline; font-style: italic; font-weight: bold;">Important
+note 2:</span> due to the new USB hand-helds, the folder &amp; variable
+names are not always encoded as 'raw' any longer for now. The tifiles2
+library use the 'Ti-File varname encoding' for varnames (see ticonv
+library documentation: the varname can be encoded as raw/TI8x-charset
+(TI8x), TI9x-charset
+(TI9x) or pseudo UTF-8 (TI84+ USB &amp; Titanium USB)). <br>
+</p>
+<p>The real string
+type depends on the calculator model passed by tifiles_set_tve() and
+relies on ticonv conversion
+routines to be handled fine (eg to you have to convert it with <a
+ href="../../../ticonv/docs/html/tokens.c.html#ticonv_varname_to_utf8">ticonv_varname_to_utf8/utf16</a>
+before displaying it or <a
+ href="../../../ticonv/docs/html/filename.c.html#ticonv_varname_to_filename">ticonv_varname_to_filename</a>
+to save it).
+</p>
+<span style="font-weight:bold;">Enumerations, structures and type definitions
+</span><br>
+<ul>
+<li><a href="tifiles.h.html#CalcModel">CalcModel</a></li>
+<li><a href="tifiles.h.html#FileAttr">FileAttr</a></li>
+<li><a href="tifiles.h.html#FileClass">FileClass</a></li>
+<li><a href="tifiles.h.html#FileEncoding">FileEncoding</a></li>
+<li><a href="tifiles.h.html#DeviceType">DeviceType</a></li>
+<li><a href="tifiles.h.html#VarEntry">VarEntry</a></li>
+<li><a href="tifiles.h.html#FileContent">FileContent</a></li>
+<li><a href="tifiles.h.html#BackupContent">BackupContent</a></li>
+<li><a href="tifiles.h.html#FlashHeader">FlashHeader</a></li>
+<li><a href="tifiles.h.html#FlashPage">FlashPage</a></li>
+<li><a href="tifiles.h.html#FlashContent">FlashContent</a></li>
+<li><a href="tifiles.h.html#TigContent">TigContent</a></li>
+</ul>
+<span style="font-weight:bold;">Entry Points
+</span><br>
+<ul>
+<li><a href="tifiles.c.html#tifiles_library_init">tifiles_library_init</a></li>
+<li><a href="tifiles.c.html#tifiles_library_exit">tifiles_library_exit</a></li>
+<li><a href="tifiles.c.html#tifiles_version_get">tifiles_version_get</a></li>
+</ul>
+<span style="font-weight:bold;">General Functions
+</span><br>
+<ul>
+<li><a href="error.c.html#tifiles_get_error">tifiles_get_error</a></li>
+</ul>
+<span style="font-weight:bold;">Types and strings conversions
+</span><br>
+<ul>
+<li><a href="type2str.c.html#tifiles_model_to_string">tifiles_model_to_string</a></li>
+<li><a href="type2str.c.html#tifiles_string_to_model">tifiles_string_to_model</a></li>
+<li><a href="type2str.c.html#tifiles_attribute_to_string">tifiles_attribute_to_string</a></li>
+<li><a href="type2str.c.html#tifiles_string_to_attribute">tifiles_string_to_attribute</a></li>
+<li><a href="type2str.c.html#tifiles_class_to_string">tifiles_class_to_string</a></li>
+<li><a href="type2str.c.html#tifiles_string_to_class">tifiles_string_to_class</a></li>
+</ul>
+<span style="font-weight:bold;">File type checking
+</span><br>
+<ul>
+<li><a href="filetypes.c.html#tifiles_fext_of_group">tifiles_fext_of_group</a></li>
+<li><a href="filetypes.c.html#tifiles_fext_of_backup">tifiles_fext_of_backup</a></li>
+<li><a href="filetypes.c.html#tifiles_fext_of_flash_app">tifiles_fext_of_flash_app</a></li>
+<li><a href="filetypes.c.html#tifiles_fext_of_flash_os">tifiles_fext_of_flash_os</a></li>
+<li><a href="filetypes.c.html#tifiles_fext_of_certif">tifiles_fext_of_certif</a></li>
+<li><a href="filetypes.c.html#tifiles_fext_get">tifiles_fext_get</a></li>
+<li><a href="filetypes.c.html#tifiles_fext_dup">tifiles_fext_dup</a></li>
+<li><a href="filetypes.c.html#tifiles_file_is_ti">tifiles_file_is_ti</a></li>
+<li><a href="filetypes.c.html#tifiles_file_is_single">tifiles_file_is_single</a></li>
+<li><a href="filetypes.c.html#tifiles_file_is_group">tifiles_file_is_group</a></li>
+<li><a href="filetypes.c.html#tifiles_file_is_regular">tifiles_file_is_regular</a></li>
+<li><a href="filetypes.c.html#tifiles_file_is_backup">tifiles_file_is_backup</a></li>
+<li><a href="filetypes.c.html#tifiles_file_is_os">tifiles_file_is_os</a></li>
+<li><a href="filetypes.c.html#tifiles_file_is_app">tifiles_file_is_app</a></li>
+<li><a href="filetypes.c.html#tifiles_file_is_flash">tifiles_file_is_flash</a></li>
+<li><a href="filetypes.c.html#tifiles_file_is_tib">tifiles_file_is_tib</a></li>
+<li><a href="filetypes.c.html#tifiles_file_is_tigroup">tifiles_file_is_tigroup</a></li>
+<li><a href="filetypes.c.html#tifiles_file_test">tifiles_file_test</a></li>
+<li><a href="filetypes.c.html#tifiles_file_get_model">tifiles_file_get_model</a></li>
+<li><a href="filetypes.c.html#tifiles_file_get_class">tifiles_file_get_class</a></li>
+<li><a href="filetypes.c.html#tifiles_file_get_type">tifiles_file_get_type</a></li>
+<li><a href="filetypes.c.html#tifiles_file_get_icon">tifiles_file_get_icon</a></li>
+</ul>
+<span style="font-weight:bold;">Miscelaneous
+</span><br>
+<ul>
+<li><a href="misc.c.html#tifiles_calc_is_ti8x">tifiles_calc_is_ti8x</a></li>
+<li><a href="misc.c.html#tifiles_calc_is_ti9x">tifiles_calc_is_ti9x</a></li>
+<li><a href="misc.c.html#tifiles_calc_are_compat">tifiles_calc_are_compat</a></li>
+<li><a href="misc.c.html#tifiles_has_folder">tifiles_has_folder</a></li>
+<li><a href="misc.c.html#tifiles_is_flash">tifiles_is_flash</a></li>
+<li><a href="misc.c.html#tifiles_has_backup">tifiles_has_backup</a></li>
+<li><a href="misc.c.html#tifiles_checksum">tifiles_checksum</a></li>
+<li><a href="misc.c.html#tifiles_get_varname">tifiles_get_varname</a></li>
+<li><a href="misc.c.html#tifiles_get_fldname">tifiles_get_fldname</a></li>
+<li><a href="misc.c.html#tifiles_build_fullname">tifiles_build_fullname</a></li>
+<li><a href="misc.c.html#tifiles_build_filename">tifiles_build_filename</a></li>
+</ul>
+<span style="font-weight:bold;">Types and strings conversions
+</span><br>
+<ul>
+<li><a href="typesxx.c.html#tifiles_vartype2string">tifiles_vartype2string</a></li>
+<li><a href="typesxx.c.html#tifiles_string2vartype">tifiles_string2vartype</a></li>
+<li><a href="typesxx.c.html#tifiles_vartype2fext">tifiles_vartype2fext</a></li>
+<li><a href="typesxx.c.html#tifiles_fext2vartype">tifiles_fext2vartype</a></li>
+<li><a href="typesxx.c.html#tifiles_vartype2type">tifiles_vartype2type</a></li>
+<li><a href="typesxx.c.html#tifiles_vartype2icon">tifiles_vartype2icon</a></li>
+<li><a href="typesxx.c.html#tifiles_folder_type
+">tifiles_folder_type
+</a></li>
+<li><a href="typesxx.c.html#tifiles_flash_type
+">tifiles_flash_type
+</a></li>
+<li><a href="typesxx.c.html#tifiles_idlist_type
+">tifiles_idlist_type
+</a></li>
+<li><a href="typesxx.c.html#tifiles_calctype2signature">tifiles_calctype2signature</a></li>
+<li><a href="typesxx.c.html#tifiles_signature2calctype">tifiles_signature2calctype</a></li>
+</ul>
+<span style="font-weight:bold;">Operations on TI files (single/group only)
+</span><br>
+<ul>
+<li><a href="filesxx.c.html#tifiles_content_create_regular">tifiles_content_create_regular</a></li>
+<li><a href="filesxx.c.html#tifiles_content_delete_regular">tifiles_content_delete_regular</a></li>
+<li><a href="filesxx.c.html#tifiles_content_dup_regular">tifiles_content_dup_regular</a></li>
+<li><a href="filesxx.c.html#tifiles_file_read_regular">tifiles_file_read_regular</a></li>
+<li><a href="filesxx.c.html#tifiles_file_write_regular">tifiles_file_write_regular</a></li>
+<li><a href="filesxx.c.html#tifiles_file_display_regular">tifiles_file_display_regular</a></li>
+<li><a href="filesxx.c.html#tifiles_content_create_backup">tifiles_content_create_backup</a></li>
+<li><a href="filesxx.c.html#tifiles_content_delete_backup">tifiles_content_delete_backup</a></li>
+<li><a href="filesxx.c.html#tifiles_file_read_backup">tifiles_file_read_backup</a></li>
+<li><a href="filesxx.c.html#tifiles_file_write_backup">tifiles_file_write_backup</a></li>
+<li><a href="filesxx.c.html#tifiles_file_display_backup">tifiles_file_display_backup</a></li>
+<li><a href="filesxx.c.html#tifiles_content_create_flash">tifiles_content_create_flash</a></li>
+<li><a href="filesxx.c.html#tifiles_content_delete_flash">tifiles_content_delete_flash</a></li>
+<li><a href="filesxx.c.html#tifiles_file_read_flash">tifiles_file_read_flash</a></li>
+<li><a href="filesxx.c.html#tifiles_file_write_flash2">tifiles_file_write_flash2</a></li>
+<li><a href="filesxx.c.html#tifiles_file_write_flash">tifiles_file_write_flash</a></li>
+<li><a href="filesxx.c.html#tifiles_content_dup_flash">tifiles_content_dup_flash</a></li>
+<li><a href="filesxx.c.html#tifiles_file_display_flash">tifiles_file_display_flash</a></li>
+<li><a href="filesxx.c.html#tifiles_file_display">tifiles_file_display</a></li>
+<li><a href="filesxx.c.html#tifiles_create_table_of_entries">tifiles_create_table_of_entries</a></li>
+</ul>
+<span style="font-weight:bold;">Grouping/Ungrouping of TI files
+</span><br>
+<ul>
+<li><a href="grouped.c.html#tifiles_content_create_group">tifiles_content_create_group</a></li>
+<li><a href="grouped.c.html#tifiles_content_delete_group">tifiles_content_delete_group</a></li>
+<li><a href="grouped.c.html#tifiles_group_contents">tifiles_group_contents</a></li>
+<li><a href="grouped.c.html#tifiles_ungroup_content">tifiles_ungroup_content</a></li>
+<li><a href="grouped.c.html#tifiles_group_files">tifiles_group_files</a></li>
+<li><a href="grouped.c.html#tifiles_ungroup_file">tifiles_ungroup_file</a></li>
+<li><a href="grouped.c.html#tifiles_content_add_entry">tifiles_content_add_entry</a></li>
+<li><a href="grouped.c.html#tifiles_content_del_entry">tifiles_content_del_entry</a></li>
+<li><a href="grouped.c.html#tifiles_group_add_file">tifiles_group_add_file</a></li>
+<li><a href="grouped.c.html#tifiles_group_del_file">tifiles_group_del_file</a></li>
+</ul>
+<span style="font-weight:bold;">Automatic comments in files
+</span><br>
+<ul>
+<li><a href="comments.c.html#tifiles_comment_set_single">tifiles_comment_set_single</a></li>
+<li><a href="comments.c.html#tifiles_comment_set_group">tifiles_comment_set_group</a></li>
+<li><a href="comments.c.html#tifiles_comment_set_backup">tifiles_comment_set_backup</a></li>
+<li><a href="comments.c.html#tifiles_comment_set_tigroup">tifiles_comment_set_tigroup</a></li>
+</ul>
+<span style="font-weight:bold;">VarEntry & FlashPage structures creation/deletion
+</span><br>
+<ul>
+<li><a href="ve_fp.c.html#tifiles_ve_create">tifiles_ve_create</a></li>
+<li><a href="ve_fp.c.html#tifiles_ve_alloc_data">tifiles_ve_alloc_data</a></li>
+<li><a href="ve_fp.c.html#tifiles_ve_create_with_data">tifiles_ve_create_with_data</a></li>
+<li><a href="ve_fp.c.html#tifiles_ve_create_array">tifiles_ve_create_array</a></li>
+<li><a href="ve_fp.c.html#tifiles_ve_resize_array">tifiles_ve_resize_array</a></li>
+<li><a href="ve_fp.c.html#tifiles_ve_delete">tifiles_ve_delete</a></li>
+<li><a href="ve_fp.c.html#tifiles_ve_delete_array">tifiles_ve_delete_array</a></li>
+<li><a href="ve_fp.c.html#tifiles_ve_copy">tifiles_ve_copy</a></li>
+<li><a href="ve_fp.c.html#tifiles_ve_dup">tifiles_ve_dup</a></li>
+<li><a href="ve_fp.c.html#tifiles_fp_create">tifiles_fp_create</a></li>
+<li><a href="ve_fp.c.html#tifiles_fp_alloc_data">tifiles_fp_alloc_data</a></li>
+<li><a href="ve_fp.c.html#tifiles_fp_create_with_data">tifiles_fp_create_with_data</a></li>
+<li><a href="ve_fp.c.html#tifiles_fp_create_array">tifiles_fp_create_array</a></li>
+<li><a href="ve_fp.c.html#tifiles_fp_delete">tifiles_fp_delete</a></li>
+<li><a href="ve_fp.c.html#tifiles_fp_delete_array">tifiles_fp_delete_array</a></li>
+</ul>
+<span style="font-weight:bold;">Operations on Ti Groups (*.tig)</span><br>
+<ul>
+<li><a href="tigroup.c.html#tifiles_te_create">tifiles_te_create</a></li>
+<li><a href="tigroup.c.html#tifiles_te_delete">tifiles_te_delete</a></li>
+<li><a href="tigroup.c.html#tifiles_te_create_array">tifiles_te_create_array</a></li>
+<li><a href="tigroup.c.html#tifiles_te_resize_array">tifiles_te_resize_array</a></li>
+<li><a href="tigroup.c.html#tifiles_ve_delete_array">tifiles_ve_delete_array</a></li>
+<li><a href="tigroup.c.html#tifiles_te_sizeof_array">tifiles_te_sizeof_array</a></li>
+<li><a href="tigroup.c.html#tifiles_content_add_te">tifiles_content_add_te</a></li>
+<li><a href="tigroup.c.html#tifiles_content_del_te">tifiles_content_del_te</a></li>
+<li><a href="tigroup.c.html#tifiles_tigroup_add_file">tifiles_tigroup_add_file</a></li>
+<li><a href="tigroup.c.html#tifiles_tigroup_del_file">tifiles_tigroup_del_file</a></li>
+<li><a href="tigroup.c.html#tifiles_tigroup_contents">tifiles_tigroup_contents</a></li>
+<li><a href="tigroup.c.html#tifiles_untigroup_content">tifiles_untigroup_content</a></li>
+<li><a href="tigroup.c.html#tifiles_group_files">tifiles_group_files</a></li>
+<li><a href="tigroup.c.html#tifiles_ungroup_file">tifiles_ungroup_file</a></li>
+<li><a href="tigroup.c.html#tifiles_content_create_tigroup">tifiles_content_create_tigroup</a></li>
+<li><a href="tigroup.c.html#tifiles_content_delete_tigroup">tifiles_content_delete_tigroup</a></li>
+<li><a href="tigroup.c.html#tifiles_file_read_tigroup">tifiles_file_read_tigroup</a></li>
+<li><a href="tigroup.c.html#tifiles_file_write_tigroup">tifiles_file_write_tigroup</a></li>
+<li><a href="tigroup.c.html#tifiles_file_display_tigroup">tifiles_file_display_tigroup</a></li>
+</ul>
+</p>
+<b></b>
+<h3> <a href="index.html">Return to the main index</a> </h3>
+</body>
+</html>
+</html>

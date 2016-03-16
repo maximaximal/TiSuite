@@ -1,0 +1,364 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Miscelaneous
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="tifiles_calc_is_ti8x"></a>tifiles_calc_is_ti8x</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_calc_is_ti8x(CalcModel model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Check whether %model is a TI73..TI86 calculator.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a boolean value.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_calc_is_ti9x"></a>tifiles_calc_is_ti9x</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_calc_is_ti9x(CalcModel model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Check whether %model is a TI89...V200PLT calculator.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a boolean value.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_calc_are_compat"></a>tifiles_calc_are_compat</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_calc_are_compat(CalcModel model, CalcModel ref)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Check whether %model is compatible (in term of file types) with %ref.
+Example: a .92t can be sent to a TI92 (of course) as well as a 
+TI89, 92+, V200 and a Titanium.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ref :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a boolean value.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_has_folder"></a>tifiles_has_folder</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_has_folder(CalcModel calc_type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns TRUE if the calculator supports folders.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a boolean value.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_is_flash"></a>tifiles_is_flash</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_is_flash(CalcModel calc_type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns TRUE if the calculator model has FLASH technology.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a boolean value.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_has_backup"></a>tifiles_has_backup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_has_backup(CalcModel calc_type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns TRUE if the calculator supports true backup.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a boolean value.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_checksum"></a>tifiles_checksum</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 uint16_t TICALL tifiles_checksum(uint8_t * buffer, int size)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Compute the checksum of the array on 'size' bytes.
+Returns result as a word.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">buffer :<br></td>
+<td style="vertical-align: top;">an array of bytes.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">size :<br></td>
+<td style="vertical-align: top;">the length of the array.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the ckecksum.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_get_varname"></a>tifiles_get_varname</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">char *TICALL tifiles_get_varname(const char *full_name)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the name of the variable.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">full_name :<br></td>
+<td style="vertical-align: top;">a calculator path such as 'fldname\varname'.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">varname as string. It should not be modified (static).
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_get_fldname"></a>tifiles_get_fldname</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">char *TICALL tifiles_get_fldname(const char *full_name)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the folder within the variable is located..
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">full_name :<br></td>
+<td style="vertical-align: top;">a calculator path such as 'fldname\varname'.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">folder name as string. It should not be modified (static).
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_build_fullname"></a>tifiles_build_fullname</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">char* TICALL tifiles_build_fullname(CalcModel model, char *full_name,
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Build the complete path from folder name and variable name.
+Not all of calculators supports folder.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">full_name :<br></td>
+<td style="vertical-align: top;">the buffer where to store the result.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">fldname :<br></td>
+<td style="vertical-align: top;">the name of folder or "".
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">varname :<br></td>
+<td style="vertical-align: top;">the name of variable
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a full path as string like 'fldname\varname'.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_build_filename"></a>tifiles_build_filename</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 char* TICALL tifiles_build_filename(CalcModel model, const VarEntry *ve)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Build a valid filename from folder name, variable name and variable type.
+Example: real number x on TI89 in the 'main' folder will give 'main.x.89e'.
+Note: this function is useable with FLASH apps, too (but you have to fill the #VarEntry structure yourself).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ve :<br></td>
+<td style="vertical-align: top;">a #VarEntry structure.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a newly allocated string which must be freed when no longer used.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

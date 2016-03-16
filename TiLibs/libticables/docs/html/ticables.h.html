@@ -1,0 +1,440 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Enumerations, structures and type definitions
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="CableModel"></a>CableModel</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">	CABLE_NUL = 0,
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+An enumeration which contains the following cable types:
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="CablePort"></a>CablePort</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">	PORT_0 = 0,
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+An enumeration which contains the following ports:
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="UsbPid"></a>UsbPid</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">	PID_UNKNOWN		= 0,
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+An enumeration which contains the following devices:
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="CableStatus"></a>CableStatus</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">	STATUS_NONE = 0, 
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+An enumeration which contains the following values:
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ProbingMethod"></a>ProbingMethod</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">	PROBE_NONE	= 0,
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Defines how to probe cables:
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="DataRate"></a>DataRate</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">	int		count;
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+A structure used for benchmarks.
+!!! This structure is for private use !!!
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">count :<br></td>
+<td style="vertical-align: top;">number of bytes transferred
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">start :<br></td>
+<td style="vertical-align: top;">the time when transfer started
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">current :<br></td>
+<td style="vertical-align: top;">free of use
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">stop :<br></td>
+<td style="vertical-align: top;">the time when transfer finished
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="Cable"></a>Cable</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">	const int		model;			
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+A structure used for handling a link cable.
+!!! This structure is for private use !!! 
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">link cable model (CableModel).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">name :<br></td>
+<td style="vertical-align: top;">name of cable like "SER"
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">fullname :<br></td>
+<td style="vertical-align: top;">complete name of cable like "BlackLink"
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">description :<br></td>
+<td style="vertical-align: top;">description of cable like "serial cable"
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">need_open :<br></td>
+<td style="vertical-align: top;">set if cable need to be 'open'/'close' before calling 'probe'
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">prepare :<br></td>
+<td style="vertical-align: top;">detect and map I/O
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">probe :<br></td>
+<td style="vertical-align: top;">check for cable presence
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">timeout :<br></td>
+<td style="vertical-align: top;">used to update timeout
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">open :<br></td>
+<td style="vertical-align: top;">open I/O port or device
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">close :<br></td>
+<td style="vertical-align: top;">close I/O port or device
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">reset :<br></td>
+<td style="vertical-align: top;">reset I/O port or device
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">send :<br></td>
+<td style="vertical-align: top;">send data onto the cable
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">recv :<br></td>
+<td style="vertical-align: top;">recv data from cable
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">check :<br></td>
+<td style="vertical-align: top;">check for data arrival
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">set_d0 :<br></td>
+<td style="vertical-align: top;">set D0/red wire
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">set_d1 :<br></td>
+<td style="vertical-align: top;">set D1/white wire
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">get_d0 get D0/red wire
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">get_d1 set D1/red wire
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">set_raw :<br></td>
+<td style="vertical-align: top;">set both wires
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">get_raw :<br></td>
+<td style="vertical-align: top;">read both wires
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="CableHandle"></a>CableHandle</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">	CableModel		model;	
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+A structure used to store information as an handle.
+!!! This structure is for private use !!!
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">cable model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">port :<br></td>
+<td style="vertical-align: top;">generic port
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">timeout :<br></td>
+<td style="vertical-align: top;">timeout value in 0.1 seconds
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">delay :<br></td>
+<td style="vertical-align: top;">inter-bit delay for serial/parallel cable in µs
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">device :<br></td>
+<td style="vertical-align: top;">device name like COMx or ttySx (if used)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">address :<br></td>
+<td style="vertical-align: top;">I/O base address of device (if used)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">cable :<br></td>
+<td style="vertical-align: top;">a Cable structure used by this handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">rate :<br></td>
+<td style="vertical-align: top;">data rate during transfers
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">priv :<br></td>
+<td style="vertical-align: top;">opaque data for internal/private use (static)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">priv2 :<br></td>
+<td style="vertical-align: top;">idem (allocated)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">priv3 :<br></td>
+<td style="vertical-align: top;">idem (static)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">open :<br></td>
+<td style="vertical-align: top;">set if cable has been open
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">busy :<br></td>
+<td style="vertical-align: top;">set if cable is busy
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="CableOptions"></a>CableOptions</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">    CableModel      model;
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+A convenient structure free of use by the user.
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">cable_model :<br></td>
+<td style="vertical-align: top;">model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">cable_port :<br></td>
+<td style="vertical-align: top;">port
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">cable_timeout :<br></td>
+<td style="vertical-align: top;">timeout in tenth of seconds
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">cable_delay :<br></td>
+<td style="vertical-align: top;">inter-bit delay in µs
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">calc_model :<br></td>
+<td style="vertical-align: top;">calculator model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

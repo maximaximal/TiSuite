@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">General Functions
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="tifiles_get_error"></a>tifiles_get_error</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_error_get(FileError number, char **message)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Attempt to match the message corresponding to the error number. The returned
+string must be freed when no longer needed.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">number :<br></td>
+<td style="vertical-align: top;">error number (see file_err.h for list).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">message :<br></td>
+<td style="vertical-align: top;">a newly glib allocated string which contains corresponding error *message.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if error has been caught, the error number otherwise (propagation).
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

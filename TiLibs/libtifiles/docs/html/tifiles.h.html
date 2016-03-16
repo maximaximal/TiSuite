@@ -1,0 +1,564 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Enumerations, structures and type definitions
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="CalcModel"></a>CalcModel</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">{
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+An enumeration which contains the following calculator types:
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="FileAttr"></a>FileAttr</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">  ATTRB_NONE = 0, ATTRB_LOCKED = 1, ATTRB_PROTECTED, ATTRB_ARCHIVED = 3,
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+An enumeration which contains the different variable attributes.
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="FileClass"></a>FileClass</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">  TIFILE_SINGLE = 1, TIFILE_GROUP = 2, TIFILE_REGULAR = 3, TIFILE_BACKUP = 4, 
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+An enumeration which contains the following class of TI files:
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="FileEncoding"></a>FileEncoding</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">  ENCODING_ASCII = 1, ENCODING_LATIN1, ENCODING_UNICODE,
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+An enumeration which contains the following encodings:
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="DeviceType"></a>DeviceType</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">	DEVICE_TYPE_83P = 0x73,
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+An enumeration which contains soem device IDs for FLASH apps:
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="VarEntry"></a>VarEntry</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">	char		folder[FLDNAME_MAX];
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+A generic structure used to store the content of a TI variable.
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">folder :<br></td>
+<td style="vertical-align: top;">name of folder (TI9x only) or ""
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">name :<br></td>
+<td style="vertical-align: top;">name of variable (raw on-calc encoding)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">type :<br></td>
+<td style="vertical-align: top;">vartype ID
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">attr :<br></td>
+<td style="vertical-align: top;">TI83+/89/92+ only (ATTRB_NONE or ARCHIVED)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">size :<br></td>
+<td style="vertical-align: top;">size of data (uint16_t for TI8x)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">data :<br></td>
+<td style="vertical-align: top;">pure data
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">action :<br></td>
+<td style="vertical-align: top;">used by ticalcs library (must be set to 0)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="FileContent"></a>FileContent</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">typedef struct 
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+A generic structure used to store the content of a single/grouped TI file.
+Please note that:
+- entries must be NULL-terminated. Parsing is based on this property.
+- num_entries must be exact. Counting relies on this.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">calculator model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">default_folder :<br></td>
+<td style="vertical-align: top;">name of the default folder (TI9x only)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">comment :<br></td>
+<td style="vertical-align: top;">comment aembedded in file (like "Single file received by TiLP")
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">num_entries :<br></td>
+<td style="vertical-align: top;">number of variables stored after
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">entries :<br></td>
+<td style="vertical-align: top;">a NULL-terminated array of #TiVarEntry structures
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">checksum :<br></td>
+<td style="vertical-align: top;">checksum of file
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="BackupContent"></a>BackupContent</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">  CalcModel model;
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+A generic structure used to store the content of a backup file.
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">calculator model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">comment :<br></td>
+<td style="vertical-align: top;">comment embedded in file (like "Backup file received by TiLP")
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">checksum :<br></td>
+<td style="vertical-align: top;">checksum of file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="FlashHeader"></a>FlashHeader</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">  uint8_t		revision_major;
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+A generic structure used to store the header before data of a FLASH file.
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">revision_major:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">revision_minor:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">flags:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">object_type:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">revision_day:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">revision_month:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">revision_year :<br></td>
+<td style="vertical-align: top;">
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">name :<br></td>
+<td style="vertical-align: top;">name of FLASH app or "basecode" for OS or '' for certificate
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">device_type :<br></td>
+<td style="vertical-align: top;">a device ID (TI89: 0x88, TI92+:0x98, ...)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">data_type :<br></td>
+<td style="vertical-align: top;">var type ID (app, os, certificate, ...)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">data_length :<br></td>
+<td style="vertical-align: top;">length of data part
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="FlashPage"></a>FlashPage</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">  uint16_t	addr;
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+A generic structure used to store the content of a TI8x memory page for FLASH.
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">offset :<br></td>
+<td style="vertical-align: top;">FLASH offset (see TI link guide).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">page :<br></td>
+<td style="vertical-align: top;">FLASH page (see TI link guide).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">flag :<br></td>
+<td style="vertical-align: top;">see link guide.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">size :<br></td>
+<td style="vertical-align: top;">length of pure data (up to 16384 bytes)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">data :<br></td>
+<td style="vertical-align: top;">pure FLASH data.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="FlashContent"></a>FlashContent</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">{
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+A generic structure used to store the content of a FLASH file (os or app).
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">revision_major:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">revision_minor:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">flags:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">object_type:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">revision_day:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">revision_month:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">revision_year:
+ :<br></td>
+<td style="vertical-align: top;">(null)<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">name :<br></td>
+<td style="vertical-align: top;">name of FLASH app or OS
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">device_type :<br></td>
+<td style="vertical-align: top;">a device ID
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">data_type :<br></td>
+<td style="vertical-align: top;">a type ID
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">hw_id :<br></td>
+<td style="vertical-align: top;">hardware ID (used on TI9x only, 0 otherwise)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">data_length :<br></td>
+<td style="vertical-align: top;">length of pure data
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">data_part :<br></td>
+<td style="vertical-align: top;">pure FLASH data (TI9x only) or license or certificate
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">num_pages :<br></td>
+<td style="vertical-align: top;">number of FLASH pages (TI8x only)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">pages :<br></td>
+<td style="vertical-align: top;">NULL-terminated array of FLASH pages (TI8x only)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">next :<br></td>
+<td style="vertical-align: top;">pointer to next structure (linked list of contents)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="TigContent"></a>TigContent</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">  CalcModel			model;
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+A generic structure used to store the content of a TiGroup file.
+/
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">comment :<br></td>
+<td style="vertical-align: top;">a global comment for archive
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">comp_level :<br></td>
+<td style="vertical-align: top;">compression level (0: store, 1 to 4: slow to fast)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">num_entries :<br></td>
+<td style="vertical-align: top;">the number of entries
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">entries :<br></td>
+<td style="vertical-align: top;">a NULL-terminated array of #TigEntry structures
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;"><br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

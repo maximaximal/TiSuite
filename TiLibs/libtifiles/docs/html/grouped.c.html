@@ -1,0 +1,339 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Grouping/Ungrouping of TI files
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="tifiles_content_create_group"></a>tifiles_content_create_group</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 FileContent** TICALL tifiles_content_create_group(int n_entries)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Convenient function which create a NULL-terminated array of #FileContent 
+structures (typically used to store a group file).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">n_entries :<br></td>
+<td style="vertical-align: top;">number of variables to allocate
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the array or NULL if failed.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_delete_group"></a>tifiles_content_delete_group</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_content_delete_group(FileContent **array)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Convenient function which free a NULL-terminated array of #FileContent 
+structures (typically used to store a group file) and the array itself.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">always 0.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_group_contents"></a>tifiles_group_contents</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_group_contents(FileContent **src_contents, FileContent **dst_content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Must be freed when no longer needed as well as the content of each #FileContent structure
+(use #tifiles_content_delete_regular as usual).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src_contents :<br></td>
+<td style="vertical-align: top;">a pointer on an array of #FileContent structures. The array must be NULL-terminated.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst_content :<br></td>
+<td style="vertical-align: top;">the address of a pointer. This pointer will see the allocated group file.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code if unsuccessful, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_ungroup_content"></a>tifiles_ungroup_content</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_ungroup_content(FileContent *src, FileContent ***dest)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src_content :<br></td>
+<td style="vertical-align: top;">a pointer on the structure to unpack.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst_contents :<br></td>
+<td style="vertical-align: top;">the address of your pointer. This pointers will point on a 
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code if unsuccessful, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_group_files"></a>tifiles_group_files</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_group_files(char **src_filenames, const char *dst_filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Group several TI files into a single one (group file).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src_filenames :<br></td>
+<td style="vertical-align: top;">a NULL-terminated array of strings (list of files to group).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst_filename :<br></td>
+<td style="vertical-align: top;">the filename where to store the group.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code if unsuccessful, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_ungroup_file"></a>tifiles_ungroup_file</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_ungroup_file(const char *src_filename, char ***dst_filenames)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src_filename :<br></td>
+<td style="vertical-align: top;">full path of file to ungroup.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst_filenames :<br></td>
+<td style="vertical-align: top;">NULL or the address of a pointer where to store a NULL-terminated 
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">there is no existence check; files may be overwritten !
+%dst_filenames must be freed when no longer used.
+Return value: an error code if unsuccessful, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_add_entry"></a>tifiles_content_add_entry</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_content_add_entry(FileContent *content, VarEntry *ve)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Adds the entry to the file content and updates internal structures.
+Beware: the entry is not duplicated.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">a file content (single/group only).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ve :<br></td>
+<td style="vertical-align: top;">the entry to add
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the number of entries.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_del_entry"></a>tifiles_content_del_entry</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_content_del_entry(FileContent *content, VarEntry *ve)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Search for entry name and remove it from file content (not tested !).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">a file content (single/group only).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ve :<br></td>
+<td style="vertical-align: top;">the entry to remove
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the number of entries or -1 if not found.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_group_add_file"></a>tifiles_group_add_file</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_group_add_file(const char *src_filename, const char *dst_filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Add src_filename content to dst_filename content and write to dst_filename.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src_filename :<br></td>
+<td style="vertical-align: top;">the file to add to group file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst_filename :<br></td>
+<td style="vertical-align: top;">the group file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_group_del_file"></a>tifiles_group_del_file</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_group_del_file(VarEntry *entry, const char *dst_filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Search for entry and remove it from file.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src_filename :<br></td>
+<td style="vertical-align: top;">the file to remove from group file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst_filename :<br></td>
+<td style="vertical-align: top;">the group file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>
