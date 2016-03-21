@@ -20,6 +20,7 @@ public:
         PARAM_ITEM_SEPERATOR,
         PARAM_ITEM_ASSIGN,
         PARAM_ITEM_TARGET,
+        FUNCTION_CALL,
         FUNCTION_KEYWORD,
         UNSAFE_KEYWORD,
         UNSAFE_CONTENT,
@@ -81,6 +82,8 @@ public:
                 return "PARAM_ITEM_TARGET";
             case FUNCTION_KEYWORD:
                 return "FUNCTION_KEYWORD";
+            case FUNCTION_CALL:
+                return "FUNCTION_CALL";
             case UNSAFE_KEYWORD:
                 return "UNSAFE_KEYWORD";
             case UNSAFE_CONTENT:

@@ -6,6 +6,18 @@ Type::Type()
 {
 
 }
+Type::Type(const std::string &typeString)
+{
+    if(typeString == "num") {
+        m_type = NUMBER;
+    } else if(typeString == "lst") {
+        m_type = LIST;
+    } else if(typeString == "mat") {
+        m_type = MATRIX;
+    } else if(typeString == "str") {
+        m_type = STRING;
+    }
+}
 Type::~Type()
 {
 

@@ -165,6 +165,11 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                         type = TokenType::PARAM_LIST_BEGIN;
                         found = true;
                         break;
+                    case TokenType::VAR_NAME:
+                        type = TokenType::PARAM_LIST_BEGIN;
+                        revIt->first = TokenType::FUNCTION_CALL;
+                        found = true;
+                        break;
                     case TokenType::END_STATEMENT:
                         type = TokenType::VAR_SCOPE_BEGIN;
                         found = true;
@@ -518,6 +523,20 @@ bool Lexer::isScopeCloseInUnsafe(SourceBlock::TokenVector &tokens, std::size_t i
         return false;
     }
     return true;
+}
+void Lexer::setRootBlock(const std::string &rootBlock)
+{
+    m_rootBlock = rootBlock;
+}
+const std::string &Lexer::rootBlock() const
+{
+    return m_rootBlock;
+}
+SourceBlock *Lexer::rootSourceBlock()
+{
+    if(m_sourceBlocks.count(m_rootBlock) == 1)
+        return m_sourceBlocks[m_rootBlock].get();
+    return nullptr;
 }
 
 }

@@ -50,7 +50,12 @@ public:
                     return !std::isdigit(c);
             }) == str.end();
     }
+    
+    void setRootBlock(const std::string &rootBlock);
+    const std::string& rootBlock() const;
+    SourceBlock* rootSourceBlock();
 private:
     std::map<std::string, std::unique_ptr<SourceBlock> > m_sourceBlocks;
+    std::string m_rootBlock;
 };
 }

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <tic/Lexer.hpp>
 #include <tic/SourceBlock.hpp>
+#include <tic/AST.hpp>
 
 using std::cout;
 using std::endl;
@@ -33,6 +34,8 @@ int main(int argc, char** argv)
     }
     
     Lexer lexer;
+    ErrorHandler handler;
+    AST ast(&handler);
     
     if(vm.count("input-file")) {
         cout << "Input files: " << endl;
@@ -42,6 +45,8 @@ int main(int argc, char** argv)
             std::unique_ptr<SourceBlock> block = std::make_unique<SourceBlock>();
             block->readFromFile(file);
             lexer.lex(std::move(block));
+            lexer.setRootBlock(file);
+            ast.generateFromTokenizedBlock(lexer.rootSourceBlock());
         }
     }
 }

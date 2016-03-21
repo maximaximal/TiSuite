@@ -13,12 +13,33 @@ set(HDRS
     ${HDR}/tic/SourceBlock.hpp
     ${HDR}/tic/TokenTree.hpp
     ${HDR}/tic/Type.hpp
+    ${HDR}/tic/Error.hpp
+    ${HDR}/tic/ErrorHandler.hpp
+    ${HDR}/tic/AST.hpp
+
+    ${HDR}/tic/ast/Node.hpp
+    ${HDR}/tic/ast/List.hpp
+    ${HDR}/tic/ast/Function.hpp
+    ${HDR}/tic/ast/FunctionCall.hpp
+    ${HDR}/tic/ast/FunctionParameter.hpp
+    ${HDR}/tic/ast/VariableDeclaration.hpp
+    ${HDR}/tic/ast/Variable.hpp
 )
 set(SRCS
     ${SRC}/Lexer.cpp
     ${SRC}/SourceBlock.cpp
     ${SRC}/TokenTree.cpp
     ${SRC}/Type.cpp
+    ${SRC}/Error.cpp
+    ${SRC}/ErrorHandler.cpp
+    ${SRC}/AST.cpp
+
+    ${SRC}/ast/Node.cpp
+    ${SRC}/ast/List.cpp
+    ${SRC}/ast/Function.cpp
+    ${SRC}/ast/FunctionParameter.cpp
+    ${SRC}/ast/VariableDeclaration.cpp
+    ${SRC}/ast/Variable.cpp
 )
 
 # Macro for CXX14
