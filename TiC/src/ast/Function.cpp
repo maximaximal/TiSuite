@@ -12,7 +12,7 @@ namespace tic
 namespace ast 
 {
 Function::Function(const std::string &functionName)
-    : List("Function", NodeType::Function)
+    : List("Function", NodeType::Function), m_functionName(functionName)
 {
     
 }
@@ -22,7 +22,7 @@ Function::~Function()
 }
 const std::string &Function::functionName() const
 {
-
+    return m_functionName;
 }
 void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::TokenVector::iterator &current)
 {
@@ -67,9 +67,9 @@ void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Tok
                 break;
             case TokenType::VAR_NAME:
                 if(parameterList) {
-                    std::static_pointer_cast<FunctionParameter>(m_parameters.back())->setVarName(it->second);
+                    boost::static_pointer_cast<FunctionParameter>(m_parameters.back())->setVarName(it->second);
                 } else if(variableDeclarationInProgress) {
-                    std::static_pointer_cast<VariableDeclaration>(back())->setVarName(it->second);
+                    boost::static_pointer_cast<VariableDeclaration>(back())->setVarName(it->second);
                 } else if(!functionHead) {
                     std::unique_ptr<Variable> var = std::make_unique<Variable>(it->second);
                     //The declaration has to be searched!

@@ -11,6 +11,8 @@
 #include <Python.h>
 #include <iostream>
 
+#include <boost/container/vector.hpp>
+#include <tic/ast/List.hpp>
 #include <tic/ast/Function.hpp>
 #include <tic/ast/FunctionCall.hpp>
 #include <tic/ast/FunctionParameter.hpp>
@@ -42,14 +44,14 @@ BOOST_PYTHON_MODULE(tic)
         .value("String", tic::Type::STRING)
     ;
     class_<tic::Error>("Error", init<std::string, std::string, int>())
-        .def("__str__", &tic::Error::toString)
+        .add_property("msg", make_function(&tic::Error::toString))
     ;
     class_<tic::ErrorHandler, boost::noncopyable>("ErrorHandler", boost::python::no_init)
         .def("handle", &tic::ErrorHandler::handleError)
     ;
     class_<tic::Type>("Type")
         .add_property("type", &tic::Type::type, &tic::Type::setType)
-        .def("__str__", &tic::Type::toString)
+        .add_property("typeName", make_function(&tic::Type::toString))
     ;
 }
 BOOST_PYTHON_MODULE(ast)
@@ -64,16 +66,19 @@ BOOST_PYTHON_MODULE(ast)
         .value("VariableDeclaration", ast::NodeType::VariableDeclaration)
     ;
     class_<ast::Node, boost::noncopyable>("Node", boost::python::no_init)
-        .def("__str__", &ast::Node::toString, return_value_policy<copy_const_reference>())
+        .add_property("nodeName", make_function(&ast::Node::toString, return_value_policy<copy_const_reference>()))
         .add_property("nodeType", make_function(&ast::Node::type))
     ;
-    class_<ast::List, bases<ast::Node>, boost::noncopyable>("List", boost::python::no_init)
-        .def(vector_indexing_suite<ast::List>())
+    class_<ast::List, boost::shared_ptr<ast::List>, bases<ast::Node>, boost::noncopyable>("List", boost::python::no_init)
+        .def(vector_indexing_suite<ast::List, true>())
     ;
+    
+    register_ptr_to_python<boost::shared_ptr<ast::Node>>();
+    
     class_<ast::Function, bases<ast::List>>("Function", boost::python::no_init)
         .add_property("parameters", make_function(&ast::Function::parameters, return_value_policy<reference_existing_object>()))
         .add_property("returnType", make_function(&ast::Function::returnType, return_value_policy<reference_existing_object>()))
-        .def("name", &ast::Function::functionName, return_value_policy<copy_const_reference>())
+        .add_property("name", make_function(&ast::Function::functionName, return_value_policy<copy_const_reference>()))
     ;
     class_<ast::FunctionParameter, bases<ast::Node>, boost::noncopyable>("FunctionParameter", boost::python::no_init)
         .add_property("type", make_function(&ast::FunctionParameter::type, return_value_policy<reference_existing_object>()), 
@@ -95,7 +100,6 @@ BOOST_PYTHON_MODULE(ast)
         .add_property("declaration", make_function(&ast::Variable::declaration, return_value_policy<reference_existing_object>()), 
             make_function(&ast::Variable::setDeclaration))
     ;
-    register_ptr_to_python<std::shared_ptr<ast::Node>>();
 }
 
 void initPythonModules()

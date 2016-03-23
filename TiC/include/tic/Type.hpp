@@ -28,4 +28,4 @@ public:
 private:
     Type::TypeEnum m_type;
 };
-}
+    }

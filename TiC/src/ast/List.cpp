@@ -10,12 +10,12 @@ List::List(const char *toStringName, NodeType type)
 
 }
 List::List(const tic::ast::List &other)
-    : Node(other.toString(), other.type()), boost::container::vector<std::shared_ptr<Node>>()
+    : Node(other.toString(), other.type()), boost::container::vector<boost::shared_ptr<Node>>()
 {
     
 }
 List::List(List::iterator begin, List::iterator end)
-    : Node("List", NodeType::List), boost::container::vector<std::shared_ptr<Node>>(begin, end)
+    : Node("List", NodeType::List), boost::container::vector<boost::shared_ptr<Node>>(begin, end)
 {
 
 }

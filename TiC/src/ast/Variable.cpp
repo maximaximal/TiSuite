@@ -31,7 +31,7 @@ void Variable::searchDeclaration(List &nodes)
     bool found = false;
     for(auto it = nodes.rbegin(); it != nodes.rend() && !found; ++it)
     {
-        std::shared_ptr<VariableDeclaration> declaration = std::dynamic_pointer_cast<VariableDeclaration>(*it);
+        boost::shared_ptr<VariableDeclaration> declaration = boost::dynamic_pointer_cast<VariableDeclaration>(*it);
         if(declaration) {
             setDeclaration(declaration.get());
             found = true;

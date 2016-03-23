@@ -5,12 +5,13 @@
 #include <tic/ast/Node.hpp>
 #include <tic/SourceBlock.hpp>
 #include <boost/container/vector.hpp>
+#include <boost/shared_ptr.hpp>
 
 namespace tic
 {
 namespace ast
 {
-class List : public Node, public boost::container::vector<std::shared_ptr<Node>>
+class List : public Node, public boost::container::vector<boost::shared_ptr<Node>>
 {
 public:
     List(const char *toStringName = "List", NodeType type = NodeType::List);
