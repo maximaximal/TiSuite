@@ -79,6 +79,7 @@ BOOST_PYTHON_MODULE(ast)
     ;
     class_<ast::List, boost::shared_ptr<ast::List>, bases<ast::Node>, boost::noncopyable>("List", boost::python::no_init)
         .def(vector_indexing_suite<ast::List, true>())
+        .def("nodes", &ast::List::getNodesOfType, return_value_policy<manage_new_object>())
     ;
     
     register_ptr_to_python<boost::shared_ptr<ast::Node>>();
@@ -245,6 +246,9 @@ void AST::generateTICode(const std::string &toolkitPath)
         
         object ast_module((handle<>(PyImport_ImportModule("ast"))));
         globals["ast"] = ast_module;
+        
+        PyObject* sysPath = PySys_GetObject("path");
+        PyList_Insert( sysPath, 0, PyUnicode_FromString(toolkitPath.c_str()));
         
         globals["error_handler"] = boost::ref(m_errorHandler);
         globals["root_list"] = boost::ref(m_rootList);

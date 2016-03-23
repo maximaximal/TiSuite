@@ -19,6 +19,8 @@ public:
     List(List::iterator begin, List::iterator end);
     virtual ~List();
     
+    List* getNodesOfType(NodeType type);
+    
     virtual void loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::TokenVector::iterator &current);
 };
 }

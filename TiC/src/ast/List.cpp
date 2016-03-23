@@ -29,6 +29,17 @@ void List::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::TokenVe
     // A normal list has no defined format!
     return;
 }
+List* List::getNodesOfType(NodeType type)
+{
+    List *queryResult = new List("QueriedList");
+    for(auto node : *this) 
+    {
+        if(node->type() == type) {
+            queryResult->push_back(node);
+        }
+    }
+    return queryResult;
+}
 
 }
 }
