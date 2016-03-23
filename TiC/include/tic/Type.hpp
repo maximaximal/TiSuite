@@ -14,6 +14,12 @@ public:
         LIST
     };
     
+    Type::TypeEnum type() const;
+    void setType(Type::TypeEnum type);
+    
+    std::string toString();
+    static std::string toStringStatic(const tic::Type *type);
+    
     Type();
     Type(const std::string &typeString);
     virtual ~Type();

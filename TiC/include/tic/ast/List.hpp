@@ -1,32 +1,24 @@
 #pragma once
 
 #include <memory>
-#include <list>
+#include <vector>
 #include <tic/ast/Node.hpp>
 #include <tic/SourceBlock.hpp>
+#include <boost/container/vector.hpp>
 
 namespace tic
 {
 namespace ast
 {
-class List : public Node
+class List : public Node, public boost::container::vector<std::shared_ptr<Node>>
 {
 public:
-    typedef std::list<std::shared_ptr<Node>> NodeList;
-    List(const char *toStringName = "List");
+    List(const char *toStringName = "List", NodeType type = NodeType::List);
+    List(const tic::ast::List &other);
+    List(List::iterator begin, List::iterator end);
     virtual ~List();
     
-    void push(std::unique_ptr<Node> node);
-    
-    Node * back();
-    const Node* back() const;
-    
     virtual void loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::TokenVector::iterator &current);
-    
-    NodeList& nodes();
-    const NodeList& nodes() const;
-private:
-    NodeList m_nodes;
 };
 }
 }

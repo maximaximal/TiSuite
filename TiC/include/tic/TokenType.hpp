@@ -24,6 +24,10 @@ public:
         FUNCTION_KEYWORD,
         UNSAFE_KEYWORD,
         UNSAFE_CONTENT,
+        PROGRAM_KEYWORD,
+        INCLUDE_KEYWORD,
+        INCLUDE_PATH,
+        PROGRAM_NAME,
         FUNCTION_RETURN_SEPERATOR,
         RETURN_KEYWORD,
         LINE_COMMENT,
@@ -86,8 +90,16 @@ public:
                 return "FUNCTION_CALL";
             case UNSAFE_KEYWORD:
                 return "UNSAFE_KEYWORD";
+            case INCLUDE_KEYWORD:
+                return "INCLUDE_KEYWORD";
+            case INCLUDE_PATH:
+                return "INCLUDE_PATH";
             case UNSAFE_CONTENT:
                 return "UNSAFE_CONTENT";
+            case PROGRAM_KEYWORD:
+                return "PROGRAM_KEYWORD";
+            case PROGRAM_NAME:
+                return "PROGRAM_NAME";
             case FUNCTION_RETURN_SEPERATOR:
                 return "FUNCTION_RETURN_SEPERATOR";
             case RETURN_KEYWORD:

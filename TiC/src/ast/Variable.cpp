@@ -6,7 +6,7 @@ namespace tic
 namespace ast
 {
 Variable::Variable(const std::string &varName)
-    : Node("Variable"), m_varName(varName)
+    : Node("Variable", NodeType::Variable), m_varName(varName)
 {
     
 }
@@ -14,13 +14,9 @@ Variable::~Variable()
 {
 
 }
-const std::string &Variable::varName()
+const std::string &Variable::varName() const
 {
     return m_varName;
-}
-const VariableDeclaration *Variable::declaration() const
-{
-    return m_declaration;
 }
 VariableDeclaration *Variable::declaration()
 {
@@ -30,7 +26,7 @@ void Variable::setDeclaration(VariableDeclaration *declaration)
 {
     m_declaration = declaration;
 }
-void Variable::searchDeclaration(List::NodeList &nodes)
+void Variable::searchDeclaration(List &nodes)
 {
     bool found = false;
     for(auto it = nodes.rbegin(); it != nodes.rend() && !found; ++it)

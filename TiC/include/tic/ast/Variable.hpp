@@ -15,13 +15,12 @@ public:
     Variable(const std::string &varName);
     virtual ~Variable();
     
-    const std::string& varName();
+    const std::string& varName() const;
     
     VariableDeclaration* declaration();
-    const VariableDeclaration* declaration() const;
     void setDeclaration(VariableDeclaration *declaration);
     
-    void searchDeclaration(tic::ast::List::NodeList &nodes);
+    void searchDeclaration(tic::ast::List &nodes);
 private:
     std::string m_varName;
     VariableDeclaration *m_declaration = nullptr;

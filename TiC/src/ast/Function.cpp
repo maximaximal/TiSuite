@@ -12,7 +12,7 @@ namespace tic
 namespace ast 
 {
 Function::Function(const std::string &functionName)
-    : List("Function")
+    : List("Function", NodeType::Function)
 {
     
 }
@@ -57,44 +57,36 @@ void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Tok
                 break;
             case TokenType::TYPE:
                 if(parameterList) {
-                    m_parameters.push(std::move(std::make_unique<FunctionParameter>(it->second, "")));
+                    m_parameters.push_back(std::move(std::make_unique<FunctionParameter>(it->second, "")));
                 } else if(functionHead) {
                     // This has to be the function return type!
                     m_returnType = Type(it->second);
                 } else {
-                    push(std::move(std::make_unique<VariableDeclaration>(it->second, "")));
+                    push_back(std::move(std::make_unique<VariableDeclaration>(it->second, "")));
                 }
                 break;
             case TokenType::VAR_NAME:
                 if(parameterList) {
-                    static_cast<FunctionParameter*>(m_parameters.back())->setVarName(it->second);
+                    std::static_pointer_cast<FunctionParameter>(m_parameters.back())->setVarName(it->second);
                 } else if(variableDeclarationInProgress) {
-                    static_cast<VariableDeclaration*>(back())->setVarName(it->second);
+                    std::static_pointer_cast<VariableDeclaration>(back())->setVarName(it->second);
                 } else if(!functionHead) {
                     std::unique_ptr<Variable> var = std::make_unique<Variable>(it->second);
                     //The declaration has to be searched!
-                    var->searchDeclaration(nodes());
-                    push(std::move(var));
+                    var->searchDeclaration(*this);
+                    push_back(std::move(var));
                 }
                 break;
         }
     }
 }
-List &Function::parameters()
+List* Function::parameters() 
 {
-    return m_parameters;
+    return &m_parameters;
 }
-const List &Function::parameters() const
+Type* Function::returnType()
 {
-    return m_parameters;
-}
-const Type &Function::returnType() const
-{
-    return m_returnType;
-}
-Type &Function::returnType()
-{
-    return m_returnType;
+    return &m_returnType;
 }
 }
 }

@@ -13,8 +13,7 @@ public:
     VariableDeclaration(Type type, const std::string &varName);
     virtual ~VariableDeclaration();
     
-    Type& type();
-    const Type& type() const;
+    Type* type();
     const std::string& varName() const;
     
     void setVarName(const std::string &varName);

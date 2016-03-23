@@ -14,6 +14,8 @@ public:
     const std::string& msg() const;
     const std::string& file() const;
     uint32_t line() const;
+    
+    std::string toString();
 private:
     std::string m_msg;
     std::string m_file;

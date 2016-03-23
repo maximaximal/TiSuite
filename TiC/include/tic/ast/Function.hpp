@@ -20,11 +20,9 @@ public:
      */
     virtual void loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::TokenVector::iterator &current);
     
-    List& parameters();
-    const List& parameters() const;
+    List* parameters();
     
-    Type& returnType();
-    const Type& returnType() const;
+    Type* returnType();
 private:
     Type m_returnType;
     List m_parameters;

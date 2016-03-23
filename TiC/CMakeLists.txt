@@ -24,6 +24,7 @@ set(HDRS
     ${HDR}/tic/ast/FunctionParameter.hpp
     ${HDR}/tic/ast/VariableDeclaration.hpp
     ${HDR}/tic/ast/Variable.hpp
+    ${HDR}/tic/ast/FunctionCall.hpp
 )
 set(SRCS
     ${SRC}/Lexer.cpp
@@ -40,6 +41,7 @@ set(SRCS
     ${SRC}/ast/FunctionParameter.cpp
     ${SRC}/ast/VariableDeclaration.cpp
     ${SRC}/ast/Variable.cpp
+    ${SRC}/ast/FunctionCall.cpp
 )
 
 # Macro for CXX14
@@ -59,9 +61,18 @@ add_executable(ticf ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
 
 target_link_libraries(ticf tic)
 
-find_package(Boost COMPONENTS system program_options REQUIRED)
+set(Boost_USE_STATIC_LIBS OFF)
+find_package(Boost COMPONENTS system program_options python3 REQUIRED)
 if(${Boost_FOUND})
     include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
     target_link_libraries(tic  ${Boost_LIBRARIES})
     target_link_libraries(ticf ${Boost_LIBRARIES})
+endif()
+
+find_package(PythonLibs REQUIRED)
+if(${PYTHONLIBS_FOUND})
+    message(STATUS "Python Libraries: " ${PYTHON_LIBRARY})
+    target_link_libraries(tic ${PYTHON_LIBRARY})
+    target_link_libraries(ticf ${PYTHON_LIBRARY})
+    include_directories(SYSTEM ${PYTHON_INCLUDE_DIRS})
 endif()

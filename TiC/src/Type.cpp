@@ -22,6 +22,32 @@ Type::~Type()
 {
 
 }
+Type::TypeEnum Type::type() const
+{
+    return m_type;
+}
+void Type::setType(Type::TypeEnum type)
+{
+    m_type = type;
+}
+std::string Type::toStringStatic(const tic::Type *type)
+{
+    switch(type->type()) 
+    {
+        case NUMBER:
+            return "num";
+        case LIST:
+            return "lst";
+        case STRING:
+            return "str";
+        case MATRIX:
+            return "mat";
+    }
+}
+std::string Type::toString() 
+{
+    return Type::toStringStatic(this);
+}
 bool Type::isType(const std::string &str)
 {
     if(str == "num") {

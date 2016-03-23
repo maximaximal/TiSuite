@@ -97,8 +97,20 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                     type = TokenType::UNSAFE_SCOPE_BEGIN;
                     found = true;
                     break;
+                case TokenType::PROGRAM_KEYWORD:
+                    type = TokenType::SCOPE_BEGIN;
+                    found = true;
+                    break;
                 case TokenType::END_STATEMENT:
                     type = TokenType::SCOPE_BEGIN;
+                    found = true;
+                    break;
+                case TokenType::STRING_LITERAL:
+                    type = TokenType::STRING_LITERAL;
+                    found = true;
+                    break;
+                case TokenType::STRING_LITERAL_MARK:
+                    type = TokenType::STRING_LITERAL;
                     found = true;
                     break;
                 case TokenType::FUNCTION_KEYWORD:
@@ -134,6 +146,14 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                     break;
                 case TokenType::FUNCTION_KEYWORD:
                     type = TokenType::SCOPE_END;
+                    found = true;
+                    break;
+                case TokenType::STRING_LITERAL:
+                    type = TokenType::STRING_LITERAL;
+                    found = true;
+                    break;
+                case TokenType::STRING_LITERAL_MARK:
+                    type = TokenType::STRING_LITERAL;
                     found = true;
                     break;
                 case TokenType::UNSAFE_SCOPE_END:
@@ -172,6 +192,14 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                         break;
                     case TokenType::END_STATEMENT:
                         type = TokenType::VAR_SCOPE_BEGIN;
+                        found = true;
+                        break;
+                    case TokenType::STRING_LITERAL:
+                        type = TokenType::STRING_LITERAL;
+                        found = true;
+                        break;
+                    case TokenType::STRING_LITERAL_MARK:
+                        type = TokenType::STRING_LITERAL;
                         found = true;
                         break;
                     default: 
@@ -215,6 +243,14 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                     type = TokenType::VAR_SCOPE_END;
                     found = true;
                     break;
+                case TokenType::STRING_LITERAL:
+                    type = TokenType::STRING_LITERAL;
+                    found = true;
+                    break;
+                case TokenType::STRING_LITERAL_MARK:
+                    type = TokenType::STRING_LITERAL;
+                    found = true;
+                    break;
                 default:
                     // Not enough information!
                     type = TokenType::NO_TYPE;
@@ -253,6 +289,14 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                     type = TokenType::UNSAFE_CONTENT;
                     found = true;
                     break;
+                case TokenType::STRING_LITERAL:
+                    type = TokenType::STRING_LITERAL;
+                    found = true;
+                    break;
+                case TokenType::STRING_LITERAL_MARK:
+                    type = TokenType::STRING_LITERAL;
+                    found = true;
+                    break;
                 default: 
                     // Not enough information!
                     type = TokenType::NO_TYPE;
@@ -276,11 +320,14 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
     } else if(*token == " ") {
         switch(tokens.back().first) 
         {
-            case TokenType::UNSAFE_CONTENT:
-                type = TokenType::UNSAFE_CONTENT;
-                break;
             case TokenType::STRING_LITERAL:
                 type = TokenType::STRING_LITERAL;
+                break;
+            case TokenType::STRING_LITERAL_MARK:
+                type = TokenType::STRING_LITERAL;
+                break;
+            case TokenType::UNSAFE_CONTENT:
+                type = TokenType::UNSAFE_CONTENT;
                 break;
             case TokenType::LINE_COMMENT:
                 type = TokenType::LINE_COMMENT;
@@ -292,6 +339,12 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
     } else if(*token == ";") {
         switch(tokens.back().first)
         {
+            case TokenType::STRING_LITERAL:
+                type = TokenType::STRING_LITERAL;
+                break;
+            case TokenType::STRING_LITERAL_MARK:
+                type = TokenType::STRING_LITERAL;
+                break;
             case TokenType::UNSAFE_CONTENT:
                 type = TokenType::UNSAFE_CONTENT;
                 break;
@@ -303,6 +356,9 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
         switch(tokens.back().first)
         {
             case TokenType::STRING_LITERAL:
+                type = TokenType::STRING_LITERAL;
+                break;
+            case TokenType::STRING_LITERAL_MARK:
                 type = TokenType::STRING_LITERAL;
                 break;
             case TokenType::UNSAFE_CONTENT:
@@ -321,6 +377,9 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
             case TokenType::STRING_LITERAL:
                 type = TokenType::STRING_LITERAL;
                 break;
+            case TokenType::STRING_LITERAL_MARK:
+                type = TokenType::STRING_LITERAL;
+                break;
             case TokenType::UNSAFE_CONTENT:
                 type = TokenType::UNSAFE_CONTENT;
                 break;
@@ -331,10 +390,51 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                 type = TokenType::UNSAFE_KEYWORD;
                 break;
         }
+    } else if(*token == "program") {
+        switch(tokens.back().first)
+        {
+            case TokenType::UNSAFE_CONTENT:
+                type = TokenType::UNSAFE_CONTENT;
+                break;
+            case TokenType::STRING_LITERAL:
+                type = TokenType::STRING_LITERAL;
+                break;
+            case TokenType::STRING_LITERAL_MARK:
+                type = TokenType::STRING_LITERAL;
+                break;
+            case TokenType::LINE_COMMENT:
+                type = TokenType::LINE_COMMENT;
+                break;
+            default:
+                type = TokenType::PROGRAM_KEYWORD;
+                break;
+        }
+    } else if(*token == "include") {
+        switch(tokens.back().first)
+        {
+            case TokenType::UNSAFE_CONTENT:
+                type = TokenType::UNSAFE_CONTENT;
+                break;
+            case TokenType::STRING_LITERAL:
+                type = TokenType::STRING_LITERAL;
+                break;
+            case TokenType::STRING_LITERAL_MARK:
+                type = TokenType::STRING_LITERAL;
+                break;
+            case TokenType::LINE_COMMENT:
+                type = TokenType::LINE_COMMENT;
+                break;
+            default:
+                type = TokenType::INCLUDE_KEYWORD;
+                break;
+        }
     } else if(Type::isType(*token)) {
         switch(tokens.back().first) 
         {
             case TokenType::STRING_LITERAL:
+                type = TokenType::STRING_LITERAL;
+                break;
+            case TokenType::STRING_LITERAL_MARK:
                 type = TokenType::STRING_LITERAL;
                 break;
             case TokenType::LINE_COMMENT:
@@ -389,6 +489,14 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                     revIt->first = TokenType::ASSIGN_OPERATOR;
                     revIt->second.append(*token);
                     type = TokenType::IGNORE;
+                    found = true;
+                    break;
+                case TokenType::STRING_LITERAL:
+                    type = TokenType::STRING_LITERAL;
+                    found = true;
+                    break;
+                case TokenType::STRING_LITERAL_MARK:
+                    type = TokenType::STRING_LITERAL;
                     found = true;
                     break;
                 case TokenType::VAR_NAME:

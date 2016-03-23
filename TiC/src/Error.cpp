@@ -1,4 +1,5 @@
 #include <tic/Error.hpp>
+#include <boost/lexical_cast.hpp>
 
 namespace tic
 {
@@ -27,5 +28,16 @@ const std::string &Error::file() const
 uint32_t Error::line() const
 {
     return m_line;
+}
+std::string Error::toString()
+{
+    std::string toString;
+    toString = "Error: ";
+    toString.append(msg());
+    toString.append(" - At ");
+    toString.append(file());
+    toString.append(": Line ");
+    toString.append(boost::lexical_cast<std::string>(line()));
+    return toString;
 }
 }

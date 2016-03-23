@@ -16,6 +16,7 @@ int main(int argc, char** argv)
     desc.add_options()
         ("help", "produce help message")
         ("input-file", boost::program_options::value<std::vector<std::string>>(), "input file (to compile)")
+        ("toolkit-path,t", boost::program_options::value<std::string>(), "path to the desired compile toolkit")
     ;
     
     boost::program_options::positional_options_description p;
@@ -36,6 +37,14 @@ int main(int argc, char** argv)
     Lexer lexer;
     ErrorHandler handler;
     AST ast(&handler);
+    ast.initPython(argc, argv);
+    setlocale( LC_ALL, "" );
+    std::string toolkitPath;
+    
+    if(vm.count("toolkit-path")) {
+        toolkitPath = vm["toolkit-path"].as<std::string>();
+        cout << "Using Toolkit: \"" << toolkitPath << "\"" << endl;
+    }
     
     if(vm.count("input-file")) {
         cout << "Input files: " << endl;
@@ -47,6 +56,9 @@ int main(int argc, char** argv)
             lexer.lex(std::move(block));
             lexer.setRootBlock(file);
             ast.generateFromTokenizedBlock(lexer.rootSourceBlock());
+            ast.generateTICode(toolkitPath);
         }
     }
+    
+    ast.exitPython();
 }
