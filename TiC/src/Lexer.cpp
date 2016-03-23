@@ -29,6 +29,12 @@ void Lexer::lex(std::unique_ptr< SourceBlock > block)
         // We already have this sourceblock, it doesn't need to be loaded. 
     }
 }
+void Lexer::addFileToParse(const std::string &path)
+{
+    std::unique_ptr<SourceBlock> block = std::make_unique<SourceBlock>();
+    block->readFromFile(path);
+    lex(std::move(block));
+}
 void Lexer::readTokens(SourceBlock *block)
 {
     SourceBlock::TokenVector &tokens = block->tokenVector();
@@ -45,11 +51,21 @@ void Lexer::readTokens(SourceBlock *block)
     boost::char_separator<char> sep("\t", "+-*/,=:;)([]{}\n\" ");
     
     tokenizer tok(block->source(), sep);
+    uint32_t line = 1;
+    bool incLine = false;
     
     for(auto token = tok.begin(); token != tok.end(); ++token)
     {
-        tokenPair.first = typeOfToken(tok.begin(), token, tok.end(), tokens);
+        tokenPair.first = typeOfToken(tok.begin(), token, tok.end(), tokens, &incLine);
         tokenPair.second = *token;
+        
+        tokenPair.source = block;
+        tokenPair.line = line;
+        
+        if(incLine) {
+            ++line;
+            incLine = false;
+        }
         
         if(tokenPair.first != TokenType::IGNORE) {
             tokens.push_back(tokenPair);
@@ -71,7 +87,7 @@ void Lexer::readTokens(SourceBlock *block)
     }
     
 }
-TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator token, TokenizerIterator end, SourceBlock::TokenVector &tokens)
+TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator token, TokenizerIterator end, SourceBlock::TokenVector &tokens, bool *incLine)
 {
     TokenType::Type type = TokenType::NO_TYPE;
     bool found = false;
@@ -315,6 +331,7 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                 break;
             default: 
                 type = TokenType::IGNORE;
+                *incLine = true;
                 break;
         }
     } else if(*token == " ") {

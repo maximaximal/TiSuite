@@ -6,16 +6,13 @@
 #include <tuple>
 
 #include <tic/TokenType.hpp>
+#include <tic/ast/Node.hpp>
 
 namespace tic
 {
 class SourceBlock
 {
 public:
-    struct TokenPos {
-        std::string file;
-        uint32_t line;
-    };
     struct TokenStruct {
         TokenType::Type first;
         std::string second;
@@ -29,6 +26,13 @@ public:
             } 
             return "";
         }
+        ast::NodeDebugInfo toDebugInfo()
+        {
+            ast::NodeDebugInfo info;
+            info.line = line;
+            info.block = source;
+            return info;
+        }
     };
     typedef TokenStruct TokenPair;
     typedef std::vector<TokenPair> TokenVector;
@@ -36,14 +40,18 @@ public:
     virtual ~SourceBlock();
     
     void setString(const std::string &source);
-    const std::string& source();
+    const std::string& source() const;
     
     void setPath(const std::string &path);
     void readFromFile(const std::string &path);
-    const std::string& path();
+    const std::string& path() const;
+    
+    void prependSourceBlock(SourceBlock *block);
     
     TokenVector& tokenVector();
     const TokenVector& tokenVector() const;
+    
+    std::string printLine(uint32_t line) const;
 private:
     std::string m_source;
     std::string m_filePath;

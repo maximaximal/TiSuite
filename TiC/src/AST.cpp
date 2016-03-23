@@ -43,7 +43,7 @@ BOOST_PYTHON_MODULE(tic)
         .value("List", tic::Type::LIST)
         .value("String", tic::Type::STRING)
     ;
-    class_<tic::Error>("Error", init<std::string, std::string, int>())
+    class_<tic::Error>("Error", init<std::string, ast::NodeDebugInfo*>())
         .add_property("msg", make_function(&tic::Error::toString))
     ;
     class_<tic::ErrorHandler, boost::noncopyable>("ErrorHandler", boost::python::no_init)
@@ -65,9 +65,17 @@ BOOST_PYTHON_MODULE(ast)
         .value("Variable", ast::NodeType::Variable)
         .value("VariableDeclaration", ast::NodeType::VariableDeclaration)
     ;
+    class_<ast::NodeDebugInfo, boost::noncopyable>("NodeDebugInfo")
+        .add_property("file", make_function(&ast::NodeDebugInfo::getPath, return_value_policy<copy_const_reference>()))
+        .add_property("line", &ast::NodeDebugInfo::line)
+    ;
     class_<ast::Node, boost::noncopyable>("Node", boost::python::no_init)
         .add_property("nodeName", make_function(&ast::Node::toString, return_value_policy<copy_const_reference>()))
         .add_property("nodeType", make_function(&ast::Node::type))
+        .add_property("debugInfo", make_function(&ast::Node::debugInfo, return_value_policy<reference_existing_object>()))
+        .add_property("file", make_function(&ast::Node::file, return_value_policy<copy_const_reference>()))
+        .add_property("line", make_function(&ast::Node::line))
+        .add_property("full_line", make_function(&ast::Node::printLine))
     ;
     class_<ast::List, boost::shared_ptr<ast::List>, bases<ast::Node>, boost::noncopyable>("List", boost::python::no_init)
         .def(vector_indexing_suite<ast::List, true>())
@@ -143,6 +151,9 @@ void AST::generateFromTokenizedBlock(SourceBlock *block)
                 // Nothing for now.
                 break;
             case tic::TokenType::SCOPE_BEGIN:
+                break;
+            case tic::TokenType::INCLUDE_PATH:
+                
                 break;
             case tic::TokenType::SCOPE_END:
                 break;

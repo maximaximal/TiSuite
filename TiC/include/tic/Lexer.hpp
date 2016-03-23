@@ -22,7 +22,7 @@ public:
     void lex(std::unique_ptr<SourceBlock> block);
     void readTokens(SourceBlock *block);
     
-    TokenType::Type typeOfToken(TokenizerIterator begin, TokenizerIterator token, TokenizerIterator end, SourceBlock::TokenVector &tokens);
+    TokenType::Type typeOfToken(TokenizerIterator begin, TokenizerIterator token, TokenizerIterator end, tic::SourceBlock::TokenVector &tokens, bool *incLine);
     bool isScopeCloseInUnsafe(SourceBlock::TokenVector &tokens, std::size_t i);
     inline static bool isValidVarName(const std::string &str) 
     {
@@ -51,6 +51,7 @@ public:
             }) == str.end();
     }
     
+    void addFileToParse(const std::string &path);
     void setRootBlock(const std::string &rootBlock);
     const std::string& rootBlock() const;
     SourceBlock* rootSourceBlock();

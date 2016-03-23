@@ -1,4 +1,10 @@
 #include <tic/SourceBlock.hpp>
+#include <boost/tokenizer.hpp>
+#include <sstream>
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 namespace tic
 {
@@ -18,7 +24,7 @@ SourceBlock::TokenVector &SourceBlock::tokenVector()
 {
     return m_tokenVector;
 }
-const std::string &SourceBlock::path()
+const std::string &SourceBlock::path() const
 {
     return m_filePath;
 }
@@ -40,10 +46,27 @@ void SourceBlock::setString(const std::string &source)
 {
     m_source = source;
 }
-const std::string &SourceBlock::source()
+void SourceBlock::prependSourceBlock(SourceBlock *block)
+{
+    //Inserts the tokens to the internal vector. 
+    m_tokenVector.insert(m_tokenVector.begin(), block->tokenVector().begin(), block->tokenVector().end());
+}
+const std::string &SourceBlock::source() const
 {
     return m_source;
 }
-
+std::string SourceBlock::printLine(uint32_t line) const
+{
+    std::string source_line = "";
+    std::istringstream isstream(m_source);
+    uint16_t lineCount = 1;
+    while(std::getline(isstream, source_line))
+    {
+        if(lineCount == line)
+            return source_line;
+        ++lineCount;
+    }
+    return "Could not extract line";
+}
 
 }

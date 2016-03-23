@@ -8,6 +8,11 @@ Error::Error(const std::string &msg, const std::string &file, uint32_t line)
 {
     
 }
+Error::Error(const std::string &msg, tic::ast::NodeDebugInfo *debugInfo)
+    : m_msg(msg), m_file(debugInfo->getPath()), m_line(debugInfo->line), m_block(debugInfo->block)
+{
+
+}
 Error::Error(const Error &other)
     : m_msg(other.msg()), m_file(other.file()), m_line(other.line())
 {
@@ -28,6 +33,10 @@ const std::string &Error::file() const
 uint32_t Error::line() const
 {
     return m_line;
+}
+const SourceBlock *Error::block() const
+{
+    return m_block;
 }
 std::string Error::toString()
 {

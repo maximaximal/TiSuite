@@ -34,6 +34,7 @@ void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Tok
     bool functionHead = true;
     bool parameterList = false;
     bool variableDeclarationInProgress = false;
+    bool functionCall = false;
     
     for(auto it = current; it != tokens.end() && !end; ++it)
     {
@@ -43,9 +44,15 @@ void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Tok
                 if(functionHead) {
                     parameterList = true;
                 }
+                if(functionCall) {
+                    
+                }
                 break;
             case TokenType::PARAM_LIST_END:
                 parameterList = false;
+                if(functionCall) {
+                    functionCall = false;
+                }
                 break;
             case TokenType::SCOPE_BEGIN:
                 if(functionHead) {
@@ -57,12 +64,16 @@ void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Tok
                 break;
             case TokenType::TYPE:
                 if(parameterList) {
-                    m_parameters.push_back(std::move(std::make_unique<FunctionParameter>(it->second, "")));
+                    auto param = std::make_unique<FunctionParameter>(it->second, "");
+                    param->setDebugInfo(it->toDebugInfo());
+                    m_parameters.push_back(std::move(param));
                 } else if(functionHead) {
                     // This has to be the function return type!
                     m_returnType = Type(it->second);
                 } else {
-                    push_back(std::move(std::make_unique<VariableDeclaration>(it->second, "")));
+                    auto decl = std::make_unique<VariableDeclaration>(it->second, "");
+                    decl->setDebugInfo(it->toDebugInfo());
+                    push_back(std::move(decl));
                 }
                 break;
             case TokenType::VAR_NAME:
@@ -72,10 +83,14 @@ void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Tok
                     boost::static_pointer_cast<VariableDeclaration>(back())->setVarName(it->second);
                 } else if(!functionHead) {
                     std::unique_ptr<Variable> var = std::make_unique<Variable>(it->second);
+                    var->setDebugInfo(it->toDebugInfo());
                     //The declaration has to be searched!
                     var->searchDeclaration(*this);
                     push_back(std::move(var));
                 }
+                break;
+            case TokenType::FUNCTION_CALL:
+                functionCall = true;
                 break;
         }
     }
