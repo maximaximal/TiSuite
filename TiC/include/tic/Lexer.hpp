@@ -24,9 +24,12 @@ public:
     
     TokenType::Type typeOfToken(TokenizerIterator begin, TokenizerIterator token, TokenizerIterator end, tic::SourceBlock::TokenVector &tokens, bool *incLine);
     bool isScopeCloseInUnsafe(SourceBlock::TokenVector &tokens, std::size_t i);
-    inline static bool isValidVarName(const std::string &str) 
+    inline bool isValidVarName(const std::string &str) 
     {
         if(str.length() > 0) {
+            if(isKeyword(str)) {
+                return false;
+            }
             if(std::isdigit(str[0])) {
                 return false;
             }
@@ -40,7 +43,7 @@ public:
         }
         return false;
     }
-    inline static bool isValidNumber(const std::string &str)
+    inline bool isValidNumber(const std::string &str)
     {
         return std::find_if(str.begin(), str.end(),
             [](char c) {
@@ -54,6 +57,7 @@ public:
     void addFileToParse(const std::string &path);
     void setRootBlock(const std::string &rootBlock);
     const std::string& rootBlock() const;
+    bool isKeyword(const std::string &str);
     SourceBlock* rootSourceBlock();
 private:
     std::map<std::string, std::unique_ptr<SourceBlock> > m_sourceBlocks;

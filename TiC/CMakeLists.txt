@@ -19,12 +19,16 @@ set(HDRS
 
     ${HDR}/tic/ast/Node.hpp
     ${HDR}/tic/ast/List.hpp
+    ${HDR}/tic/ast/Scope.hpp
     ${HDR}/tic/ast/Function.hpp
+    ${HDR}/tic/ast/Program.hpp
     ${HDR}/tic/ast/FunctionCall.hpp
     ${HDR}/tic/ast/FunctionParameter.hpp
     ${HDR}/tic/ast/VariableDeclaration.hpp
     ${HDR}/tic/ast/Variable.hpp
     ${HDR}/tic/ast/FunctionCall.hpp
+    ${HDR}/tic/ast/Number.hpp
+    ${HDR}/tic/ast/Command.hpp
 )
 set(SRCS
     ${SRC}/Lexer.cpp
@@ -34,14 +38,19 @@ set(SRCS
     ${SRC}/Error.cpp
     ${SRC}/ErrorHandler.cpp
     ${SRC}/AST.cpp
+    ${SRC}/AST_PythonModules.cpp
 
     ${SRC}/ast/Node.cpp
     ${SRC}/ast/List.cpp
+    ${SRC}/ast/Scope.cpp
     ${SRC}/ast/Function.cpp
+    ${SRC}/ast/Program.cpp
     ${SRC}/ast/FunctionParameter.cpp
     ${SRC}/ast/VariableDeclaration.cpp
     ${SRC}/ast/Variable.cpp
     ${SRC}/ast/FunctionCall.cpp
+    ${SRC}/ast/Number.cpp
+    ${SRC}/ast/Command.cpp
 )
 
 # Macro for CXX14

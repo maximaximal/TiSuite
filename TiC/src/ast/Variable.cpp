@@ -26,20 +26,20 @@ void Variable::setDeclaration(VariableDeclaration *declaration)
 {
     m_declaration = declaration;
 }
-void Variable::searchDeclaration(List &nodes)
+bool Variable::searchDeclaration(List &nodes)
 {
     bool found = false;
     for(auto it = nodes.rbegin(); it != nodes.rend() && !found; ++it)
     {
         boost::shared_ptr<VariableDeclaration> declaration = boost::dynamic_pointer_cast<VariableDeclaration>(*it);
         if(declaration) {
-            setDeclaration(declaration.get());
-            found = true;
+            if(declaration->varName() == varName()) {
+                setDeclaration(declaration.get());
+                found = true;
+            }
         }
     }
-    if(!found) {
-        errorHandler->handleError(Error("Variable \"" + varName() + "\" is never declared!", "", 0));
-    }
+    return found;
 }
 }
 }

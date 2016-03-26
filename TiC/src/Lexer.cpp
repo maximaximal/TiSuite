@@ -48,7 +48,7 @@ void Lexer::readTokens(SourceBlock *block)
     
     typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
     
-    boost::char_separator<char> sep("\t", "+-*/,=:;)([]{}\n\" ");
+    boost::char_separator<char> sep("\t", "+-*/,=:;)([]{}\n\" ><");
     
     tokenizer tok(block->source(), sep);
     uint32_t line = 1;
@@ -466,7 +466,8 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
         }
     } else if(*token == "\"") {
         found = false;
-        for(auto revIt = tokens.rbegin(); revIt != tokens.rend() && found == false; ++revIt) 
+        int i = 0;
+        for(auto revIt = tokens.rbegin(); revIt != tokens.rend() && found == false && i < 5; ++revIt, ++i) 
         {
             switch(revIt->first)
             {
@@ -478,16 +479,12 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                     type = TokenType::LINE_COMMENT;
                     found = true;
                     break;
-                case TokenType::ASSIGN_OPERATOR:
-                    type = TokenType::STRING_LITERAL_MARK;
-                    found = true;
-                    break;
                 default:
                     type = TokenType::STRING_LITERAL_MARK;
                     break;
             }
         }
-    } else if(*token == "=") {
+    } else if(isValidNumber(*token)) {
         found = false;
         for(auto revIt = tokens.rbegin(); revIt != tokens.rend() && found == false; ++revIt) 
         {
@@ -501,53 +498,12 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                     type = TokenType::LINE_COMMENT;
                     found = true;
                     break;
-                case TokenType::CALC_OPERATOR:
-                    // The assign operator has to be extended to match the operator!
-                    revIt->first = TokenType::ASSIGN_OPERATOR;
-                    revIt->second.append(*token);
-                    type = TokenType::IGNORE;
-                    found = true;
-                    break;
-                case TokenType::STRING_LITERAL:
-                    type = TokenType::STRING_LITERAL;
-                    found = true;
-                    break;
-                case TokenType::STRING_LITERAL_MARK:
-                    type = TokenType::STRING_LITERAL;
-                    found = true;
-                    break;
-                case TokenType::VAR_NAME:
-                    type = TokenType::ASSIGN_OPERATOR;
+                case TokenType::END_STATEMENT:
+                    type = TokenType::NUMBER;
                     found = true;
                     break;
                 default:
                     type = TokenType::NO_TYPE;
-                    break;
-            }
-        }
-    } else if(*token == "+" || *token == "-" || *token == "*" || *token == "/") {
-        found = false;
-        for(auto revIt = tokens.rbegin(); revIt != tokens.rend() && found == false; ++revIt) 
-        {
-            switch(revIt->first) {
-                case TokenType::UNSAFE_CONTENT:
-                    type = TokenType::UNSAFE_CONTENT;
-                    found = true;
-                    break;
-                case TokenType::LINE_COMMENT:
-                    type = TokenType::LINE_COMMENT;
-                    found = true;
-                    break;
-                case TokenType::VAR_NAME:
-                    type = TokenType::CALC_OPERATOR;
-                    found = true;
-                    break;
-                case TokenType::NUMBER:
-                    type = TokenType::CALC_OPERATOR;
-                    found = true;
-                    break;
-                default:
-                    type = TokenType::CALC_OPERATOR;
                     break;
             }
         }
@@ -583,50 +539,31 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                     type = TokenType::VAR_NAME;
                     found = true;
                     break;
-                case TokenType::ASSIGN_OPERATOR:
-                    //Assignments
-                    type = TokenType::VAR_NAME;
-                    found = true;
-                    break;
                 case TokenType::STRING_LITERAL_MARK:
                     type = TokenType::STRING_LITERAL;
                     found = true;
                     break;
+                case TokenType::END_STATEMENT:
+                    type = TokenType::VAR_NAME;
+                    found = true;
+                    break;
+                case TokenType::COMMAND:
+                    type = TokenType::VAR_NAME;
+                    found = true;
+                    break;
                 default:
-                    type = TokenType::IGNORE;
+                    //This can still be a variable and should be checked later. 
+                    type = TokenType::VAR_NAME;
                     break;
             }
         }
-    } else if(isValidNumber(*token)) {
-        found = false;
-        for(auto revIt = tokens.rbegin(); revIt != tokens.rend() && found == false; ++revIt) 
-        {
-            switch(revIt->first)
-            {
-                case TokenType::UNSAFE_CONTENT:
-                    type = TokenType::UNSAFE_CONTENT;
-                    found = true;
-                    break;
-                case TokenType::LINE_COMMENT:
-                    type = TokenType::LINE_COMMENT;
-                    found = true;
-                    break;
-                case TokenType::ASSIGN_OPERATOR:
-                    type = TokenType::NUMBER;
-                    found = true;
-                    break;
-                case TokenType::END_STATEMENT:
-                    type = TokenType::NUMBER;
-                    found = true;
-                    break;
-                case TokenType::CALC_OPERATOR:
-                    type = TokenType::NUMBER;
-                    found = true;
-                    break;
-                default:
-                    type = TokenType::NO_TYPE;
-                    break;
-            }
+    } else {
+        // This has to be a command or an invalid string. Add it to the last command token to ensure commands like [neg] are possible.
+        if(tokens.back().first == TokenType::COMMAND) {
+            type = TokenType::IGNORE;
+            tokens.back().second.append(*token);
+        } else {
+            type = TokenType::COMMAND;
         }
     }
     return type;
@@ -648,6 +585,20 @@ bool Lexer::isScopeCloseInUnsafe(SourceBlock::TokenVector &tokens, std::size_t i
         return false;
     }
     return true;
+}
+bool Lexer::isKeyword(const std::string &str)
+{
+    if(str == "neg"
+        || str == "pi"
+        || str == "root"
+        || str == "list"
+        || str == "sigma"
+        || str == "n"
+        || str == "s"
+        || str == "N"
+    ) {
+        return true;
+    }
 }
 void Lexer::setRootBlock(const std::string &rootBlock)
 {

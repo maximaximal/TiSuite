@@ -39,8 +39,7 @@ public:
         TYPE,
         VAR_NAME,
         FUNCTION_NAME,
-        ASSIGN_OPERATOR,
-        CALC_OPERATOR
+        COMMAND,
     };
     static bool isKeyword(Type type) {
         switch(type) 
@@ -122,10 +121,8 @@ public:
                 return "VAR_NAME";
             case FUNCTION_NAME:
                 return "FUNCTION_NAME";
-            case ASSIGN_OPERATOR:
-                return "ASSIGN_OPERATOR";
-            case CALC_OPERATOR:
-                return "CALC_OPERATOR";
+            case COMMAND:
+                return "COMMAND";
             default:
                 return "Name not mapped.";
         }

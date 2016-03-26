@@ -1,7 +1,10 @@
 #include <tic/ast/Function.hpp>
 #include <tic/ast/FunctionParameter.hpp>
+#include <tic/ast/FunctionCall.hpp>
 #include <tic/ast/VariableDeclaration.hpp>
 #include <tic/ast/Variable.hpp>
+#include <tic/ast/Command.hpp>
+#include <tic/ast/Scope.hpp>
 #include <iostream>
 
 using std::cout;
@@ -11,8 +14,8 @@ namespace tic
 {
 namespace ast 
 {
-Function::Function(const std::string &functionName)
-    : List("Function", NodeType::Function), m_functionName(functionName)
+Function::Function(const std::__cxx11::string &functionName, const char *nodeName, tic::ast::NodeType nodeType)
+    : Scope(nodeName, nodeType), m_functionName(functionName)
 {
     
 }
@@ -24,7 +27,7 @@ const std::string &Function::functionName() const
 {
     return m_functionName;
 }
-void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::TokenVector::iterator &current)
+void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::TokenVector::iterator &current, List &rootList)
 {
     tic::ast::List::loadFromTokens(tokens, current);
     
@@ -32,9 +35,7 @@ void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Tok
     
     // Parsing flags. 
     bool functionHead = true;
-    bool parameterList = false;
-    bool variableDeclarationInProgress = false;
-    bool functionCall = false;
+    bool parameterList = true;
     
     for(auto it = current; it != tokens.end() && !end; ++it)
     {
@@ -44,54 +45,50 @@ void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Tok
                 if(functionHead) {
                     parameterList = true;
                 }
-                if(functionCall) {
-                    
-                }
                 break;
             case TokenType::PARAM_LIST_END:
                 parameterList = false;
-                if(functionCall) {
-                    functionCall = false;
-                }
                 break;
             case TokenType::SCOPE_BEGIN:
-                if(functionHead) {
-                    functionHead = false;
-                }
+            {
+                //Another scope starts!
+                auto scope = std::make_unique<Scope>();
+                scope->setDebugInfo(it->toDebugInfo());
+                scope->loadFromTokens(tokens, ++it, rootList);
+                push_back(std::move(scope));
+                // The iterator has been increased by the child scope, so this doesn't need to do anything else. 
                 break;
+            }
             case TokenType::SCOPE_END:
                 end = true;
                 break;
             case TokenType::TYPE:
+            {
                 if(parameterList) {
                     auto param = std::make_unique<FunctionParameter>(it->second, "");
                     param->setDebugInfo(it->toDebugInfo());
                     m_parameters.push_back(std::move(param));
-                } else if(functionHead) {
-                    // This has to be the function return type!
-                    m_returnType = Type(it->second);
-                } else {
-                    auto decl = std::make_unique<VariableDeclaration>(it->second, "");
-                    decl->setDebugInfo(it->toDebugInfo());
-                    push_back(std::move(decl));
                 }
                 break;
+            }
             case TokenType::VAR_NAME:
+            {
                 if(parameterList) {
                     boost::static_pointer_cast<FunctionParameter>(m_parameters.back())->setVarName(it->second);
-                } else if(variableDeclarationInProgress) {
-                    boost::static_pointer_cast<VariableDeclaration>(back())->setVarName(it->second);
-                } else if(!functionHead) {
-                    std::unique_ptr<Variable> var = std::make_unique<Variable>(it->second);
-                    var->setDebugInfo(it->toDebugInfo());
-                    //The declaration has to be searched!
-                    var->searchDeclaration(*this);
-                    push_back(std::move(var));
-                }
+                } 
+                break;
+            }
+            case TokenType::NUMBER:
                 break;
             case TokenType::FUNCTION_CALL:
-                functionCall = true;
                 break;
+            case TokenType::COMMAND:
+            {
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
+                break;
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ public:
     VariableDeclaration* declaration();
     void setDeclaration(VariableDeclaration *declaration);
     
-    void searchDeclaration(tic::ast::List &nodes);
+    bool searchDeclaration(tic::ast::List &nodes);
 private:
     std::string m_varName;
     VariableDeclaration *m_declaration = nullptr;

@@ -13,12 +13,16 @@ enum class NodeType
 {
     Node,
     List,
+    Scope,
     Function,
+    Program,
     FunctionDecaration,
     FunctionCall,
     FunctionParameter,
     Variable,
     VariableDeclaration,
+    Number,
+    Command,
 };
 struct NodeDebugInfo
 {
