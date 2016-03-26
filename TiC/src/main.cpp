@@ -17,6 +17,7 @@ int main(int argc, char** argv)
         ("help", "produce help message")
         ("input-file", boost::program_options::value<std::vector<std::string>>(), "input file (to compile)")
         ("toolkit-path,t", boost::program_options::value<std::string>(), "path to the desired compile toolkit")
+        ("debug,d", boost::program_options::value<bool>(), "Activate debugging output (lists every single token in cout)")
     ;
     
     boost::program_options::positional_options_description p;
@@ -41,6 +42,16 @@ int main(int argc, char** argv)
     ast.initPython(argc, argv);
     setlocale( LC_ALL, "" );
     std::string toolkitPath;
+    
+    if(vm.count("debug")) {
+        bool debugging = vm["debug"].as<bool>();
+        if(debugging) {
+            cout << "Debug output active" << endl;
+        } else {
+            cout << "Debug output inactive" << endl;
+        }
+        lexer.setDebug(debugging);
+    }
     
     if(vm.count("toolkit-path")) {
         toolkitPath = vm["toolkit-path"].as<std::string>();

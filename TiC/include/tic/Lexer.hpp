@@ -59,7 +59,9 @@ public:
     const std::string& rootBlock() const;
     bool isKeyword(const std::string &str);
     SourceBlock* rootSourceBlock();
+    void setDebug(bool debug);
 private:
+    bool m_debug = false;
     std::map<std::string, std::unique_ptr<SourceBlock> > m_sourceBlocks;
     std::string m_rootBlock;
 };

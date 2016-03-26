@@ -35,6 +35,10 @@ void Lexer::addFileToParse(const std::string &path)
     block->readFromFile(path);
     lex(std::move(block));
 }
+void Lexer::setDebug(bool debug)
+{
+    m_debug = debug;
+}
 void Lexer::readTokens(SourceBlock *block)
 {
     SourceBlock::TokenVector &tokens = block->tokenVector();
@@ -73,17 +77,19 @@ void Lexer::readTokens(SourceBlock *block)
     }
     tokens.erase(tokens.begin());
     
-    //Debug display
-    std::string display;
-    for(auto token : tokens) 
-    {
-        display = token.second;
-        if(token.second == "\n") {
-            display = "\\n";
-        } else if(token.second == "\"") {
-            display = "\"";
+    if(m_debug) {
+        //Debug display
+        std::string display;
+        for(auto token : tokens) 
+        {
+            display = token.second;
+            if(token.second == "\n") {
+                display = "\\n";
+            } else if(token.second == "\"") {
+                display = "\"";
+            }
+            cout << "Token \"" << display << "\"" << ": " << TokenType::getTypename(token.first) << endl;
         }
-        cout << "Token \"" << display << "\"" << ": " << TokenType::getTypename(token.first) << endl;
     }
     
 }
