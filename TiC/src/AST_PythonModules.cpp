@@ -2,6 +2,7 @@
 
 #define BOOST_PYTHON_STATIC_LIB
 
+#include <tic/OutputMgr.hpp>
 #include <tic/ast/Node.hpp>
 #include <tic/ast/Function.hpp>
 #include <boost/python.hpp>
@@ -56,6 +57,10 @@ BOOST_PYTHON_MODULE(tic)
         .add_property("type", &tic::Type::type, &tic::Type::setType)
         .add_property("typeName", make_function(&tic::Type::toString))
     ;
+    class_<tic::OutputMgr, boost::noncopyable>("OutputMGR", boost::python::no_init)
+        .def("set_file", &tic::OutputMgr::setFileFromPython)
+        .def("file", make_function(&tic::OutputMgr::file, return_value_policy<copy_const_reference>()))
+    ;
 }
 BOOST_PYTHON_MODULE(ast)
 {
@@ -63,6 +68,7 @@ BOOST_PYTHON_MODULE(ast)
         .value("Node", ast::NodeType::Node)
         .value("List", ast::NodeType::List)
         .value("Scope", ast::NodeType::Scope)
+        .value("Program", ast::NodeType::Program)
         .value("Function", ast::NodeType::Function)
         .value("FunctionParameter", ast::NodeType::FunctionParameter)
         .value("FunctionCall", ast::NodeType::FunctionCall)
@@ -170,6 +176,7 @@ void AST::generateTICode(const std::string &toolkitPath)
         
         globals["error_handler"] = boost::ref(m_errorHandler);
         globals["root_list"] = boost::ref(m_rootList);
+        globals["out"] = boost::ref(m_outputMgr);
         
         std::string file = toolkitPath;
         file += "/toolkit.py";

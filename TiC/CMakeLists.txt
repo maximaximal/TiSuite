@@ -16,6 +16,7 @@ set(HDRS
     ${HDR}/tic/Error.hpp
     ${HDR}/tic/ErrorHandler.hpp
     ${HDR}/tic/AST.hpp
+    ${HDR}/tic/OutputMgr.hpp
 
     ${HDR}/tic/ast/Node.hpp
     ${HDR}/tic/ast/List.hpp
@@ -37,6 +38,7 @@ set(SRCS
     ${SRC}/Type.cpp
     ${SRC}/Error.cpp
     ${SRC}/ErrorHandler.cpp
+    ${SRC}/OutputMgr.cpp
     ${SRC}/AST.cpp
     ${SRC}/AST_PythonModules.cpp
 

@@ -4,6 +4,7 @@
 
 #include <tic/ast/Node.hpp>
 #include <tic/ast/Function.hpp>
+#include <tic/ast/Program.hpp>
 #include <iostream>
 
 using std::cout;
@@ -11,8 +12,8 @@ using std::endl;
 
 namespace tic
 {
-AST::AST(ErrorHandler *errorHandler)
-    : m_errorHandler(errorHandler)
+AST::AST(ErrorHandler *errorHandler, OutputMgr *outputMgr)
+    : m_errorHandler(errorHandler), m_outputMgr(outputMgr)
 {
     ast::Node::errorHandler = errorHandler;
 }
@@ -30,6 +31,7 @@ void AST::generateFromTokenizedBlock(SourceBlock *block)
     
     //Parse flags
     bool functionDefinition = false;
+    bool programDefinition = false;
     
     for(auto it = tokens.begin(); it != tokens.end(); ++it)
     {
@@ -73,6 +75,9 @@ void AST::generateFromTokenizedBlock(SourceBlock *block)
             case tic::TokenType::FUNCTION_KEYWORD:
                 functionDefinition = true;
                 break;
+            case tic::TokenType::PROGRAM_KEYWORD:
+                programDefinition = true;
+                break;
             case tic::TokenType::UNSAFE_KEYWORD:
                 break;
             case tic::TokenType::UNSAFE_CONTENT:
@@ -106,6 +111,14 @@ void AST::generateFromTokenizedBlock(SourceBlock *block)
                     m_rootList->push_back(std::move(function));
                 }
                 break;
+            case tic::TokenType::PROGRAM_NAME:
+                if(programDefinition) {
+                    std::unique_ptr<ast::Program> program = std::make_unique<ast::Program>(it->second);
+                    program->loadFromTokens(tokens, it, *m_rootList);
+                    programDefinition = false;
+                    
+                    m_rootList->push_back(std::move(program));
+                }
             case tic::TokenType::COMMAND:
                 break;
         }

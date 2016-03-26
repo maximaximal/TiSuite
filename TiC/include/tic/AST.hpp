@@ -2,6 +2,7 @@
 
 #include <tic/SourceBlock.hpp>
 #include <tic/ErrorHandler.hpp>
+#include <tic/OutputMgr.hpp>
 
 #include <tic/ast/List.hpp>
 
@@ -13,7 +14,7 @@ namespace tic
 class AST
 {
 public:
-    AST(ErrorHandler *errorHandler);
+    AST(ErrorHandler *errorHandler, OutputMgr *outputMgr);
     virtual ~AST();
     
     void generateFromTokenizedBlock(SourceBlock *block);
@@ -24,6 +25,7 @@ public:
 private:
     SourceBlock *m_rootBlock = nullptr;
     ErrorHandler *m_errorHandler;
+    OutputMgr *m_outputMgr;
     
     ast::List *m_rootList = nullptr;
 };

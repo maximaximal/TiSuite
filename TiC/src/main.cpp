@@ -36,7 +36,8 @@ int main(int argc, char** argv)
     
     Lexer lexer;
     ErrorHandler handler;
-    AST ast(&handler);
+    OutputMgr outputMgr;
+    AST ast(&handler, &outputMgr);
     ast.initPython(argc, argv);
     setlocale( LC_ALL, "" );
     std::string toolkitPath;
@@ -57,6 +58,7 @@ int main(int argc, char** argv)
             lexer.setRootBlock(file);
             ast.generateFromTokenizedBlock(lexer.rootSourceBlock());
             ast.generateTICode(toolkitPath);
+            outputMgr.write();
         }
     }
     

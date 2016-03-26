@@ -511,6 +511,7 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
         // Alphanumeric tokens can mean: 
         //   * VAR_NAME 
         //   * FUNCTION_NAME
+        //   * PROGRAM_NAME
         //   * STRING_LITERAL
         //   * UNSAFE_LINE
         found = false;
@@ -532,6 +533,10 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                     break;
                 case TokenType::FUNCTION_KEYWORD:
                     type = TokenType::FUNCTION_NAME;
+                    found = true;
+                    break;
+                case TokenType::PROGRAM_KEYWORD:
+                    type = TokenType::PROGRAM_NAME;
                     found = true;
                     break;
                 case TokenType::TYPE:
