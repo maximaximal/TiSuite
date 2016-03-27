@@ -56,7 +56,7 @@ void Lexer::readTokens(SourceBlock *block)
     
     tokenizer tok(block->source(), sep);
     uint32_t line = 1;
-    bool incLine = false;
+    bool incLine = true; 
     bool stringLiteral = false;
     bool unsafeBlock = false;
     
@@ -365,9 +365,11 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
         switch(tokens.back().first) 
         {
             case TokenType::LINE_COMMENT: 
+                *incLine = true;
                 type = TokenType::LINE_COMMENT_END;
                 break;
             case TokenType::UNSAFE_CONTENT:
+                *incLine = true;
                 type = TokenType::UNSAFE_CONTENT;
                 break;
             default: 

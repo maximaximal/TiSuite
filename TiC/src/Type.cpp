@@ -47,6 +47,10 @@ std::string Type::toStringStatic(const tic::Type *type)
             return "str";
         case MATRIX:
             return "mat";
+        case UNKNOWN:
+            return "unknown";
+        case NO_TYPE:
+            return "no_type";
     }
 }
 std::string Type::toString() 

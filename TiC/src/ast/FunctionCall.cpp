@@ -64,9 +64,7 @@ void FunctionCall::searchDeclaration(List &nodes)
                 m_declaration = declaration.get();
                 found = true;
             }
-            cout << "FUNC: " << declaration->functionName() << endl;
         }
-        cout << "Node: " << (*it)->toString() << endl;
     }
     if(!found) {
         errorHandler->handleError(Error("Function \"" + functionName() + "\" is never declared!", debugInfo()));

@@ -24,7 +24,7 @@ public:
     
     TokenType::Type typeOfToken(TokenizerIterator begin, TokenizerIterator token, TokenizerIterator end, tic::SourceBlock::TokenVector &tokens, bool *incLine);
     bool isScopeCloseInUnsafe(SourceBlock::TokenVector &tokens, std::size_t i);
-    inline static bool isValidVarName(const std::string &str) 
+    inline static bool isValidVarName(const std::string &str, bool unsafe = false) 
     {
         if(str.length() > 0) {
             if(isKeyword(str)) {
@@ -34,15 +34,16 @@ public:
                 return false;
             }
             return std::find_if(str.begin(), str.end(),
-                [](char c) {
+                [unsafe](char c) {
                     if(c == '_')
                         return false;
-                    if(c == '[')
-                        return false;
-                    if( c == ']')
-                        return false;
-                    else 
-                        return !std::isalnum(c);
+                    if(unsafe) {
+                        if(c == '[') 
+                            return false;
+                        if(c == ']')
+                            return false;
+                    }
+                    return !std::isalnum(c);
                 }) == str.end();
         }
         return false;

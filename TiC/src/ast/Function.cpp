@@ -5,6 +5,7 @@
 #include <tic/ast/Variable.hpp>
 #include <tic/ast/Command.hpp>
 #include <tic/ast/Scope.hpp>
+#include <tic/Token.hpp>
 #include <iostream>
 
 using std::cout;
@@ -14,7 +15,7 @@ namespace tic
 {
 namespace ast 
 {
-Function::Function(const std::__cxx11::string &functionName, const char *nodeName, tic::ast::NodeType nodeType)
+Function::Function(const std::string &functionName, const char *nodeName, tic::ast::NodeType nodeType)
     : Scope(nodeName, nodeType), m_functionName(functionName)
 {
     
@@ -29,16 +30,19 @@ const std::string &Function::functionName() const
 }
 void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::TokenVector::iterator &current, List &rootList)
 {
-    tic::ast::List::loadFromTokens(tokens, current);
-    
     bool end = false;
     
     // Parsing flags. 
     bool functionHead = true;
     bool parameterList = true;
     
+    bool handledByScope = false;
+    
     for(auto it = current; it != tokens.end() && !end; ++it)
     {
+        if(handledByScope) {
+            end = Scope::parseToken(tokens, it, rootList);
+        }
         switch(it->first)
         {
             case TokenType::PARAM_LIST_BEGIN:
@@ -51,12 +55,7 @@ void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Tok
                 break;
             case TokenType::SCOPE_BEGIN:
             {
-                //Another scope starts!
-                auto scope = std::make_unique<Scope>();
-                scope->setDebugInfo(it->toDebugInfo());
-                scope->loadFromTokens(tokens, ++it, rootList);
-                push_back(std::move(scope));
-                // The iterator has been increased by the child scope, so this doesn't need to do anything else. 
+                handledByScope = true;
                 break;
             }
             case TokenType::SCOPE_END:

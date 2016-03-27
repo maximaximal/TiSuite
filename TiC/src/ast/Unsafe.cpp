@@ -838,7 +838,6 @@ Unsafe::~Unsafe()
 }
 void Unsafe::appendContent(const std::string &content)
 {
-    cout << "APPENDING: " << content << endl;
     using namespace boost;
     
     typedef tokenizer<char_separator<char>> tokenizer;
@@ -850,7 +849,7 @@ void Unsafe::appendContent(const std::string &content)
     for(auto token = tok.begin(); token != tok.end(); ++token)
     {
         // Detect if this can possibly be a variable.
-        if(Lexer::isValidVarName(*token))
+        if(Lexer::isValidVarName(*token, true))
         {
             type = isUnsafeVariable(*token);
             if(type == Type::NO_TYPE) {
@@ -994,11 +993,11 @@ void Unsafe::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Token
             case TokenType::VAR_NAME:
             {
                 if(parameterList) {
-                    if(parameterList) {
-                        boost::static_pointer_cast<FunctionParameter>(m_parameters.back())->setVarName(it->second);
-                    } else {
+                    if(varAssign) {
                         boost::static_pointer_cast<FunctionParameter>(m_parameters.back())->setAssignedVarName(it->second);
                         varAssign = false;
+                    } else {
+                        boost::static_pointer_cast<FunctionParameter>(m_parameters.back())->setVarName(it->second);
                     }
                 } 
                 break;
