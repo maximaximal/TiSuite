@@ -3,6 +3,7 @@
 #define BOOST_PYTHON_STATIC_LIB
 
 #include <tic/ast/Node.hpp>
+#include <tic/ast/Unsafe.hpp>
 #include <tic/ast/Function.hpp>
 #include <tic/ast/Program.hpp>
 #include <iostream>
@@ -32,6 +33,7 @@ void AST::generateFromTokenizedBlock(SourceBlock *block)
     //Parse flags
     bool functionDefinition = false;
     bool programDefinition = false;
+    bool unsafeDefinition = false;
     
     for(auto it = tokens.begin(); it != tokens.end(); ++it)
     {
@@ -79,6 +81,7 @@ void AST::generateFromTokenizedBlock(SourceBlock *block)
                 programDefinition = true;
                 break;
             case tic::TokenType::UNSAFE_KEYWORD:
+                unsafeDefinition = true;
                 break;
             case tic::TokenType::UNSAFE_CONTENT:
                 break;
@@ -105,6 +108,7 @@ void AST::generateFromTokenizedBlock(SourceBlock *block)
             case tic::TokenType::FUNCTION_NAME:
                 if(functionDefinition) {
                     std::unique_ptr<ast::Function> function = std::make_unique<ast::Function>(it->second);
+                    function->setDebugInfo(it->toDebugInfo());
                     function->loadFromTokens(tokens, it, *m_rootList);
                     functionDefinition = false;
                     
@@ -114,11 +118,24 @@ void AST::generateFromTokenizedBlock(SourceBlock *block)
             case tic::TokenType::PROGRAM_NAME:
                 if(programDefinition) {
                     std::unique_ptr<ast::Program> program = std::make_unique<ast::Program>(it->second);
+                    program->setDebugInfo(it->toDebugInfo());
                     program->loadFromTokens(tokens, it, *m_rootList);
                     programDefinition = false;
                     
                     m_rootList->push_back(std::move(program));
                 }
+            case tic::TokenType::UNSAFE_NAME:
+            {
+                if(unsafeDefinition) {
+                    std::unique_ptr<ast::Unsafe> uns = std::make_unique<ast::Unsafe>(it->second);
+                    uns->setDebugInfo(it->toDebugInfo());
+                    uns->loadFromTokens(tokens, it, *m_rootList);
+                    unsafeDefinition = false;
+                    
+                    m_rootList->push_back(std::move(uns));
+                }
+                break;
+            }
             case tic::TokenType::COMMAND:
                 break;
         }

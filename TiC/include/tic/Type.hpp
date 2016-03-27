@@ -11,7 +11,9 @@ public:
         STRING,
         NUMBER,
         MATRIX,
-        LIST
+        LIST,
+        UNKNOWN,
+        NO_TYPE,
     };
     
     Type::TypeEnum type() const;
@@ -22,6 +24,7 @@ public:
     
     Type();
     Type(const std::string &typeString);
+    Type(TypeEnum type);
     virtual ~Type();
     
     static bool isType(const std::string &str);

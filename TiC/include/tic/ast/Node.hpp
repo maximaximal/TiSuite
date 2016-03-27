@@ -16,6 +16,8 @@ enum class NodeType
     Scope,
     Function,
     Program,
+    Unsafe,
+    UnsafeVariable,
     FunctionDecaration,
     FunctionCall,
     FunctionParameter,

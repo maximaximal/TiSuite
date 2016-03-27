@@ -18,6 +18,11 @@ Type::Type(const std::string &typeString)
         m_type = STRING;
     }
 }
+Type::Type(Type::TypeEnum type)
+    : m_type(type)
+{
+
+}
 Type::~Type()
 {
 

@@ -21,6 +21,10 @@ const std::string &FunctionParameter::varName() const
 {
     return m_varName;
 }
+const std::string &FunctionParameter::assignedVarName() const
+{
+    return m_assignedVarName;
+}
 void FunctionParameter::setType(const Type &type)
 {
     m_type = type;
@@ -28,6 +32,10 @@ void FunctionParameter::setType(const Type &type)
 void FunctionParameter::setVarName(const std::string &varName)
 {
     m_varName = varName;
+}
+void FunctionParameter::setAssignedVarName(const std::string &varName)
+{
+    m_assignedVarName = varName;
 }
 }
 }

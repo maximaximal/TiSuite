@@ -15,12 +15,15 @@ public:
     
     const Type& type() const;
     const std::string& varName() const;
+    const std::string& assignedVarName() const;
     
     void setType(const Type &type);
     void setVarName(const std::string &varName);
+    void setAssignedVarName(const std::string &varName);
 private:
     Type m_type;
     std::string m_varName;
+    std::string m_assignedVarName;
 };
 }
 }

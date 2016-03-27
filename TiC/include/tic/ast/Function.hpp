@@ -23,9 +23,10 @@ public:
     List* parameters();
     
     Type* returnType();
-private:
+protected:
     Type m_returnType;
     List m_parameters;
+private:
     std::string m_functionName;
 };
 }

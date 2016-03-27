@@ -24,6 +24,7 @@ public:
         FUNCTION_KEYWORD,
         UNSAFE_KEYWORD,
         UNSAFE_CONTENT,
+        UNSAFE_NAME,
         PROGRAM_KEYWORD,
         INCLUDE_KEYWORD,
         INCLUDE_PATH,
@@ -33,6 +34,7 @@ public:
         LINE_COMMENT,
         LINE_COMMENT_END,
         END_STATEMENT,
+        STRING_LITERAL_MARK_END,
         STRING_LITERAL_MARK,
         STRING_LITERAL,
         NUMBER,
@@ -95,6 +97,8 @@ public:
                 return "INCLUDE_PATH";
             case UNSAFE_CONTENT:
                 return "UNSAFE_CONTENT";
+            case UNSAFE_NAME:
+                return "UNSAFE_NAME";
             case PROGRAM_KEYWORD:
                 return "PROGRAM_KEYWORD";
             case PROGRAM_NAME:
@@ -109,6 +113,8 @@ public:
                 return "LINE_COMMENT_END";
             case END_STATEMENT:
                 return "END_STATEMENT";
+            case STRING_LITERAL_MARK_END:
+                return "STRING_LITERAL_MARK_END";
             case STRING_LITERAL_MARK:
                 return "STRING_LITERAL_MARK";
             case STRING_LITERAL:

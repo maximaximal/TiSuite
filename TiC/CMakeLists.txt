@@ -47,6 +47,8 @@ set(SRCS
     ${SRC}/ast/Scope.cpp
     ${SRC}/ast/Function.cpp
     ${SRC}/ast/Program.cpp
+    ${SRC}/ast/Unsafe.cpp
+    ${SRC}/ast/UnsafeVariable.cpp
     ${SRC}/ast/FunctionParameter.cpp
     ${SRC}/ast/VariableDeclaration.cpp
     ${SRC}/ast/Variable.cpp

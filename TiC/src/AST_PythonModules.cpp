@@ -22,6 +22,8 @@
 #include <tic/ast/Command.hpp>
 #include <tic/ast/Program.hpp>
 #include <tic/ast/VariableDeclaration.hpp>
+#include <tic/ast/Unsafe.hpp>
+#include <tic/ast/UnsafeVariable.hpp>
 
 using std::cout;
 using std::endl;
@@ -46,6 +48,8 @@ BOOST_PYTHON_MODULE(tic)
         .value("Matrix", tic::Type::MATRIX)
         .value("List", tic::Type::LIST)
         .value("String", tic::Type::STRING)
+        .value("Unknown", tic::Type::UNKNOWN)
+        .value("No_Type", tic::Type::NO_TYPE)
     ;
     class_<tic::Error>("Error", init<std::string, ast::NodeDebugInfo*>())
         .add_property("msg", make_function(&tic::Error::toString))
@@ -69,6 +73,8 @@ BOOST_PYTHON_MODULE(ast)
         .value("List", ast::NodeType::List)
         .value("Scope", ast::NodeType::Scope)
         .value("Program", ast::NodeType::Program)
+        .value("Unsafe", ast::NodeType::Unsafe)
+        .value("UnsafeVariable", ast::NodeType::UnsafeVariable)
         .value("Function", ast::NodeType::Function)
         .value("FunctionParameter", ast::NodeType::FunctionParameter)
         .value("FunctionCall", ast::NodeType::FunctionCall)
@@ -110,11 +116,17 @@ BOOST_PYTHON_MODULE(ast)
         .add_property("tibasic", make_function(&ast::Program::tiBasic, return_value_policy<copy_const_reference>()),
             make_function(&ast::Program::setTIBasic))
     ;
+    class_<ast::Unsafe, bases<ast::Function>>("Unsafe", boost::python::no_init)
+        .add_property("content", make_function(&ast::Unsafe::content, return_value_policy<copy_const_reference>()),
+            make_function(&ast::Unsafe::setContent))
+    ;
     class_<ast::FunctionParameter, bases<ast::Node>, boost::noncopyable>("FunctionParameter", boost::python::no_init)
         .add_property("type", make_function(&ast::FunctionParameter::type, return_value_policy<reference_existing_object>()), 
             make_function(&ast::FunctionParameter::setType))
         .add_property("name", make_function(&ast::FunctionParameter::varName, return_value_policy<copy_const_reference>()), 
             make_function(&ast::FunctionParameter::setVarName))
+        .add_property("assigned_name", make_function(&ast::FunctionParameter::assignedVarName, return_value_policy<copy_const_reference>()), 
+            make_function(&ast::FunctionParameter::setAssignedVarName))
     ;
     class_<ast::FunctionCall, bases<ast::Node>, boost::noncopyable>("FunctionCall", boost::python::no_init)
         .add_property("name", make_function(&ast::FunctionCall::functionName, return_value_policy<copy_const_reference>()))
@@ -126,6 +138,12 @@ BOOST_PYTHON_MODULE(ast)
             make_function(&ast::VariableDeclaration::setVarName))
         .add_property("type", make_function(&ast::VariableDeclaration::type, return_value_policy<reference_existing_object>()), 
             make_function(&ast::VariableDeclaration::setType))
+    ;
+    class_<ast::UnsafeVariable, bases<ast::Node>, boost::noncopyable>("UnsafeVariable", boost::python::no_init)
+        .add_property("var", make_function(&ast::UnsafeVariable::variable, return_value_policy<copy_const_reference>()), 
+            make_function(&ast::UnsafeVariable::setVariable))
+        .add_property("type", make_function(&ast::UnsafeVariable::type, return_value_policy<reference_existing_object>()), 
+            make_function(&ast::UnsafeVariable::setType))
     ;
     class_<ast::Variable, bases<ast::Node>, boost::noncopyable>("Variable", boost::python::no_init)
         .add_property("name", make_function(&ast::Variable::varName, return_value_policy<copy_const_reference>()))
