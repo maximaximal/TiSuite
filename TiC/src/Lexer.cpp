@@ -52,7 +52,7 @@ void Lexer::readTokens(SourceBlock *block)
     
     typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
     
-    boost::char_separator<char> sep("\t", "+-*/,=:;)({}\n\" ><");
+    boost::char_separator<char> sep("\t", "+-*/,=:;)({}[]\n\" ><");
     
     tokenizer tok(block->source(), sep);
     uint32_t line = 1;
