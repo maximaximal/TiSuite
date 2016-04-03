@@ -612,6 +612,10 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                     type = TokenType::VAR_NAME;
                     found = true;
                     break;
+                case TokenType::PARAM_ITEM_SEPERATOR:
+                    type = TokenType::VAR_NAME;
+                    found = true;
+                    break;
                 case TokenType::COMMAND:
                     type = TokenType::VAR_NAME;
                     found = true;

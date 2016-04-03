@@ -40,10 +40,45 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         case TokenType::PARAM_LIST_BEGIN:
             if(functionCall) {
                 // Nothing to do at this stage. 
+            } 
+            if(command) {
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
             }
             break;
         case TokenType::PARAM_LIST_END:
-            functionCall = false;
+            if(functionCall) {
+                functionCall = false;
+            } 
+            if(command) {
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
+            }
+            break;
+        case TokenType::VAR_SCOPE_BEGIN:
+        {
+            if(command) {
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
+            }
+            break;
+        }
+        case TokenType::VAR_SCOPE_END:
+        {
+            if(command) {
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
+            }
+            break;
+        }
+        case TokenType::END_STATEMENT:
+            if(command) {
+                command = false;
+            }
             break;
         case TokenType::SCOPE_BEGIN:
         {
@@ -57,17 +92,34 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
             // The iterator has been increased by the child scope, so this doesn't need to do anything else. 
             break;
             */
+            if(command) {
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
+            }
+            break;
         }
         case TokenType::SCOPE_END:
+            if(command) {
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
+            }
             return true;
             break;
         case TokenType::TYPE:
         {
-            //A type has to be a variable declaration in a scope. 
-            auto decl = std::make_unique<VariableDeclaration>(it->second, "");
-            decl->setDebugInfo(it->toDebugInfo());
-            push_back(std::move(decl));
-            variableDeclarationInProgress = true;
+            if(command) {
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
+            } else {
+                //A type has to be a variable declaration in a scope. 
+                auto decl = std::make_unique<VariableDeclaration>(it->second, "");
+                decl->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(decl));
+                variableDeclarationInProgress = true;
+            }
             break;
         }
         case TokenType::VAR_NAME:
@@ -89,6 +141,7 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
                     auto cmd = std::make_unique<Command>(it->second);
                     cmd->setDebugInfo(it->toDebugInfo());
                     push_back(std::move(cmd));
+                    command = true;
                 }
             }
             break;
@@ -100,11 +153,55 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
             break;
         case TokenType::FUNCTION_CALL:
         {
-            functionCall = true;
             auto funcCall = std::make_unique<FunctionCall>(it->second);
             funcCall->setDebugInfo(it->toDebugInfo());
-            funcCall->searchDeclaration(rootList);
-            push_back(std::move(funcCall));
+            bool found = funcCall->searchDeclaration(rootList);
+            if(found) {
+                push_back(std::move(funcCall));
+                functionCall = true;
+            } else {
+                // This is not a function call, this is a command.
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
+                command = true;
+            }
+            break;
+        }
+        case TokenType::STRING_LITERAL:
+        {
+            if(command) {
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
+            }
+            break;
+        }
+        case TokenType::STRING_LITERAL_MARK:
+        {
+            if(command) {
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
+            }
+            break;
+        }
+        case TokenType::STRING_LITERAL_MARK_END:
+        {
+            if(command) {
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
+            }
+            break;
+        }
+        case TokenType::PARAM_ITEM_SEPERATOR:
+        {
+            if(command) {
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
+            }
             break;
         }
         case TokenType::COMMAND:
@@ -112,6 +209,7 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
             auto cmd = std::make_unique<Command>(it->second);
             cmd->setDebugInfo(it->toDebugInfo());
             push_back(std::move(cmd));
+            command = true;
             break;
         }
     }

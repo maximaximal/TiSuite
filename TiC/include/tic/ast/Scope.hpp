@@ -21,6 +21,7 @@ private:
     // Parsing flags. 
     bool variableDeclarationInProgress = false;
     bool functionCall = false;
+    bool command = false;
     bool passTokenToParent = false;
 };
 }

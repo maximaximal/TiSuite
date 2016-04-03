@@ -33,6 +33,16 @@ for unsafe_block in root_list.nodes(NodeType.Unsafe):
 
 for func in root_list.nodes(NodeType.Function):
     handle_func(func)
+    out_str = ""
+    for node in func:
+        print("  - Node: " + node.nodeName)
+        if node.nodeType == NodeType.Command:
+            print("   : CMD: " + node.cmd)
+            out_str += node.cmd
+        if node.nodeType == NodeType.Variable:
+            print("   : VAR: " + node.name + " with type " + node.declaration.type.typeName)
+            out_str += node.declaration.type.typeName
+    out.set_file(func.name, out_str)
 
 for prog in root_list.nodes(NodeType.Program):
     handle_program(prog)
@@ -47,3 +57,7 @@ for func in funcs:
     print("Function " + func.name)
     for var in func.variables:
         print("Var: " + var.name)
+
+for prog in programs:
+    print("Program " + prog.name)
+    out.set_file(prog.name + ".txt", "Test")

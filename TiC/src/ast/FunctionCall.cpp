@@ -53,7 +53,7 @@ void FunctionCall::pushArg(std::unique_ptr< Number > number)
 {
     m_arguments.push_back(std::move(number));
 }
-void FunctionCall::searchDeclaration(List &nodes)
+bool FunctionCall::searchDeclaration(List &nodes)
 {
     bool found = false;
     for(auto it = nodes.rbegin(); it != nodes.rend() && !found; ++it)
@@ -66,9 +66,7 @@ void FunctionCall::searchDeclaration(List &nodes)
             }
         }
     }
-    if(!found) {
-        errorHandler->handleError(Error("Function \"" + functionName() + "\" is never declared!", debugInfo()));
-    }
+    return found;
 }
 }
 }

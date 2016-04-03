@@ -27,7 +27,7 @@ public:
     void pushArg(const std::string &varName, tic::ast::List &nodes);
     void pushArg(std::unique_ptr<ast::Number> number);
     
-    void searchDeclaration(tic::ast::List &nodes);
+    bool searchDeclaration(tic::ast::List &nodes);
     
     const std::string& functionName() const;
 private:
