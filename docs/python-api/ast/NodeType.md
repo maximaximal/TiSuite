@@ -11,7 +11,7 @@ NodeType | Matching Class
 .Node    | [ast.Node](Node)
 .List    | [ast.List](List)
 .Scope   | [ast.Scope](Scope)
-.Proram  | [ast.Program](Program)
+.Program  | [ast.Program](Program)
 .Unsafe  | [ast.Unsafe](Unsafe)
 .UnsafeVariable  | [ast.UnsafeVariable](UnsafeVariable)
 .Function| [ast.Function](Function)
