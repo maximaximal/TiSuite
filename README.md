@@ -19,6 +19,9 @@ This collection contains:
 Licenses
 ========
 
+This is licensed under GPLv2, because the old software used in this program runs under GPL
+v2 as license.
+
 License of the tibasic compiler
 -------------------------------
 
