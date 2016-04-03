@@ -27,10 +27,7 @@ function funcName(num paramA, num paramB) : num
 //Function with unsafe body
 function unsafeFunction(num a, num b) : num
 {
-    unsafe (a : A, b : B)
-    {
-        B->(A*10)
-    }
+    a * b->b;
     return b;
 }
 ```
@@ -57,7 +54,7 @@ unsafe (Block)
 Synopsis: `unsafe (varA : A, varB : B) {  }`
 
 ```
-unsafe (varA : A, varB : B)
+unsafe unsafeName(varA : A, varB : B)
 {
     2->A
     8->B
@@ -71,5 +68,5 @@ unsafe (include)
 Synopsis: `unsafe (varA : A, varB : B) "filename.82a"`
 
 ```
-unsafe (varA : A, varB : B) "filename.82a"
+unsafe unsafeName(varA : A, varB : B) "filename.82a"
 ```
