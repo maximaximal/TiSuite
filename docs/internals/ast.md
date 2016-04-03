@@ -5,21 +5,6 @@ The abstract syntax tree (ast) is the representation of the complete sourcecode 
 in the compiler. After it was generated out of the token stream, it is converted into the final 
 tibasic code by the python compiler script. 
 
-A list of all node types follows. 
-
-Node
-----
-
-A normal node is the most basic node of all. It is the base class for everx other node in the system. 
-
-Function
---------
-
-A function node encapsulates a function, including all its contents. It is a derived class from the List node 
-and contains all nodes inside the function scope. 
-
-FunctionCall
-------------
-
-A function call is the call to a function. It represents a function to be called. It contains the function name 
-and the parameters. 
+The AST is built from a root node (an [ast.List](/python-api/ast/List) object), which contains several 
+[functions](/python-api/ast/Function), [programs](/python-api/ast/Program), and [unsafe blocks](/python-api/ast/Unsafe). To 
+better understand the AST, the python reference is a good start. 

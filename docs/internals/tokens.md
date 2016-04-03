@@ -165,28 +165,3 @@ PROGRAM_NAME
 ------------
 
 The name of a program. This stands after a PROGRAM_KEYWORD token and has a PARAM_LIST_BEGIN and PARAM_LIST_END token after it.
-
-ASSIGN_OPERATOR
--------------------
-
-Any assignment operator. Possible operators:
-
-  * `=`
-  * `+=`
-  * `-=`
-  * `*=`
-  * `/=`
-
-Stands in between two valid VAR_NAME tokens and assigns the right one to the left one. 
-
-CALC_OPERATOR
--------------
-
-A calculation operator calculates a result out of two VAR_NAME tokens. Possible operators:
-
-  * `+`
-  * `-`
-  * `*`
-  * `/`
-
-The result should be put into another VAR_NAME token. 
