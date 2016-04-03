@@ -1,5 +1,5 @@
 site_name: "Advanced TiBasic  - Compiler Docs"
-theme: "yeti"
+theme: "readthedocs"
 pages: 
     - "index.md"
     - "tags.md"
