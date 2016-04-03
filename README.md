@@ -16,6 +16,8 @@ This collection contains:
     * libticonv
   * TiEditor
 
+Documentation can be found at [ReadTheDocs.org](http://tisuite.readthedocs.org/en/latest/). 
+
 Licenses
 ========
 
