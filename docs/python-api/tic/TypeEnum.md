@@ -11,4 +11,4 @@ TypeEnum | Name of the Type | Description | Short Form in TiC
 .List | List | A normal list (1D-array) on the calculator | "lst"
 .String | String | A normal string (Str0-Str6) on the calculator | "str"
 .Unknown | Unknown | An unknown type (can come from unsafe blocks) | - (Compiler Internal)
-.No_Type | No Type | An error in the AST | - (Compiler Interna)
+.No_Type | No Type | An error in the AST | - (Compiler Internal)
