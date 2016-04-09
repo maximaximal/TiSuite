@@ -129,3 +129,8 @@ void CodeEditor::save()
     stream << text();
     stream.flush();
 }
+void CodeEditor::handleError(const tic::Error& error)
+{
+    setCursorPosition(error.line(), 0);
+    annotate(error.line(), QString::fromStdString(error.msg()), QsciScintilla::AnnotationBoxed);
+}

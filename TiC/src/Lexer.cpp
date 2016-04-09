@@ -74,7 +74,9 @@ void Lexer::readTokens(SourceBlock *block)
         }
         
         if(stringLiteral) {
-            if(!(tokenPair.first == TokenType::STRING_LITERAL_MARK)) {
+            if(!(tokenPair.first == TokenType::STRING_LITERAL_MARK) 
+                && !(tokenPair.first == TokenType::STRING_LITERAL_MARK_END) 
+                && tokens.back().first != TokenType::STRING_LITERAL_MARK) {
                 tokens.back().second.append(*token);
             }
         }

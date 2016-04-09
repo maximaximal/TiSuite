@@ -44,6 +44,7 @@
 #include <QObject>
 #include <Qsci/qsciscintilla.h>
 #include <TiCLexer.hpp>
+#include <tic/Error.hpp>
 
 class QPaintEvent;
 class QResizeEvent;
@@ -65,6 +66,7 @@ public:
     void setFilepath(const QString &path);
     const QString& filepath();
     void save();
+    void handleError(const tic::Error &error);
 protected:
 
 private Q_SLOTS:

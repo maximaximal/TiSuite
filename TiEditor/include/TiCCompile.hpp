@@ -14,7 +14,7 @@ class TiCCompile : public QDialog
     Q_OBJECT
 public:
     
-    TiCCompile();
+    TiCCompile(tic::ErrorHandler *errorHandler);
     virtual ~TiCCompile();
     
     void clear();
@@ -22,6 +22,7 @@ public:
     void parseAstTree(tic::ast::List *list, QTreeWidgetItem *item);
 private:
     Ui::TiCCompile *ui;
+    tic::ErrorHandler *m_errorHandler;
     
 };
 

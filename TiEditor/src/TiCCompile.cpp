@@ -37,20 +37,22 @@ private:
     tic::ast::Node *m_node;
 };
 
-TiCCompile::TiCCompile()
-    : ui(new Ui::TiCCompile)
+TiCCompile::TiCCompile(tic::ErrorHandler *errorHandler)
+    : ui(new Ui::TiCCompile), m_errorHandler(errorHandler)
 {
     ui->setupUi(this);
 }
 TiCCompile::~TiCCompile()
 {
-    
+    delete ui;
 }
 void TiCCompile::clear()
 {
     ui->tokenList->clear();
     ui->astTree->clear();
     ui->dbgOut->clear();
+    
+    m_errorHandler->clearErrors();
 }
 void TiCCompile::parseAstTree(tic::ast::List* list, QTreeWidgetItem *item)
 {
@@ -77,9 +79,8 @@ void TiCCompile::compile(const QString& file, const QString& toolkit)
     Q_DebugStream dbg(std::cout, ui->dbgOut);
     
     Lexer lexer;
-    ErrorHandler errorHandler;
     OutputMgr output;
-    AST ast(&errorHandler, &output);
+    AST ast(m_errorHandler, &output);
     
     ast.initPython(QCoreApplication::arguments().count(), 
                    QCoreApplication::arguments().toVector().data()->toLocal8Bit().data());

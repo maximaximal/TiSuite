@@ -49,6 +49,25 @@ EditorWindow::~EditorWindow()
     delete m_fileSystemModel;
     delete ui;
 }
+bool EditorWindow::handleError(const tic::Error& error)
+{
+    tic::ErrorHandler::push(error);
+    openFile(QString::fromStdString(error.file()));
+    static_cast<CodeEditor*>(ui->editorTabs->currentWidget())->handleError(error);
+    
+    return true;
+}
+void EditorWindow::clearErrors()
+{
+    tic::ErrorHandler::clearErrors();
+    for(int i = 0; i < ui->editorTabs->count(); ++i)
+    {
+        CodeEditor *editor = dynamic_cast<CodeEditor*>(ui->editorTabs->widget(i));
+        if(editor) {
+            editor->clearAnnotations();
+        }
+    }
+}
 void EditorWindow::save()
 {
     for(int i = 0; i < ui->editorTabs->count(); ++i)
@@ -75,6 +94,13 @@ int EditorWindow::getTabOfItem(const QString &path)
 }
 void EditorWindow::openFile(const QString &path)
 {
+    // Check if the item is already in one of the tabs. 
+    int id = getTabOfItem(path);
+    if(id != -1) {
+        ui->editorTabs->setCurrentIndex(id);
+        return;
+    }
+    
     CodeEditor *editor = new CodeEditor(ui->editorTabs);
     editor->setFilepath(path);
     QStringList strList = path.split(QDir::separator());
@@ -90,19 +116,6 @@ void EditorWindow::on_treeView_doubleClicked(const QModelIndex &index)
     QString path = index.data(QFileSystemModel::FilePathRole).toString();
     
     if(m_fileSystemModel->isDir(index)) {
-        return;
-    }
-
-    // Check if the item is already in one of the tabs. 
-    int id = getTabOfItem(path);
-    if(id != -1) {
-        ui->editorTabs->setCurrentIndex(id);
-        return;
-    }
-    
-    QFile file(path);
-    if(!file.exists()) {
-        //Error!
         return;
     }
  
@@ -133,7 +146,7 @@ void EditorWindow::on_actionCompile_triggered()
 {
     if(ui->editorTabs->currentWidget() != nullptr) {
         if(!m_compileWindow) {
-            m_compileWindow = new TiCCompile();
+            m_compileWindow = new TiCCompile(this);
         }
         m_compileWindow->show();
         

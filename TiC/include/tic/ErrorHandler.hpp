@@ -12,6 +12,7 @@ public:
     virtual ~ErrorHandler();
     
     virtual bool handleError(const Error &error);
+    virtual void clearErrors();
 protected:
     void push(const Error &error);
 private:

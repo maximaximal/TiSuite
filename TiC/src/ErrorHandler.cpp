@@ -24,6 +24,11 @@ bool ErrorHandler::handleError(const Error &error)
         cout << "    >> " << error.block()->printLine(error.line()) << endl;
     
     push(error);
+    return true;
+}
+void ErrorHandler::clearErrors()
+{
+    m_errorSink.clear();
 }
 void ErrorHandler::push(const Error &error)
 {

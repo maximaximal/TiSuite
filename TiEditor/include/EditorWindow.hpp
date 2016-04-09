@@ -5,12 +5,13 @@
 #include <QFileSystemModel>
 #include <QSettings>
 #include <TiCCompile.hpp>
+#include <tic/ErrorHandler.hpp>
 
 namespace Ui {
 class EditorWindow;
 }
 
-class EditorWindow : public QMainWindow
+class EditorWindow : public QMainWindow, tic::ErrorHandler
 {
     Q_OBJECT
 
@@ -21,6 +22,9 @@ public:
     void save();
     int getTabOfItem(const QString &path);
     void openFile(const QString &path);
+    
+    virtual bool handleError(const tic::Error &error) override;
+    virtual void clearErrors();
 private Q_SLOTS:
     void on_treeView_doubleClicked(const QModelIndex &index);
 
