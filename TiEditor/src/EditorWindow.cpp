@@ -73,6 +73,11 @@ void EditorWindow::openFile(const QString &path)
     editor->setFilepath(path);
     QStringList strList = path.split(QDir::separator());
     ui->editorTabs->addTab(editor, strList.back());
+    
+    connect(editor, &QsciScintilla::textChanged, this, [editor, strList, this]() {
+        ui->editorTabs->setTabText(ui->editorTabs->currentIndex(), 
+                                   strList.back() + "*");
+    });
 }
 void EditorWindow::on_treeView_doubleClicked(const QModelIndex &index)
 {
@@ -124,6 +129,8 @@ void EditorWindow::on_actionSave_triggered()
     CodeEditor *editor = dynamic_cast<CodeEditor*>(ui->editorTabs->currentWidget());
     if(editor) {
         editor->save();
+        QStringList strList = editor->filepath().split(QDir::separator());
+        ui->editorTabs->setTabText(ui->editorTabs->currentIndex(), strList.back());
     }
 }
 
