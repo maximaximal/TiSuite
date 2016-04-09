@@ -28,50 +28,74 @@ EditorWindow::EditorWindow(QWidget *parent) :
     ui->treeView->setModel(m_fileSystemModel);
     ui->treeView->setRootIndex(m_fileSystemModel->index(projectDir));
     ui->treeView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
-
-    QString font;
-
-
-    font = settings.value("font", "Monospace").toString();
-
-
-    ui->textEdit->setFont(QFont(font));
-    ui->textEdit->setStyleSheet("QPlainTextEdit {"
-                                "background-color: #fdf6e3;"
-                                "color: #073642;"
-    "}");
-
-    const int tabStop = 4;  // 4 characters
-
-    QFontMetrics metrics(ui->textEdit->font());
-    ui->textEdit->setTabStopWidth(tabStop * metrics.width(' '));
-
-    m_highlighter = new TiHighlighter(ui->textEdit->document());
+    
+    ui->editorTabs->setTabsClosable(true);
 
     settings.endGroup();
     
     connect(ui->actionNew, SIGNAL(triggered()), this, SLOT(on_actionNew_triggered()));
     connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(on_actionSave_triggered()));
+    connect(ui->editorTabs, SIGNAL(tabCloseRequested(int)), this, SLOT(on_editorTab_closeTab(int)));
 }
 
 EditorWindow::~EditorWindow()
 {
     delete m_fileSystemModel;
-    delete m_highlighter;
     delete ui;
 }
-
+void EditorWindow::save()
+{
+    for(int i = 0; i < ui->editorTabs->count(); ++i)
+    {
+        CodeEditor *editor = dynamic_cast<CodeEditor*>(ui->editorTabs->widget(i));
+        if(editor) {
+            editor->save();
+        }
+    }
+}
+int EditorWindow::getTabOfItem(const QString &path)
+{
+    int i = 0;
+    for(i = 0; i < ui->editorTabs->count(); ++i)
+    {
+        CodeEditor *editor = dynamic_cast<CodeEditor*>(ui->editorTabs->widget(i));
+        if(editor) {
+            if(editor->filepath() == path) {
+                return i;
+            }
+        }
+    }
+    return -1;
+}
+void EditorWindow::openFile(const QString &path)
+{
+    CodeEditor *editor = new CodeEditor(ui->editorTabs);
+    editor->setFilepath(path);
+    QStringList strList = path.split(QDir::separator());
+    ui->editorTabs->addTab(editor, strList.back());
+}
 void EditorWindow::on_treeView_doubleClicked(const QModelIndex &index)
 {
     QString path = index.data(QFileSystemModel::FilePathRole).toString();
-    QFile *file = new QFile(path);
-
-    if(!m_fileSystemModel->isDir(index)) {
-        file->open(QFile::ReadWrite | QFile::Text | QFile::Truncate);
-        ui->textEdit->document()->setPlainText(file->readAll());
-        ui->textEdit->setFilepath(path);
-        ui->textEdit->setFile(file);
+    
+    if(m_fileSystemModel->isDir(index)) {
+        return;
     }
+
+    // Check if the item is already in one of the tabs. 
+    int id = getTabOfItem(path);
+    if(id != -1) {
+        ui->editorTabs->setCurrentIndex(id);
+        return;
+    }
+    
+    QFile file(path);
+    if(!file.exists()) {
+        //Error!
+        return;
+    }
+ 
+    openFile(path);
 }
 
 void EditorWindow::on_actionFonz_triggered()
@@ -79,9 +103,8 @@ void EditorWindow::on_actionFonz_triggered()
     QSettings settings;
     settings.beginGroup("EditorWindow");
     bool ok;
-    QFont font = QFontDialog::getFont(&ok, ui->textEdit->font());
+    QFont font = QFontDialog::getFont(&ok);
     if(ok) {
-        ui->textEdit->setFont(font);
         settings.setValue("font", font);
     }
     settings.endGroup();
@@ -89,23 +112,19 @@ void EditorWindow::on_actionFonz_triggered()
 
 void EditorWindow::on_actionNew_triggered()
 {
-    if(ui->textEdit->changed()) {
-        ui->textEdit->save();
-    }
+    save();
     QString path = QFileDialog::getSaveFileName(this, tr("New File"), m_fileSystemModel->rootPath() + "/Program.82c", tr("82c Files (*.82c)"));
     if(path != "") {
-        QFile *file = new QFile(path);
-        
-        file->open(QFile::ReadWrite | QFile::Text | QFile::Truncate);
-        
-        ui->textEdit->setFile(file);
-        ui->textEdit->setFilepath(path);
+        openFile(path);
     }
 }
 
 void EditorWindow::on_actionSave_triggered()
 {
-    ui->textEdit->save();
+    CodeEditor *editor = dynamic_cast<CodeEditor*>(ui->editorTabs->currentWidget());
+    if(editor) {
+        editor->save();
+    }
 }
 
 void EditorWindow::on_actionQuit_triggered()
@@ -122,4 +141,14 @@ void EditorWindow::on_actionSet_main_directory_triggered()
     settings.endGroup();
     m_fileSystemModel->setRootPath(dir);
     ui->treeView->setRootIndex(m_fileSystemModel->index(dir));
+}
+void EditorWindow::on_editorTab_closeTab(int index)
+{  
+    if(index != -1) {
+        QWidget *tab = ui->editorTabs->widget(index);
+        ui->editorTabs->removeTab(index);
+        
+        delete tab;
+        tab = 0;
+    }
 }

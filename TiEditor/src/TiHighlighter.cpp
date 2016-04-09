@@ -41,7 +41,6 @@
 #include <TiHighlighter.hpp>
 
 TiHighlighter::TiHighlighter(QTextDocument *parent)
-    : QSyntaxHighlighter(parent)
 {
     HighlightingRule rule;
 
@@ -83,35 +82,7 @@ TiHighlighter::TiHighlighter(QTextDocument *parent)
     commentStartExpression = QRegExp("/\\*");
     commentEndExpression = QRegExp("\\*/");
 }
-
-void TiHighlighter::highlightBlock(const QString &text)
+void TiHighlighter::styleText(int start, int end)
 {
-    Q_FOREACH (const HighlightingRule &rule, highlightingRules) {
-        QRegExp expression(rule.pattern);
-        int index = expression.indexIn(text);
-        while (index >= 0) {
-            int length = expression.matchedLength();
-            setFormat(index, length, rule.format);
-            index = expression.indexIn(text, index + length);
-        }
-    }
-    setCurrentBlockState(0);
-
-    int startIndex = 0;
-    if (previousBlockState() != 1)
-        startIndex = commentStartExpression.indexIn(text);
-
-    while (startIndex >= 0) {
-        int endIndex = commentEndExpression.indexIn(text, startIndex);
-        int commentLength;
-        if (endIndex == -1) {
-            setCurrentBlockState(1);
-            commentLength = text.length() - startIndex;
-        } else {
-            commentLength = endIndex - startIndex
-                            + commentEndExpression.matchedLength();
-        }
-        setFormat(startIndex, commentLength, multiLineCommentFormat);
-        startIndex = commentStartExpression.indexIn(text, startIndex + commentLength);
-    }
+    
 }

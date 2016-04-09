@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QFileSystemModel>
-#include <TiHighlighter.hpp>
 #include <QSettings>
 
 namespace Ui {
@@ -17,7 +16,10 @@ class EditorWindow : public QMainWindow
 public:
     explicit EditorWindow(QWidget *parent = 0);
     ~EditorWindow();
-
+    
+    void save();
+    int getTabOfItem(const QString &path);
+    void openFile(const QString &path);
 private Q_SLOTS:
     void on_treeView_doubleClicked(const QModelIndex &index);
 
@@ -30,12 +32,13 @@ private Q_SLOTS:
     void on_actionSave_triggered();
 
     void on_actionSet_main_directory_triggered();
+    
+    void on_editorTab_closeTab(int index);
 
 private:
     Ui::EditorWindow *ui;
 
     QFileSystemModel *m_fileSystemModel;
-    TiHighlighter *m_highlighter;
 };
 
 #endif // EDITORWINDOW_HPP

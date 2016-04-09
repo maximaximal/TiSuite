@@ -42,48 +42,49 @@
 #include <CodeEditor.hpp>
 
 
-CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent), m_changed(false), m_file(0)
+CodeEditor::CodeEditor(QWidget *parent) : QsciScintilla(parent), m_changed(false)
 {
-    lineNumberArea = new LineNumberArea(this);
-
-    connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateLineNumberAreaWidth(int)));
-    connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
-    connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(highlightCurrentLine()));
     connect(this, SIGNAL(textChanged()), this, SLOT(textChanged()));
+    QSettings settings;
+    settings.beginGroup("EditorWindow");
+    
+    QString font;
 
-    updateLineNumberAreaWidth(0);
-    highlightCurrentLine();
+
+    font = settings.value("font", "Monospace").toString();
+
+    QFont qFont(font);
+
+    setFont(qFont);
+    setStyleSheet("QsciScintilla {"
+                                "background-color: #fdf6e3;"
+                                "color: #073642;"
+    "}");
+
+    const int tabStop = 4;  // 4 characters
+
+    setTabWidth(4);
+    setMarginWidth(0, 40);
+    setMarginLineNumbers(3, true);
+    setMarginType(0, QsciScintilla::NumberMargin);
+    setAutoIndent(true);
+    setBraceMatching(QsciScintilla::StrictBraceMatch);
+    setAutoCompletionSource(QsciScintilla::AcsAll);
+    setAutoCompletionFillupsEnabled(true);
+    setAutoCompletionThreshold(2);
+    setCaretWidth(10);
+    setUtf8(true);
+    
+    m_highlighter = new TiCLexer(this);
+    m_highlighter->setDefaultFont(qFont);
+    setLexer(m_highlighter);
+    
+    settings.endGroup();
 }
 CodeEditor::~CodeEditor()
 {
-    if(m_file) {
-        m_file->close();
-        delete m_file;
-        m_file = 0;
-    }
-}
-
-
-
-int CodeEditor::lineNumberAreaWidth()
-{
-    int digits = 1;
-    int max = qMax(1, blockCount());
-    while (max >= 10) {
-        max /= 10;
-        ++digits;
-    }
-
-    int space = 3 + fontMetrics().width(QLatin1Char('9')) * digits;
-
-    return space;
-}
-
-
-
-void CodeEditor::updateLineNumberAreaWidth(int /* newBlockCount */)
-{
-    setViewportMargins(lineNumberAreaWidth(), 0, 0, 0);
+    if(m_highlighter)
+        delete m_highlighter;
 }
 
 void CodeEditor::textChanged()
@@ -93,6 +94,20 @@ void CodeEditor::textChanged()
 void CodeEditor::setFilepath(const QString &path)
 {
     m_path = path;
+    QFile file(path);
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        return;
+    }
+    
+    clear();
+    
+    qDebug() << "Open " << path;
+    
+    QTextStream inStream(&file);
+    while(!inStream.atEnd()) 
+    {
+        append(inStream.readLine() + "\n");
+    }
 }
 const QString &CodeEditor::filepath()
 {
@@ -102,93 +117,15 @@ bool CodeEditor::changed()
 {
     return m_changed;
 }
-QFile *CodeEditor::file()
-{
-    return m_file;
-}
-void CodeEditor::setFile(QFile *file)
-{
-    if(m_file) {
-        delete m_file;
-        m_file = 0;
-    }
-    m_file = file;
-}
 void CodeEditor::save()
 {
-    if(m_file) {
-        QTextStream stream(m_file);
-        stream << toPlainText();
-        stream.flush();
+    QFile out(m_path);
+    
+    if(!out.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        return;
     }
-}
-
-void CodeEditor::updateLineNumberArea(const QRect &rect, int dy)
-{
-    if (dy)
-        lineNumberArea->scroll(0, dy);
-    else
-        lineNumberArea->update(0, rect.y(), lineNumberArea->width(), rect.height());
-
-    if (rect.contains(viewport()->rect()))
-        updateLineNumberAreaWidth(0);
-}
-
-
-
-void CodeEditor::resizeEvent(QResizeEvent *e)
-{
-    QPlainTextEdit::resizeEvent(e);
-
-    QRect cr = contentsRect();
-    lineNumberArea->setGeometry(QRect(cr.left(), cr.top(), lineNumberAreaWidth(), cr.height()));
-}
-
-
-
-void CodeEditor::highlightCurrentLine()
-{
-    QList<QTextEdit::ExtraSelection> extraSelections;
-
-    if (!isReadOnly()) {
-        QTextEdit::ExtraSelection selection;
-
-        QColor lineColor = QColor(Qt::yellow).lighter(160);
-
-        selection.format.setBackground(lineColor);
-        selection.format.setProperty(QTextFormat::FullWidthSelection, true);
-        selection.cursor = textCursor();
-        selection.cursor.clearSelection();
-        extraSelections.append(selection);
-    }
-
-    setExtraSelections(extraSelections);
-}
-
-
-
-void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
-{
-    QPainter painter(lineNumberArea);
-    painter.fillRect(event->rect(), Qt::lightGray);
-
-
-    QTextBlock block = firstVisibleBlock();
-    int blockNumber = block.blockNumber();
-    int top = (int) blockBoundingGeometry(block).translated(contentOffset()).top();
-    int bottom = top + (int) blockBoundingRect(block).height();
-
-    while (block.isValid() && top <= event->rect().bottom()) {
-        if (block.isVisible() && bottom >= event->rect().top()) {
-            QString number = QString::number(blockNumber + 1);
-            painter.setPen(Qt::black);
-            painter.drawText(0, top, lineNumberArea->width(), fontMetrics().height(),
-                             Qt::AlignRight, number);
-        }
-
-        block = block.next();
-        top = bottom;
-        bottom = top + (int) blockBoundingRect(block).height();
-        ++blockNumber;
-    }
+    
+    QTextStream stream(&out);
+    stream << text();
+    stream.flush();
 }

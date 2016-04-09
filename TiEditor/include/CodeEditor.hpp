@@ -41,8 +41,9 @@
 #ifndef CODEEDITOR_H
 #define CODEEDITOR_H
 
-#include <QPlainTextEdit>
 #include <QObject>
+#include <Qsci/qsciscintilla.h>
+#include <TiCLexer.hpp>
 
 class QPaintEvent;
 class QResizeEvent;
@@ -52,7 +53,7 @@ class QWidget;
 class LineNumberArea;
 
 
-class CodeEditor : public QPlainTextEdit
+class CodeEditor : public QsciScintilla
 {
     Q_OBJECT
 
@@ -60,51 +61,18 @@ public:
     CodeEditor(QWidget *parent = 0);
     virtual ~CodeEditor();
 
-    void lineNumberAreaPaintEvent(QPaintEvent *event);
-    int lineNumberAreaWidth();
-    
     bool changed();
     void setFilepath(const QString &path);
     const QString& filepath();
-    void setFile(QFile *file);
-    QFile* file();
     void save();
 protected:
-    void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    void updateLineNumberAreaWidth(int newBlockCount);
-    void highlightCurrentLine();
-    void updateLineNumberArea(const QRect &, int);
     void textChanged();
 
 private:
-    QWidget *lineNumberArea;
+    TiCLexer *m_highlighter;
     QString m_path;
-    QFile *m_file;
     bool m_changed;
 };
-
-
-class LineNumberArea : public QWidget
-{
-public:
-    LineNumberArea(CodeEditor *editor) : QWidget(editor) {
-        codeEditor = editor;
-    }
-
-    QSize sizeHint() const Q_DECL_OVERRIDE {
-        return QSize(codeEditor->lineNumberAreaWidth(), 0);
-    }
-
-protected:
-    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE {
-        codeEditor->lineNumberAreaPaintEvent(event);
-    }
-
-private:
-    CodeEditor *codeEditor;
-};
-
-
 #endif

@@ -1,21 +1,20 @@
 #ifndef TIHIGHLIGHTER_HPP
 #define TIHIGHLIGHTER_HPP
 
+#include <Qsci/qscilexercustom.h>
 #include <QSyntaxHighlighter>
 #include <QTextCharFormat>
 
 class QTextDocument;
 
-class TiHighlighter : public QSyntaxHighlighter
+class TiHighlighter : QsciLexerCustom
 {
     Q_OBJECT
 
 public:
     TiHighlighter(QTextDocument *parent = 0);
-
-protected:
-    void highlightBlock(const QString &text) Q_DECL_OVERRIDE;
-
+    
+    virtual void styleText(int start, int end);
 private:
     struct HighlightingRule
     {
