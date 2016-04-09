@@ -149,6 +149,10 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         case TokenType::NUMBER:
             if(functionCall) {
                 boost::static_pointer_cast<FunctionCall>(back())->pushArg(std::make_unique<Number>(it->second));
+            } else {
+                auto cmd = std::make_unique<Command>(it->second);
+                cmd->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(cmd));
             }
             break;
         case TokenType::FUNCTION_CALL:
