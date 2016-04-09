@@ -39,7 +39,7 @@ int main(int argc, char** argv)
     ErrorHandler handler;
     OutputMgr outputMgr;
     AST ast(&handler, &outputMgr);
-    ast.initPython(argc, argv);
+    ast.initPython(argc, *argv);
     setlocale( LC_ALL, "" );
     std::string toolkitPath;
     

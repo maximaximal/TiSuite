@@ -25,11 +25,13 @@ set(SRCS
     ${SRC}/main.cpp
     ${SRC}/CodeEditor.cpp
     ${SRC}/EditorWindow.cpp 
+    ${SRC}/TiCCompile.cpp 
     ${SRC}/TiCLexer.cpp 
 )
 set(HDRS
     ${HDR}/CodeEditor.hpp
     ${HDR}/EditorWindow.hpp 
+    ${HDR}/TiCCompile.hpp 
     ${HDR}/TiCLexer.hpp
 )
 set(RSCS
@@ -74,4 +76,4 @@ target_link_libraries(tiedit tic)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../TiC/include)
 
 # C++11
-set (CMAKE_CXX_FLAGS "--std=gnu++11 ${CMAKE_CXX_FLAGS}")
+set (CMAKE_CXX_FLAGS "--std=gnu++14 ${CMAKE_CXX_FLAGS}")

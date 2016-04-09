@@ -19,9 +19,10 @@ public:
     
     void generateFromTokenizedBlock(SourceBlock *block);
     
-    void initPython(int argc, char** argv);
+    void initPython(int argc, char* argv);
     void exitPython();
     void generateTICode(const std::string &toolkitPath);
+    ast::List* rootList();
 private:
     SourceBlock *m_rootBlock = nullptr;
     ErrorHandler *m_errorHandler;

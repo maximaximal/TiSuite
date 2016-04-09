@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QFileSystemModel>
 #include <QSettings>
+#include <TiCCompile.hpp>
 
 namespace Ui {
 class EditorWindow;
@@ -30,8 +31,12 @@ private Q_SLOTS:
     void on_actionNew_triggered();
     
     void on_actionSave_triggered();
+    
+    void on_actionCompile_triggered();
 
     void on_actionSet_main_directory_triggered();
+    
+    void on_actionSet_toolkit_triggered();
     
     void on_editorTab_closeTab(int index);
 
@@ -39,6 +44,7 @@ private:
     Ui::EditorWindow *ui;
 
     QFileSystemModel *m_fileSystemModel;
+    TiCCompile *m_compileWindow = nullptr;
 };
 
 #endif // EDITORWINDOW_HPP

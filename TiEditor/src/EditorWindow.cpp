@@ -8,6 +8,7 @@
 #include <QFontMetrics>
 #include <QFileDialog>
 
+
 EditorWindow::EditorWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::EditorWindow)
@@ -33,13 +34,18 @@ EditorWindow::EditorWindow(QWidget *parent) :
 
     settings.endGroup();
     
-    connect(ui->actionNew, SIGNAL(triggered()), this, SLOT(on_actionNew_triggered()));
-    connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(on_actionSave_triggered()));
-    connect(ui->editorTabs, SIGNAL(tabCloseRequested(int)), this, SLOT(on_editorTab_closeTab(int)));
+    connect(ui->actionNew, SIGNAL(triggered()), this, SLOT(on_actionNew_triggered()), Qt::UniqueConnection);
+    connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(on_actionSave_triggered()), Qt::UniqueConnection);
+    connect(ui->actionCompile, SIGNAL(triggered()), this, SLOT(on_actionCompile_triggered()), Qt::UniqueConnection);
+    connect(ui->editorTabs, SIGNAL(tabCloseRequested(int)), this, SLOT(on_editorTab_closeTab(int)), Qt::UniqueConnection);
+    connect(ui->actionSet_toolkit, SIGNAL(triggered()), this, SLOT(actionSet_toolkit()), Qt::UniqueConnection);
 }
 
 EditorWindow::~EditorWindow()
 {
+    if(m_compileWindow)
+        delete m_compileWindow;
+    
     delete m_fileSystemModel;
     delete ui;
 }
@@ -123,6 +129,20 @@ void EditorWindow::on_actionNew_triggered()
         openFile(path);
     }
 }
+void EditorWindow::on_actionCompile_triggered()
+{
+    if(ui->editorTabs->currentWidget() != nullptr) {
+        if(!m_compileWindow) {
+            m_compileWindow = new TiCCompile();
+        }
+        m_compileWindow->show();
+        
+        QSettings settings;
+        settings.beginGroup("EditorWindow");
+        m_compileWindow->compile(static_cast<CodeEditor*>(ui->editorTabs->currentWidget())->filepath(), 
+                        settings.value("toolkit").toString());
+    }
+}
 
 void EditorWindow::on_actionSave_triggered()
 {
@@ -138,7 +158,14 @@ void EditorWindow::on_actionQuit_triggered()
 {
     close();
 }
-
+void EditorWindow::on_actionSet_toolkit_triggered()
+{
+    QString dir = QFileDialog::getExistingDirectory(this);
+    QSettings settings;
+    settings.beginGroup("EditorWindow");
+    settings.setValue("toolkit", dir);
+    settings.endGroup();
+}
 void EditorWindow::on_actionSet_main_directory_triggered()
 {
     QString dir = QFileDialog::getExistingDirectory(this);

@@ -161,14 +161,19 @@ void initPythonModules()
     PyImport_AppendInittab("ast", PyInit_ast);
     PyImport_AppendInittab("tic", PyInit_tic);
 }
-void AST::initPython(int argc, char **argv)
+void AST::initPython(int argc, char *argv)
 {
     initPythonModules();
     
-    wchar_t *name = GetWC(argv[0]);
-    Py_SetProgramName(name);
-    delete name;
+    if(argc > 0) {
+        wchar_t *name = GetWC((&argv)[0]);
+        Py_SetProgramName(name);
+        delete name;
+    } else {
+        Py_SetProgramName(L"ticf");
+    }
     Py_InitializeEx(0);
+    
     
 }
 void AST::exitPython()
@@ -206,5 +211,9 @@ void AST::generateTICode(const std::string &toolkitPath)
         PyErr_Print();
         PyErr_Clear();
     }
+}
+ast::List* AST::rootList()
+{
+    return m_rootList;
 }
 }

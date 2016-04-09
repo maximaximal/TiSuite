@@ -28,7 +28,7 @@
     <item>
      <widget class="QTabWidget" name="editorTabs">
       <property name="currentIndex">
-       <number>0</number>
+       <number>-1</number>
       </property>
      </widget>
     </item>
@@ -70,6 +70,7 @@
      <string>Pro&amp;ject</string>
     </property>
     <addaction name="actionSet_main_directory"/>
+    <addaction name="actionSet_toolkit"/>
    </widget>
    <addaction name="menuDatei"/>
    <addaction name="menuProject"/>
@@ -138,15 +139,13 @@
     <string>Ctrl+S</string>
    </property>
   </action>
+  <action name="actionSet_toolkit">
+   <property name="text">
+    <string>Set toolkit</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>CodeEditor</class>
-   <extends>QTextEdit</extends>
-   <header location="global">CodeEditor.hpp</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
