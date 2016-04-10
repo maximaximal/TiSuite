@@ -5,9 +5,12 @@
 #include <tic/Lexer.hpp>
 #include <tic/SourceBlock.hpp>
 #include <tic/AST.hpp>
+#include <tic/Type.hpp>
 #include <tic/ast/Node.hpp>
 #include <tic/ast/List.hpp>
 #include <tic/ast/Command.hpp>
+#include <tic/ast/Variable.hpp>
+#include <tic/ast/VariableDeclaration.hpp>
 #include <boost/shared_ptr.hpp>
 #include <QPlainTextEdit>
 
@@ -16,13 +19,22 @@
 class ASTTreeItem : public QTreeWidgetItem
 {
 public:
-    ASTTreeItem(QTreeWidgetItem *parent, tic::ast::Node *node) 
+    ASTTreeItem(QTreeWidgetItem *parent, tic::ast::Node *node, int i) 
         : QTreeWidgetItem(parent), m_node(node)
     {
-        setText(0, QString::fromStdString(node->toString()));
+        setText(0, QString::number(i));
+        setText(1, QString::fromStdString(node->toString()));
         
         if(node->type() == tic::ast::NodeType::Command) {
-            setText(1, QString::fromStdString(static_cast<tic::ast::Command*>(node)->command()));
+            setText(2, QString::fromStdString(static_cast<tic::ast::Command*>(node)->command()));
+        }
+        if(node->type() == tic::ast::NodeType::VariableDeclaration) {
+            tic::ast::VariableDeclaration *decl = static_cast<tic::ast::VariableDeclaration*>(node);
+            setText(2, QString::fromStdString("(" + decl->type()->toString() + ") " + decl->varName()));
+        }
+        if(node->type() == tic::ast::NodeType::Variable) {
+            tic::ast::Variable *var = static_cast<tic::ast::Variable*>(node);
+            setText(2, QString::fromStdString(var->varName()));
         }
     }
     virtual ~ASTTreeItem()
@@ -56,19 +68,20 @@ void TiCCompile::clear()
     
     m_errorHandler->clearErrors();
 }
-void TiCCompile::parseAstTree(tic::ast::List* list, QTreeWidgetItem *item)
+void TiCCompile::parseAstTree(tic::ast::List* list, QTreeWidgetItem *item, int *i)
 {
     for(auto node : *(list))
     {
+        ++*i;
         boost::shared_ptr<tic::ast::List> subList = boost::dynamic_pointer_cast<tic::ast::List>(node);
         if(subList) {
             //This is an additional list!
-            ASTTreeItem *subItem = new ASTTreeItem(item, static_cast<tic::ast::Node*>(subList.get()));
+            ASTTreeItem *subItem = new ASTTreeItem(item, static_cast<tic::ast::Node*>(subList.get()), *i);
             
-            parseAstTree(subList.get(), subItem);
+            parseAstTree(subList.get(), subItem, i);
         } else {
             // Just output the node. 
-            item->addChild(new ASTTreeItem(item, node.get()));
+            item->addChild(new ASTTreeItem(item, node.get(), *i));
         }
     }
 }
@@ -79,7 +92,6 @@ void TiCCompile::compile(const QString& file, const QString& toolkit)
     using namespace tic;
     
     Q_DebugStream dbg(std::cout, ui->dbgOut);
-    Q_DebugStream dbg2(std::cerr, ui->dbgOut);
     
     Lexer lexer;
     OutputMgr output;
@@ -100,10 +112,13 @@ void TiCCompile::compile(const QString& file, const QString& toolkit)
     ast.generateTICode(toolkit.toStdString());
     
     QTreeWidgetItem *item = new QTreeWidgetItem(ui->astTree);
-    item->setText(0, "Root List");
+    item->setText(0, QString::number(0));
+    item->setText(1, "Root List");
     ui->astTree->addTopLevelItem(item);
     
-    parseAstTree(ast.rootList(), item);
+    int i = 0;
+    
+    parseAstTree(ast.rootList(), item, &i);
     
     for(auto file : *(output.files()))
     {

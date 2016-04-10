@@ -10,7 +10,7 @@ namespace ast
 class VariableDeclaration : public Node
 {
 public:
-    VariableDeclaration(Type type, const std::string &varName);
+    VariableDeclaration(Type type, const std::string &varName, const std::string &nodeName = "VariableDeclaration", NodeType nodeType = NodeType::VariableDeclaration);
     virtual ~VariableDeclaration();
     
     Type* type();

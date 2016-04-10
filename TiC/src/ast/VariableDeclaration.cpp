@@ -4,8 +4,8 @@ namespace tic
 {
 namespace ast 
 {
-VariableDeclaration::VariableDeclaration(Type type, const std::string &varName)
-    : Node("VariableDeclaration", NodeType::VariableDeclaration), m_type(type), m_varName(varName)
+VariableDeclaration::VariableDeclaration(Type type, const std::string &varName, const std::string &nodeName, NodeType nodeType)
+    : Node(nodeName, nodeType), m_type(type), m_varName(varName)
 {
 
 }

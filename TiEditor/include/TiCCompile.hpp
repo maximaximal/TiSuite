@@ -19,7 +19,7 @@ public:
     
     void clear();
     void compile(const QString &file, const QString &toolkit);
-    void parseAstTree(tic::ast::List *list, QTreeWidgetItem *item);
+    void parseAstTree(tic::ast::List *list, QTreeWidgetItem *item, int *i);
 private:
     Ui::TiCCompile *ui;
     tic::ErrorHandler *m_errorHandler;

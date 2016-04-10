@@ -1,5 +1,7 @@
 #include <tic/ast/Variable.hpp>
 #include <tic/ErrorHandler.hpp>
+#include <tic/ast/Function.hpp>
+#include <tic/ast/FunctionParameter.hpp>
 
 namespace tic
 {
@@ -33,6 +35,17 @@ bool Variable::searchDeclaration(List &nodes)
     {
         boost::shared_ptr<VariableDeclaration> declaration = boost::dynamic_pointer_cast<VariableDeclaration>(*it);
         if(declaration) {
+            if(declaration->varName() == varName()) {
+                setDeclaration(declaration.get());
+                found = true;
+            }
+        }
+    }
+    if(nodes.type() == NodeType::Function || nodes.type() == NodeType::Program) {
+        Function *func = static_cast<Function*>(&nodes);
+        for(auto param : *(func->parameters()))
+        {
+            boost::shared_ptr<FunctionParameter> declaration = boost::dynamic_pointer_cast<FunctionParameter>(param);
             if(declaration->varName() == varName()) {
                 setDeclaration(declaration.get());
                 found = true;

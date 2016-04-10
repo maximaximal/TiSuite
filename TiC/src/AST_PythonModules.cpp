@@ -120,11 +120,7 @@ BOOST_PYTHON_MODULE(ast)
         .add_property("content", make_function(&ast::Unsafe::content, return_value_policy<copy_const_reference>()),
             make_function(&ast::Unsafe::setContent))
     ;
-    class_<ast::FunctionParameter, bases<ast::Node>, boost::noncopyable>("FunctionParameter", boost::python::no_init)
-        .add_property("type", make_function(&ast::FunctionParameter::type, return_value_policy<reference_existing_object>()), 
-            make_function(&ast::FunctionParameter::setType))
-        .add_property("name", make_function(&ast::FunctionParameter::varName, return_value_policy<copy_const_reference>()), 
-            make_function(&ast::FunctionParameter::setVarName))
+    class_<ast::FunctionParameter, bases<ast::VariableDeclaration>, boost::noncopyable>("FunctionParameter", boost::python::no_init)
         .add_property("assigned_name", make_function(&ast::FunctionParameter::assignedVarName, return_value_policy<copy_const_reference>()), 
             make_function(&ast::FunctionParameter::setAssignedVarName))
     ;
