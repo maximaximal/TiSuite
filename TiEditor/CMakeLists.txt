@@ -66,6 +66,7 @@ add_dependencies(lib_qscintilla project_qscintilla)
 set(QSCINTILLA_INCLUDE_DIRS )
 include_directories("${CMAKE_CURRENT_BINARY_DIR}/qscintilla-2.9.1/src/project_qscintilla/Qt4Qt5")
 
+add_dependencies(tiedit project_qscintilla)
 target_link_libraries(tiedit lib_qscintilla)
 
 target_link_libraries(tiedit Qt5::Widgets Qt5::Qml Qt5::Quick)
@@ -75,5 +76,5 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../TiC/ TiC)
 target_link_libraries(tiedit tic)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../TiC/include)
 
-# C++11
+# C++14
 set (CMAKE_CXX_FLAGS "--std=gnu++14 ${CMAKE_CXX_FLAGS}")

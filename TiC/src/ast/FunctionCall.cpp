@@ -48,15 +48,13 @@ void FunctionCall::pushArg(const std::string &varName, List &nodes)
     }
     
     if(nodes.type() == NodeType::Function || nodes.type() == NodeType::Program) {
-        Function *func = static_cast<Function*>(&nodes);
-        for(auto param : *(func->parameters()))
+        Function &func = static_cast<Function&>(nodes);
+        for(auto it = func.parameters()->begin(); it != func.parameters()->end(); ++it)
         {
-            boost::shared_ptr<VariableDeclaration> declaration = boost::dynamic_pointer_cast<VariableDeclaration>(param);
-            if(declaration) {
-                if(declaration->varName() == varName) {
-                    m_arguments.push_back(declaration);
-                    found = true;
-                }
+            boost::shared_ptr<FunctionParameter> declaration = boost::static_pointer_cast<FunctionParameter>(*it);
+            if(declaration->varName() == varName) {
+                m_arguments.push_back(*it);
+                found = true;
             }
         }
     }
