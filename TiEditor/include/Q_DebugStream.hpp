@@ -12,16 +12,19 @@
 class Q_DebugStream : public std::basic_streambuf<char>
 {
 public:
-    Q_DebugStream(std::ostream &stream, QTextEdit* text_edit) : m_stream(stream)
+    Q_DebugStream(std::ostream &stream, std::ostream &stream2, QTextEdit* text_edit) : m_stream(stream), m_stream2(stream2)
     {
         log_window = text_edit;
         m_old_buf = stream.rdbuf();
+        m_old_buf2 = stream2.rdbuf();
         stream.rdbuf(this);
+        stream2.rdbuf(this);
     }
     
     ~Q_DebugStream()
     {
         m_stream.rdbuf(m_old_buf);
+        m_stream2.rdbuf(m_old_buf2);
     }
     
     static void registerQDebugMessageHandler(){
@@ -69,7 +72,9 @@ protected:
     
 private:
     std::ostream &m_stream;
+    std::ostream &m_stream2;
     std::streambuf *m_old_buf;
+    std::streambuf *m_old_buf2;
     QTextEdit* log_window;
 };
 

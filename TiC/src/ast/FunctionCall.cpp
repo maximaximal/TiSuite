@@ -53,7 +53,7 @@ void FunctionCall::pushArg(const std::string &varName, List &nodes)
         {
             boost::shared_ptr<FunctionParameter> declaration = boost::static_pointer_cast<FunctionParameter>(*it);
             if(declaration->varName() == varName) {
-                m_arguments.push_back(*it);
+                //m_arguments.push_back(*it);
                 found = true;
             }
         }

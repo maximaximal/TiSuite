@@ -91,7 +91,7 @@ void TiCCompile::compile(const QString& file, const QString& toolkit)
     
     using namespace tic;
     
-    Q_DebugStream dbg(std::cout, ui->dbgOut);
+    Q_DebugStream dbg(std::cout, std::cerr, ui->dbgOut);
     
     Lexer lexer;
     OutputMgr output;

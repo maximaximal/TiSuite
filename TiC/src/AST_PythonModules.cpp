@@ -13,6 +13,7 @@
 #include <iostream>
 
 #include <boost/container/vector.hpp>
+#include <boost/circular_buffer.hpp>
 #include <tic/ast/List.hpp>
 #include <tic/ast/Function.hpp>
 #include <tic/ast/FunctionCall.hpp>
@@ -28,6 +29,34 @@
 using std::cout;
 using std::endl;
 
+// Taken from https://onegazhang.wordpress.com/2008/09/30/redirect-python-stdoutstderr-via-boost-python/
+class PythonStdIoRedirect {
+public:
+    typedef boost::circular_buffer<std::string> ContainerType;
+    void Write( std::string const& str ) {
+        if (m_outputs.capacity()<100)
+            m_outputs.resize(100);
+        m_outputs.push_back(str);
+    }
+    static std::string GetOutput()
+    {
+        std::string ret;
+        std::stringstream ss;
+        for(boost::circular_buffer<std::string>::const_iterator it=m_outputs.begin();
+            it!=m_outputs.end();
+        it++)
+            {
+                ss << *it;
+            }
+            m_outputs.clear();
+            ret =  ss.str();
+            return ret;
+    }
+private:
+    static ContainerType m_outputs; // must be static, otherwise output is missing
+};
+PythonStdIoRedirect::ContainerType PythonStdIoRedirect::m_outputs = ContainerType();
+
 // Thanks to http://stackoverflow.com/a/8032108
 wchar_t *GetWC(const char *c)
 {
@@ -41,8 +70,12 @@ wchar_t *GetWC(const char *c)
 namespace tic
 {
 using namespace boost::python;
+
 BOOST_PYTHON_MODULE(tic)
 {
+    class_<PythonStdIoRedirect>("PythonStdIoRedirect", init<>())
+        .def("write", &PythonStdIoRedirect::Write)
+    ;
     enum_<tic::Type::TypeEnum>("ValueType")
         .value("Number", tic::Type::NUMBER)
         .value("Matrix", tic::Type::MATRIX)
@@ -120,10 +153,6 @@ BOOST_PYTHON_MODULE(ast)
         .add_property("content", make_function(&ast::Unsafe::content, return_value_policy<copy_const_reference>()),
             make_function(&ast::Unsafe::setContent))
     ;
-    class_<ast::FunctionParameter, bases<ast::VariableDeclaration>, boost::noncopyable>("FunctionParameter", boost::python::no_init)
-        .add_property("assigned_name", make_function(&ast::FunctionParameter::assignedVarName, return_value_policy<copy_const_reference>()), 
-            make_function(&ast::FunctionParameter::setAssignedVarName))
-    ;
     class_<ast::FunctionCall, bases<ast::Node>, boost::noncopyable>("FunctionCall", boost::python::no_init)
         .add_property("name", make_function(&ast::FunctionCall::functionName, return_value_policy<copy_const_reference>()))
         .add_property("declaration", make_function(&ast::FunctionCall::declaration, return_value_policy<reference_existing_object>()))
@@ -134,6 +163,10 @@ BOOST_PYTHON_MODULE(ast)
             make_function(&ast::VariableDeclaration::setVarName))
         .add_property("type", make_function(&ast::VariableDeclaration::type, return_value_policy<reference_existing_object>()), 
             make_function(&ast::VariableDeclaration::setType))
+    ;
+    class_<ast::FunctionParameter, bases<ast::VariableDeclaration>, boost::noncopyable>("FunctionParameter", boost::python::no_init)
+        .add_property("assigned_name", make_function(&ast::FunctionParameter::assignedVarName, return_value_policy<copy_const_reference>()), 
+            make_function(&ast::FunctionParameter::setAssignedVarName))
     ;
     class_<ast::UnsafeVariable, bases<ast::Node>, boost::noncopyable>("UnsafeVariable", boost::python::no_init)
         .add_property("var", make_function(&ast::UnsafeVariable::variable, return_value_policy<copy_const_reference>()), 
@@ -180,28 +213,22 @@ void AST::generateTICode(const std::string &toolkitPath)
 {
     using namespace boost::python;
     
-    // Redirect to stdout done using http://stackoverflow.com/a/4307737
-    std::string stdOutErr =
-    "import sys\n\
-    class CatchOutErr:\n\
-    def __init__(self):\n\
-    self.value = ''\n\
-    def write(self, txt):\n\
-    self.value += txt\n\
-    catchOutErr = CatchOutErr()\n\
-    sys.stdout = catchOutErr\n\
-    sys.stderr = catchOutErr\n\
-    "; //this is python code to redirect stdouts/stderr
+    PythonStdIoRedirect redirect;
     
     try {
         object main = import("__main__");
         object globals(main.attr("__dict__"));
-        
+            
+        globals["sys"] = import("sys");
+                
         object tic_module((handle<>(PyImport_ImportModule("tic"))));
         globals["tic"] = tic_module;
         
         object ast_module((handle<>(PyImport_ImportModule("ast"))));
         globals["ast"] = ast_module;
+        
+        globals["sys"].attr("stderr") = boost::ref(redirect);
+        globals["sys"].attr("stdout") = boost::ref(redirect); 
         
         PyObject* sysPath = PySys_GetObject("path");
         PyList_Insert( sysPath, 0, PyUnicode_FromString(toolkitPath.c_str()));
@@ -215,16 +242,16 @@ void AST::generateTICode(const std::string &toolkitPath)
         
         cout << "Executing python toolkit file \"" << file << "\"." << endl;
         
-        exec_statement(stdOutErr.c_str(), globals, globals);
         object result = exec_file(file.c_str(), globals, globals);
         
-        PyObject *catcher = PyObject_GetAttrString(main.ptr(),"catchOutErr");
-        PyObject *output = PyObject_GetAttrString(catcher,"value");
-        cout << PyUnicode_AsUnicode(output) << endl;
     } catch(error_already_set) {
-        PyErr_Print();
-        PyErr_Clear();
+        if(PyErr_Occurred()) {
+            PyErr_Print();
+            PyErr_Clear();
+        }
     }
+    
+    cout << "Python Output: " << endl << "=======" << endl << redirect.GetOutput() << endl << "=======" << endl;
 }
 ast::List* AST::rootList()
 {

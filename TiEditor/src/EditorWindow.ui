@@ -110,6 +110,9 @@
    <property name="text">
     <string>&amp;Compile</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
   </action>
   <action name="actionRun_in_Emulator">
    <property name="text">
