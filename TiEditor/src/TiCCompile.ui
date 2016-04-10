@@ -47,8 +47,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>927</width>
-          <height>651</height>
+          <width>112</width>
+          <height>112</height>
          </rect>
         </property>
         <attribute name="label">
@@ -115,6 +115,12 @@
          <width>500</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Monospace</family>
+         <pointsize>12</pointsize>
+        </font>
        </property>
       </widget>
      </item>

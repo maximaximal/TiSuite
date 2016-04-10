@@ -123,6 +123,7 @@ void TiCCompile::compile(const QString& file, const QString& toolkit)
     for(auto file : *(output.files()))
     {
         QPlainTextEdit *edit = new QPlainTextEdit(QString::fromStdString(file.second), this);
+        edit->setFont(QFont("Monospace"));
         ui->outputs->addTab(edit, QString::fromStdString(file.first));
     }
 }
