@@ -3,6 +3,7 @@
 #include <tic/ast/Variable.hpp>
 #include <tic/ast/VariableDeclaration.hpp>
 #include <tic/ast/Command.hpp>
+#include <tic/ast/Return.hpp>
 #include <iostream>
 
 using std::endl;
@@ -78,7 +79,14 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         case TokenType::END_STATEMENT:
             if(command) {
                 command = false;
+            } else if(functionCall) {
+                functionCall = false;
+            } else if(returning) {
+                returning = false;
             }
+            break;
+        case TokenType::RETURN_KEYWORD:
+            returning = true;
             break;
         case TokenType::SCOPE_BEGIN:
         {
@@ -129,6 +137,11 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
                 variableDeclarationInProgress = false;
             } else if(functionCall) {
                 boost::static_pointer_cast<FunctionCall>(back())->pushArg(it->second, *this);
+            } else if(returning) {
+                std::unique_ptr<Return> retr = std::make_unique<Return>(it->second);
+                retr->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(retr));
+                returning = false;
             } else {
                 std::unique_ptr<Variable> var = std::make_unique<Variable>(it->second);
                 var->setDebugInfo(it->toDebugInfo());
@@ -149,6 +162,13 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         case TokenType::NUMBER:
             if(functionCall) {
                 boost::static_pointer_cast<FunctionCall>(back())->pushArg(std::make_unique<Number>(it->second));
+                cout << "FUNC CALL" << endl;
+            } else if(returning) {
+                std::unique_ptr<Return> retr = std::make_unique<Return>(std::make_unique<Command>(it->second));
+                retr->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(retr));
+            cout << "RETURNING NODE NUMBEr" << endl;
+                returning = false;
             } else {
                 auto cmd = std::make_unique<Command>(it->second);
                 cmd->setDebugInfo(it->toDebugInfo());
@@ -178,6 +198,11 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
                 auto cmd = std::make_unique<Command>(it->second);
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
+            } else if(returning) {
+                std::unique_ptr<Return> retr = std::make_unique<Return>(std::make_unique<Command>(it->second));
+                retr->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(retr));
+                returning = false;
             }
             break;
         }
@@ -212,8 +237,15 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         {
             auto cmd = std::make_unique<Command>(it->second);
             cmd->setDebugInfo(it->toDebugInfo());
-            push_back(std::move(cmd));
-            command = true;
+            if(returning) {
+                std::unique_ptr<Return> retr = std::make_unique<Return>(std::make_unique<Command>(it->second));
+                retr->setDebugInfo(it->toDebugInfo());
+                push_back(std::move(retr));
+                returning = false;
+            } else {
+                push_back(std::move(cmd));
+                command = true;
+            }
             break;
         }
     }

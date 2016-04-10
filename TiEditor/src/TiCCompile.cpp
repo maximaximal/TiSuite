@@ -81,7 +81,13 @@ void TiCCompile::parseAstTree(tic::ast::List* list, QTreeWidgetItem *item, int *
             parseAstTree(subList.get(), subItem, i);
         } else {
             // Just output the node. 
-            item->addChild(new ASTTreeItem(item, node.get(), *i));
+            if(node)
+                item->addChild(new ASTTreeItem(item, node.get(), *i));
+            else {
+                QTreeWidgetItem *subItem = new QTreeWidgetItem(item);
+                subItem->setText(0, QString::number(*i));
+                subItem->setText(1, "Invalid Node");
+            }
         }
     }
 }

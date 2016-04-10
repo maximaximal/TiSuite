@@ -24,6 +24,7 @@
 #include <tic/ast/Program.hpp>
 #include <tic/ast/VariableDeclaration.hpp>
 #include <tic/ast/Unsafe.hpp>
+#include <tic/ast/Return.hpp>
 #include <tic/ast/UnsafeVariable.hpp>
 
 using std::cout;
@@ -115,6 +116,7 @@ BOOST_PYTHON_MODULE(ast)
         .value("VariableDeclaration", ast::NodeType::VariableDeclaration)
         .value("Number", ast::NodeType::Number)
         .value("Command", ast::NodeType::Command)
+        .value("Return", ast::NodeType::Return)
     ;
     class_<ast::NodeDebugInfo, boost::noncopyable>("NodeDebugInfo")
         .add_property("file", make_function(&ast::NodeDebugInfo::getPath, return_value_policy<copy_const_reference>()))
@@ -178,6 +180,11 @@ BOOST_PYTHON_MODULE(ast)
         .add_property("name", make_function(&ast::Variable::varName, return_value_policy<copy_const_reference>()))
         .add_property("declaration", make_function(&ast::Variable::declaration, return_value_policy<reference_existing_object>()), 
             make_function(&ast::Variable::setDeclaration))
+    ;
+    class_<ast::Return, bases<ast::Node>, boost::noncopyable>("Return", boost::python::no_init)
+        .add_property("type", &ast::Return::returnType)
+        .add_property("cmd", make_function(&ast::Return::returnCmd, return_value_policy<reference_existing_object>()))
+        .add_property("var", make_function(&ast::Return::returnVar, return_value_policy<reference_existing_object>()))
     ;
     class_<ast::Command, bases<ast::Node>, boost::noncopyable>("Command", boost::python::no_init)
         .add_property("cmd", make_function(&ast::Command::command, return_value_policy<copy_const_reference>()),

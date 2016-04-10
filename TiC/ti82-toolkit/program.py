@@ -6,6 +6,7 @@ class Program(Function):
     def __init__(self, prog, error_handler):
         self.func = prog
         self.name = prog.name
+        self.variables = []
         self.scan_vars()
         
         if len(prog.name) > 8:

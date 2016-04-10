@@ -55,6 +55,7 @@ void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Tok
                     break;
                 case TokenType::SCOPE_BEGIN:
                 {
+                    functionHead = false;
                     handledByScope = true;
                     break;
                 }

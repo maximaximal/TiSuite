@@ -490,6 +490,25 @@ TokenType::Type Lexer::typeOfToken(TokenizerIterator begin, TokenizerIterator to
                 type = TokenType::INCLUDE_KEYWORD;
                 break;
         }
+    } else if(*token == "return") {
+        switch(tokens.back().first)
+        {
+            case TokenType::UNSAFE_CONTENT:
+                type = TokenType::UNSAFE_CONTENT;
+                break;
+            case TokenType::STRING_LITERAL:
+                type = TokenType::IGNORE;
+                break;
+            case TokenType::STRING_LITERAL_MARK:
+                type = TokenType::STRING_LITERAL;
+                break;
+            case TokenType::LINE_COMMENT:
+                type = TokenType::LINE_COMMENT;
+                break;
+            default:
+                type = TokenType::RETURN_KEYWORD;
+                break;
+        }
     } else if(Type::isType(*token)) {
         switch(tokens.back().first) 
         {

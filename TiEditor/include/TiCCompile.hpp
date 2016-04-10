@@ -4,6 +4,9 @@
 #include <QDialog>
 #include <QTreeWidgetItem>
 #include <tic/ast/List.hpp>
+#include <tic/AST.hpp>
+#include <tic/Lexer.hpp>
+#include <tic/OutputMGR.hpp>
 
 namespace Ui {
     class TiCCompile;
@@ -23,6 +26,9 @@ public:
 private:
     Ui::TiCCompile *ui;
     tic::ErrorHandler *m_errorHandler;
+    tic::OutputMGR *m_outputMGR;
+    tic::Lexer *m_lexer;
+    tic::AST *m_ast;
     
 };
 

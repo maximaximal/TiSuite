@@ -23,6 +23,7 @@ private:
     bool functionCall = false;
     bool command = false;
     bool passTokenToParent = false;
+    bool returning = false;
 };
 }
 }

@@ -30,6 +30,7 @@ set(HDRS
     ${HDR}/tic/ast/FunctionCall.hpp
     ${HDR}/tic/ast/Number.hpp
     ${HDR}/tic/ast/Command.hpp
+    ${HDR}/tic/ast/Return.hpp
 )
 set(SRCS
     ${SRC}/Lexer.cpp
@@ -55,6 +56,7 @@ set(SRCS
     ${SRC}/ast/FunctionCall.cpp
     ${SRC}/ast/Number.cpp
     ${SRC}/ast/Command.cpp
+    ${SRC}/ast/Return.cpp
 )
 
 # Macro for CXX14

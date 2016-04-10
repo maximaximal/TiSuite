@@ -25,6 +25,7 @@ enum class NodeType
     VariableDeclaration,
     Number,
     Command,
+    Return,
 };
 struct NodeDebugInfo
 {
