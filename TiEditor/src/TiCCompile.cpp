@@ -9,6 +9,7 @@
 #include <tic/ast/List.hpp>
 #include <tic/ast/Command.hpp>
 #include <boost/shared_ptr.hpp>
+#include <QPlainTextEdit>
 
 #include <Q_DebugStream.hpp>
 
@@ -51,6 +52,7 @@ void TiCCompile::clear()
     ui->tokenList->clear();
     ui->astTree->clear();
     ui->dbgOut->clear();
+    ui->outputs->clear();
     
     m_errorHandler->clearErrors();
 }
@@ -77,6 +79,7 @@ void TiCCompile::compile(const QString& file, const QString& toolkit)
     using namespace tic;
     
     Q_DebugStream dbg(std::cout, ui->dbgOut);
+    Q_DebugStream dbg2(std::cerr, ui->dbgOut);
     
     Lexer lexer;
     OutputMgr output;
@@ -101,4 +104,10 @@ void TiCCompile::compile(const QString& file, const QString& toolkit)
     ui->astTree->addTopLevelItem(item);
     
     parseAstTree(ast.rootList(), item);
+    
+    for(auto file : *(output.files()))
+    {
+        QPlainTextEdit *edit = new QPlainTextEdit(QString::fromStdString(file.second), this);
+        ui->outputs->addTab(edit, QString::fromStdString(file.first));
+    }
 }

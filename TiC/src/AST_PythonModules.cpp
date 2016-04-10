@@ -184,6 +184,19 @@ void AST::generateTICode(const std::string &toolkitPath)
 {
     using namespace boost::python;
     
+    // Redirect to stdout done using http://stackoverflow.com/a/4307737
+    std::string stdOutErr =
+    "import sys\n\
+    class CatchOutErr:\n\
+    def __init__(self):\n\
+    self.value = ''\n\
+    def write(self, txt):\n\
+    self.value += txt\n\
+    catchOutErr = CatchOutErr()\n\
+    sys.stdout = catchOutErr\n\
+    sys.stderr = catchOutErr\n\
+    "; //this is python code to redirect stdouts/stderr
+    
     try {
         object main = import("__main__");
         object globals(main.attr("__dict__"));
@@ -206,7 +219,12 @@ void AST::generateTICode(const std::string &toolkitPath)
         
         cout << "Executing python toolkit file \"" << file << "\"." << endl;
         
+        exec_statement(stdOutErr.c_str(), globals, globals);
         object result = exec_file(file.c_str(), globals, globals);
+        
+        PyObject *catcher = PyObject_GetAttrString(main.ptr(),"catchOutErr");
+        PyObject *output = PyObject_GetAttrString(catcher,"value");
+        cout << PyUnicode_AsUnicode(output) << endl;
     } catch(error_already_set) {
         PyErr_Print();
         PyErr_Clear();
