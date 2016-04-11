@@ -42,8 +42,6 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5Widgets)
-find_package(Qt5Qml)
-find_package(Qt5Quick)
 
 add_executable(tiedit ${SRCS} ${HDRS} ${RSCS})
 
