@@ -1,4 +1,8 @@
-project(TiEditor)
+cmake_policy(SET CMP0048 NEW)
+
+project(TiEditor
+    VERSION 0.1.0
+)
 cmake_minimum_required(VERSION 3.0.2)
 
 include(ExternalProject)
@@ -14,12 +18,6 @@ set(FOR ${CMAKE_CURRENT_SOURCE_DIR}/Data/forms)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_BINARY_DIR})
-
-set(TiEditor_VERSION_MAJOR "0" CACHE STRING "Major-Version")
-set(TiEditor_VERSION_MINOR "7" CACHE STRING "Minor-Version")
-set(TiEditor_VERSION_PATCH "0" CACHE STRING "Patch-Version")
-set(TiEditor_VERSION_TWEAK "0" CACHE STRING "Tweak-Version")
-set(TiEditor_VERSION ${TiEditor_VERSION_MAJOR}.${TiEditor_VERSION_MINOR}.${TiEditor_VERSION_PATCH}.${TiEditor_VERSION_TWEAK})
 
 set(SRCS
     ${SRC}/main.cpp
@@ -83,3 +81,22 @@ endif()
 
 # C++14
 set (CMAKE_CXX_FLAGS "--std=gnu++14 ${CMAKE_CXX_FLAGS}")
+
+# Install 
+install(TARGETS tiedit 
+    RUNTIME DESTINATION bin
+)
+
+# Packaging
+set(CPACK_PACKAGE_NAME "tiedit")
+set(CPACK_PACKAGE_VENDOR "maximaximal.com")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "An IDE for Texas Instruments calculators with integrated support for Advanced TiBasic (TiC)")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Max Heisinger <mail@maximaximal.com>")
+set(CPACK_PACKAGE_VERSION ${TiEditor_VERSION})
+set(CPACK_PACKAGE_VERSION_MAJOR ${TiEditor_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${TiEditor_VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH ${TiEditor_VERSION_PATCH})
+set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/maximaximal/TiSuite")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "TiC")
+
+include(CPack)

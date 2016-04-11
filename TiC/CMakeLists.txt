@@ -1,4 +1,8 @@
-project(TiC)
+cmake_policy(SET CMP0048 NEW)
+
+project(TIC
+    VERSION 0.2.0
+)
 cmake_minimum_required(VERSION 3.1)
 
 include(ExternalProject)
@@ -6,11 +10,6 @@ include(ExternalProject)
 set(SRC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(HDR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
-
-set(TIC_VERSION_MAJOR 0)
-set(TIC_VERSION_MINOR 2)
-set(TIC_VERSION_PATCH 0)
-set(TIC_VERSION ${TIC_VERSION_MAJOR}.${TIC_VERSION_MINOR}.${TIC_VERSION_PATCH})
 
 include_directories(${HDR})
 

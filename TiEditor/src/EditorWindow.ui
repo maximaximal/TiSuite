@@ -72,10 +72,17 @@
     <addaction name="actionSet_main_directory"/>
     <addaction name="actionSet_toolkit"/>
    </widget>
+   <widget class="QMenu" name="menuHilfe">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout_TiEdit"/>
+   </widget>
    <addaction name="menuDatei"/>
    <addaction name="menuProject"/>
    <addaction name="menuRun"/>
    <addaction name="menuEinstellungen"/>
+   <addaction name="menuHilfe"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -145,6 +152,11 @@
   <action name="actionSet_toolkit">
    <property name="text">
     <string>Set toolkit</string>
+   </property>
+  </action>
+  <action name="actionAbout_TiEdit">
+   <property name="text">
+    <string>About TiEdit</string>
    </property>
   </action>
  </widget>
