@@ -7,7 +7,7 @@
 
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "mkdir -p /root/jenkins/workspace/TiSuite/build/tic"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "rm -f /root/jenkins/workspace/TiSuite/build/tic/tic-*"
-sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tic/ && cmake ../../TiC"
+sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tic/ && cmake ../../TiC -DCPACK_GENERATOR=DEB"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tic/ && make"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tic/ && make install"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tic/ && make package"
@@ -22,7 +22,7 @@ cd /media/maximaximal.com/www/repos/apt/ubuntu && sudo reprepro includedeb trust
 
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "mkdir -p /root/jenkins/workspace/TiSuite/build/tiedit"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "rm -f /root/jenkins/workspace/TiSuite/build/tiedit/tic-*"
-sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tiedit/ && cmake ../../TiEditor"
+sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tiedit/ && cmake ../../TiEditor -DCPACK_GENERATOR=DEB"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tiedit/ && make"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tiedit/ && make package"
 
