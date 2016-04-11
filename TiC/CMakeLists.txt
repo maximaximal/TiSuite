@@ -81,15 +81,25 @@ add_executable(ticf ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
 
 target_link_libraries(ticf tic)
 
+include(DetectDistro)
+
 set(Boost_USE_STATIC_LIBS OFF)
-find_package(Boost COMPONENTS system program_options python3 REQUIRED)
+
+if(${LINUX_DISTRO} STREQUAL "Ubuntu")
+    find_package(Boost COMPONENTS system program_options python-py34 REQUIRED)
+elseif(${LINUX_DISTRO} STREQUAL "Arch")
+    find_package(Boost COMPONENTS system program_options python3 REQUIRED)
+else()
+    find_package(Boost COMPONENTS system program_options python3 REQUIRED)
+endif()
+
 if(${Boost_FOUND})
     include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
     target_link_libraries(tic  ${Boost_LIBRARIES})
     target_link_libraries(ticf ${Boost_LIBRARIES})
 endif()
 
-find_package(PythonLibs REQUIRED)
+find_package(PythonLibs 3 REQUIRED)
 if(${PYTHONLIBS_FOUND})
     message(STATUS "Python Libraries: " ${PYTHON_LIBRARY})
     target_link_libraries(tic ${PYTHON_LIBRARY})
@@ -136,6 +146,7 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/
 )
 install(
     FILES
+        ${CMAKE_CURRENT_SOURCE_DIR}/cmake//DetectDistro.cmake
         ${CMAKE_CURRENT_BINARY_DIR}/TiCConfigVersion.cmake
         ${CMAKE_CURRENT_BINARY_DIR}/TiCConfig.cmake
     DESTINATION 

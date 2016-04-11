@@ -17,13 +17,24 @@ list(APPEND CMAKE_MODULE_PATH "${TiC_INCLUDE_DIRS}/../lib/cmake/tic")
 
 set(Boost_USE_STATIC_LIBS OFF)
 
-find_package(Boost COMPONENTS system program_options python3 REQUIRED)
+include(DetectDistro)
+
+set(Boost_USE_STATIC_LIBS OFF)
+
+if(${LINUX_DISTRO} STREQUAL "Ubuntu")
+    find_package(Boost COMPONENTS system program_options python-py34 REQUIRED)
+elseif(${LINUX_DISTRO} STREQUAL "Arch")
+    find_package(Boost COMPONENTS system program_options python3 REQUIRED)
+else()
+    find_package(Boost COMPONENTS system program_options python3 REQUIRED)
+endif()
+
 if(${Boost_FOUND})
     list(APPEND TiC_INCLUDE_DIRS ${Boost_INCLUDE_DIRS})
     list(APPEND TiC_LIBRARY ${Boost_LIBRARIES})
 endif()
 
-find_package(PythonLibs REQUIRED)
+find_package(PythonLibs 3 REQUIRED)
 if(${PYTHONLIBS_FOUND})
     message(STATUS "Python Libraries: " ${PYTHON_LIBRARY})
     list(APPEND TiC_INCLUDE_DIRS ${PYTHON_INCLUDE_DIRS})
