@@ -5,6 +5,12 @@ include(ExternalProject)
 
 set(SRC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(HDR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
+set(TIC_VERSION_MAJOR "0")
+set(TIC_VERSION_MINOR "2")
+set(TIC_VERSION_PATCH "0")
+set(TIC_VERSION ${TIC_VERSION_MAJOR}.${TIC_VERSION_MINOR}.${TIC_VERSION_PATCH})
 
 include_directories(${HDR})
 
@@ -91,3 +97,80 @@ if(${PYTHONLIBS_FOUND})
     target_link_libraries(ticf ${PYTHON_LIBRARY})
     include_directories(SYSTEM ${PYTHON_INCLUDE_DIRS})
 endif()
+
+# CMake package 
+include(GenerateExportHeader)
+generate_export_header(tic)
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/TiCConfigVersion.cmake"
+    VERSION ${TIC_VERSION}
+    COMPATIBILITY AnyNewerVersion
+)
+
+# TiCConfig.cmake.in 
+configure_file(${CMAKE_MODULE_PATH}/TiCConfig.cmake.in
+  "${CMAKE_CURRENT_BINARY_DIR}/TiCConfig.cmake"
+  COPYONLY
+)
+
+# Config File 
+configure_file(${CMAKE_MODULE_PATH}/Config.hpp.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/tic/Config.hpp)
+
+set(ConfigPackageLocation lib/cmake)
+
+# Install
+install(TARGETS tic
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    COMPONENT lib
+)
+install(TARGETS ticf
+    RUNTIME DESTINATION bin
+    COMPONENT bin
+)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/
+    DESTINATION include
+    COMPONENT dev
+)
+install(
+    FILES
+        ${CMAKE_CURRENT_BINARY_DIR}/TiCConfigVersion.cmake
+        ${CMAKE_CURRENT_BINARY_DIR}/TiCConfig.cmake
+    DESTINATION 
+        ${ConfigPackageLocation}/tic/
+    COMPONENT lib
+)
+# Packaging
+set(CPACK_DEB_COMPONENT_INSTALL ON)
+set(CPACK_RPM_COMPONENT_INSTALL ON)
+set(CPACK_ARCHIVE_COMPONENT_INSTALL ON)
+set(CPACK_DEB_USE_DISPLAY_NAME_IN_FILENAME ON)
+
+set(CPACK_PACKAGE_NAME "tic")
+set(CPACK_PACKAGE_VENDOR "maximaximal.com")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A toolset to compile the advanced TiBasic language.")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Max Heisinger <mail@maximaximal.com>")
+set(CPACK_PACKAGE_VERSION ${TIC_VERSION})
+set(CPACK_PACKAGE_VERSION_MAJOR ${TIC_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${TIC_VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH ${TIC_VERSION_PATCH})
+set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/maximaximal/TiSuite")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "TiC")
+
+set(CPACK_COMPONENTS_ALL lib dev bin)
+
+set(CPACK_COMPONENT_BIN_DISPLAY_NAME "ticf")
+
+set(CPACK_COMPONENT_DEV_DEPENDS lib)
+set(CPACK_COMPONENT_BIN_DEPENDS lib)
+
+set(CPACK_DEBIAN_LIB_PACKAGE_DEPENDS "libboost-system1.54.0, libboost-program-options1.54.0, libboost-python1.54.0")
+set(CPACK_DEBIAN_DEV_PACKAGE_DEPENDS "tic-lib (>= 0.2.0)")
+set(CPACK_DEBIAN_BIN_PACKAGE_DEPENDS "tic-lib (>= 0.2.0)")
+
+set(CPACK_ALL_INSTALL_TYPES Full Developer)
+
+include(CPack)
