@@ -7,7 +7,8 @@
 #include <QFontDialog>
 #include <QFontMetrics>
 #include <QFileDialog>
-
+#include <QMessageBox>
+#include <Config.hpp>
 
 EditorWindow::EditorWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -39,6 +40,12 @@ EditorWindow::EditorWindow(QWidget *parent) :
     connect(ui->actionCompile, SIGNAL(triggered()), this, SLOT(on_actionCompile_triggered()), Qt::UniqueConnection);
     connect(ui->editorTabs, SIGNAL(tabCloseRequested(int)), this, SLOT(on_editorTab_closeTab(int)), Qt::UniqueConnection);
     connect(ui->actionSet_toolkit, SIGNAL(triggered()), this, SLOT(actionSet_toolkit()), Qt::UniqueConnection);
+    
+    connect(ui->actionAbout_TiEdit, &QAction::triggered, this, [this](){
+        QMessageBox::about(this, QString("TiEdit, v") + TiEditor_VERSION, 
+            "This is an editor for Texas Instruments Calculators with "
+            "integrated support for advanced TiBasic (TiC)");
+    });
 }
 
 EditorWindow::~EditorWindow()

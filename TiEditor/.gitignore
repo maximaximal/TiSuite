@@ -1,2 +1,5 @@
 # Ignore ycm
 .ycm_extra_conf.py
+
+# Config
+include/Config.hpp

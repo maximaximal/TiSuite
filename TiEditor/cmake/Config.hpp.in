@@ -1,0 +1,10 @@
+#ifndef TiEditor_CONFIG_HPP_INCLUDED
+#define TiEditor_CONFIG_HPP_INCLUDED
+
+#define TiEditor_MAJOR_VERSION ${TiEditor_VERSION_MAJOR}
+#define TiEditor_MINOR_VERSION ${TiEditor_VERSION_MINOR}
+#define TiEditor_PATCH_VERSION ${TiEditor_VERSION_PATCH}
+
+#define TiEditor_VERSION "${TiEditor_VERSION}"
+
+#endif

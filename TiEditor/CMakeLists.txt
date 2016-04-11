@@ -82,6 +82,10 @@ endif()
 # C++14
 set (CMAKE_CXX_FLAGS "--std=gnu++14 ${CMAKE_CXX_FLAGS}")
 
+# Config
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.hpp.in"
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Config.hpp)
+
 # Install 
 install(TARGETS tiedit 
     RUNTIME DESTINATION bin
