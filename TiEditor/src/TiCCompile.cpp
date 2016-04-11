@@ -11,10 +11,14 @@
 #include <tic/ast/Command.hpp>
 #include <tic/ast/Variable.hpp>
 #include <tic/ast/VariableDeclaration.hpp>
+#include <tic/Config.hpp>
 #include <boost/shared_ptr.hpp>
 #include <QPlainTextEdit>
 
 #include <Q_DebugStream.hpp>
+
+using std::cout;
+using std::endl;
 
 class ASTTreeItem : public QTreeWidgetItem
 {
@@ -54,6 +58,13 @@ TiCCompile::TiCCompile(tic::ErrorHandler *errorHandler)
     : ui(new Ui::TiCCompile), m_errorHandler(errorHandler)
 {
     ui->setupUi(this);
+    
+    m_lexer = std::make_unique<tic::Lexer>();
+    m_outputMGR = std::make_unique<tic::OutputMgr>();
+    m_ast = std::make_unique<tic::AST>(errorHandler, m_outputMGR.get());
+    
+    m_ast->initPython(QCoreApplication::arguments().count(), 
+                   QCoreApplication::arguments().toVector().data()->toLocal8Bit().data());
 }
 TiCCompile::~TiCCompile()
 {
@@ -94,28 +105,24 @@ void TiCCompile::parseAstTree(tic::ast::List* list, QTreeWidgetItem *item, int *
 void TiCCompile::compile(const QString& file, const QString& toolkit)
 {
     clear();
+    m_lexer->clear();
     
     using namespace tic;
     
     Q_DebugStream dbg(std::cout, std::cerr, ui->dbgOut);
     
-    Lexer lexer;
-    OutputMgr output;
-    AST ast(m_errorHandler, &output);
-    
-    ast.initPython(QCoreApplication::arguments().count(), 
-                   QCoreApplication::arguments().toVector().data()->toLocal8Bit().data());
+    cout << "Using TiC version " << TIC_VERSION << endl;
     
     std::unique_ptr<SourceBlock> block = std::make_unique<SourceBlock>();
     block->readFromFile(file.toStdString());
-    lexer.lex(std::move(block));
-    lexer.setRootBlock(file.toStdString());
-    for(auto token : lexer.rootSourceBlock()->tokenVector())
+    m_lexer->lex(std::move(block));
+    m_lexer->setRootBlock(file.toStdString());
+    for(auto token : m_lexer->rootSourceBlock()->tokenVector())
     {
         ui->tokenList->addItem(QString(TokenType::getTypename(token.first)) + ": \"" + QString::fromStdString(token.second) + "\"");
     }
-    ast.generateFromTokenizedBlock(lexer.rootSourceBlock());
-    ast.generateTICode(toolkit.toStdString());
+    m_ast->generateFromTokenizedBlock(m_lexer->rootSourceBlock());
+    m_ast->generateTICode(toolkit.toStdString());
     
     QTreeWidgetItem *item = new QTreeWidgetItem(ui->astTree);
     item->setText(0, QString::number(0));
@@ -124,9 +131,9 @@ void TiCCompile::compile(const QString& file, const QString& toolkit)
     
     int i = 0;
     
-    parseAstTree(ast.rootList(), item, &i);
+    parseAstTree(m_ast->rootList(), item, &i);
     
-    for(auto file : *(output.files()))
+    for(auto file : *(m_outputMGR->files()))
     {
         QPlainTextEdit *edit = new QPlainTextEdit(QString::fromStdString(file.second), this);
         edit->setFont(QFont("Monospace"));

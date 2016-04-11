@@ -52,6 +52,7 @@ add_executable(tiedit ${SRCS} ${HDRS} ${RSCS})
 # Download QScintilla
 ExternalProject_Add(project_qscintilla
     URL https://sourceforge.net/projects/pyqt/files/QScintilla2/QScintilla-2.9.1/QScintilla-gpl-2.9.1.tar.gz/download
+    URL_HASH SHA256=79e9c39d51549061d3d489387bcee86ff20c1f746d1b25ac173d5165426eabaf
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/qscintilla-2.9.1
     SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/qscintilla-2.9.1/src/project_qscintilla/
     UPDATE_COMMAND ""
@@ -69,12 +70,16 @@ include_directories("${CMAKE_CURRENT_BINARY_DIR}/qscintilla-2.9.1/src/project_qs
 add_dependencies(tiedit project_qscintilla)
 target_link_libraries(tiedit lib_qscintilla)
 
-target_link_libraries(tiedit Qt5::Widgets Qt5::Qml Qt5::Quick)
+target_link_libraries(tiedit Qt5::Widgets)
 
-# Link TiC
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../TiC/ TiC)
-target_link_libraries(tiedit tic)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../TiC/include)
+# Find TiC 
+find_package(TiC REQUIRED)
+if(${TiC_FOUND})
+    message(STATUS "TiC Lib: " ${TiC_LIBRARY})
+    message(STATUS "TiC Include: " ${TiC_INCLUDE_DIRS})
+    target_link_libraries(tiedit ${TiC_LIBRARY})
+    include_directories(STATUS ${TiC_INCLUDE_DIRS})
+endif()
 
 # C++14
 set (CMAKE_CXX_FLAGS "--std=gnu++14 ${CMAKE_CXX_FLAGS}")
