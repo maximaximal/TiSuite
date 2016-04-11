@@ -1,7 +1,7 @@
 cmake_policy(SET CMP0048 NEW)
 
 project(TIC
-    VERSION 0.2.2
+    VERSION 0.3.0
 )
 cmake_minimum_required(VERSION 3.1)
 
@@ -179,8 +179,8 @@ set(CPACK_COMPONENT_BIN_DEPENDS lib)
 
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "libboost-system1.54.0 (>= 1.54.0), libboost-program-options1.54.0 (>= 1.54.0), libboost-python1.54.0 (>= 1.54.0)")
 set(CPACK_DEBIAN_LIB_PACKAGE_DEPENDS "libboost-system1.54.0 (>= 1.54.0), libboost-program-options1.54.0 (>= 1.54.0), libboost-python1.54.0 (>= 1.54.0)")
-set(CPACK_DEBIAN_DEV_PACKAGE_DEPENDS "tic-lib (>= 0.2.1)")
-set(CPACK_DEBIAN_BIN_PACKAGE_DEPENDS "tic-lib (>= 0.2.1)")
+set(CPACK_DEBIAN_DEV_PACKAGE_DEPENDS "tic-lib (>= 0.3.0)")
+set(CPACK_DEBIAN_BIN_PACKAGE_DEPENDS "tic-lib (>= 0.3.0)")
 
 set(CPACK_ALL_INSTALL_TYPES Full Developer)
 
