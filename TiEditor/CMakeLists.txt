@@ -1,7 +1,7 @@
 cmake_policy(SET CMP0048 NEW)
 
 project(TiEditor
-    VERSION 0.2.0
+    VERSION 0.2.1
 )
 cmake_minimum_required(VERSION 3.0.2)
 
@@ -45,28 +45,14 @@ find_package(Qt5Widgets)
 
 add_executable(tiedit ${SRCS} ${HDRS} ${RSCS})
 
-# Download QScintilla
-ExternalProject_Add(project_qscintilla
-    URL https://sourceforge.net/projects/pyqt/files/QScintilla2/QScintilla-2.9.1/QScintilla-gpl-2.9.1.tar.gz/download
-    URL_HASH SHA256=79e9c39d51549061d3d489387bcee86ff20c1f746d1b25ac173d5165426eabaf
-    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/qscintilla-2.9.1
-    SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/qscintilla-2.9.1/src/project_qscintilla/
-    UPDATE_COMMAND ""
-    CONFIGURE_COMMAND cd Qt4Qt5 && qmake -qt=qt5 qscintilla.pro
-    BUILD_IN_SOURCE 1
-    BUILD_COMMAND cd Qt4Qt5 && make
-    INSTALL_COMMAND ""
-)
-add_library(lib_qscintilla SHARED IMPORTED)
-set_property(TARGET lib_qscintilla PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/qscintilla-2.9.1/src/project_qscintilla/Qt4Qt5/libqscintilla2.so)
-add_dependencies(lib_qscintilla project_qscintilla)
-set(QSCINTILLA_INCLUDE_DIRS )
-include_directories("${CMAKE_CURRENT_BINARY_DIR}/qscintilla-2.9.1/src/project_qscintilla/Qt4Qt5")
-
-add_dependencies(tiedit project_qscintilla)
-target_link_libraries(tiedit lib_qscintilla)
-
 target_link_libraries(tiedit Qt5::Widgets)
+
+# Find QScintilla
+find_package(QScintilla REQUIRED)
+if(${QSCINTILLA_FOUND})
+    target_link_libraries(tiedit ${QSCINTILLA_LIBRARY} ${QSCINTILLA_LIBRARIES})
+    include_directories(SYSTEM ${QSCINTILLA_INCLUDE_DIR} ${QSCINTILLA_INCLUDE_DIRS})
+endif()
 
 # Find TiC 
 find_package(TiC REQUIRED)
@@ -98,7 +84,7 @@ set(CPACK_PACKAGE_VERSION ${TiEditor_VERSION})
 set(CPACK_PACKAGE_VERSION_MAJOR ${TiEditor_VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR ${TiEditor_VERSION_MINOR})
 set(CPACK_PACKAGE_VERSION_PATCH ${TiEditor_VERSION_PATCH})
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "tic-lib (>= 0.2.0), libqt5widgets5 (>= 5.2.1)")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "tic-lib (>= 0.2.1), libqt5widgets5 (>= 5.2.1), libqscintilla2-11 (>= 2.8.1-2)")
 set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/maximaximal/TiSuite")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "TiC")
 
