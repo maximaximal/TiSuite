@@ -1,7 +1,7 @@
 cmake_policy(SET CMP0048 NEW)
 
 project(TiEditor
-    VERSION 0.3.3
+    VERSION 0.3.4
 )
 cmake_minimum_required(VERSION 3.0.2)
 
