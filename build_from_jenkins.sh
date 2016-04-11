@@ -25,7 +25,7 @@ done <<< "$DEB"
 
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "mkdir -p /root/jenkins/workspace/TiSuite/build/tiedit"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "rm -f /root/jenkins/workspace/TiSuite/build/tiedit/tic-*"
-sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tiedit/ && cmake ../../TiEditor -DCPACK_GENERATOR=DEB"
+sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "QT_SELECT=qt5 cd /root/jenkins/workspace/TiSuite/build/tiedit/ && cmake ../../TiEditor -DCPACK_GENERATOR=DEB"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tiedit/ && make"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tiedit/ && make package"
 
