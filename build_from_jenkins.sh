@@ -7,7 +7,7 @@
 
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "mkdir -p /root/jenkins/workspace/TiSuite/build/tic"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "rm -f /root/jenkins/workspace/TiSuite/build/tic/tic-*"
-sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tic/ && cmake ../../TIC"
+sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tic/ && cmake ../../TiC"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tic/ && make"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tic/ && make install"
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tic/ && make package"
