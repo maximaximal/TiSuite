@@ -15,7 +15,10 @@ sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/worksp
 echo "Add the package to the repository"
 DEB="$(ls /var/lib/jenkins/workspace/TiSuite/build/tic/*deb)"
 echo "DEBFILE: $DEB"
-cd /media/maximaximal.com/www/repos/apt/ubuntu && sudo reprepro includedeb trusty "$PIGA_DEB"
+
+while read -r line; do
+    cd /media/maximaximal.com/www/repos/apt/ubuntu && sudo reprepro includedeb trusty "$line"
+done <<< "$DEB"
 
 # TiEdit
 # =======
@@ -27,7 +30,7 @@ sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/worksp
 sudo chroot /opt/chroots/ubuntu_trusty_x64 /bin/bash -c "cd /root/jenkins/workspace/TiSuite/build/tiedit/ && make package"
 
 echo "Add the package to the repository"
-DEB="$(ls /var/lib/jenkins/workspace/TiSuite/build/tic/*deb)"
+DEB="$(ls /var/lib/jenkins/workspace/TiSuite/build/tiedit/*deb)"
 echo "DEBFILE: $DEB"
 cd /media/maximaximal.com/www/repos/apt/ubuntu && sudo reprepro includedeb trusty "$DEB"
 
