@@ -36,7 +36,7 @@ void Lexer::clear()
 }
 void Lexer::addFileToParse(const std::string &path)
 {
-    std::unique_ptr<SourceBlock> block = std::make_unique<SourceBlock>();
+    std::unique_ptr<SourceBlock> block(new SourceBlock());
     block->readFromFile(path);
     lex(std::move(block));
 }

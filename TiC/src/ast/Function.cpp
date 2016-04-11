@@ -65,7 +65,7 @@ void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Tok
                 case TokenType::TYPE:
                 {
                     if(parameterList) {
-                        auto param = std::make_unique<FunctionParameter>(it->second, "");
+                        std::unique_ptr<FunctionParameter> param(new FunctionParameter(it->second, ""));
                         param->setDebugInfo(it->toDebugInfo());
                         m_parameters.push_back(std::move(param));
                     }
@@ -84,7 +84,7 @@ void Function::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Tok
                     break;
                 case TokenType::COMMAND:
                 {
-                    auto cmd = std::make_unique<Command>(it->second);
+                    std::unique_ptr<Command> cmd(new Command(it->second));
                     cmd->setDebugInfo(it->toDebugInfo());
                     push_back(std::move(cmd));
                     break;

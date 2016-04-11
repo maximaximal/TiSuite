@@ -1168,7 +1168,7 @@ void Unsafe::appendContent(const std::string &content)
                 errorHandler->handleError(Error("The variable \"" + *token + "\" in the unsafe block \"" + functionName() + "\" is no valid tibasic variable!", debugInfo()));
             } else {
                 if(!variableAlreadyDefined(*token)) {
-                    auto var = std::make_unique<UnsafeVariable>(type, *token);
+                    std::unique_ptr<UnsafeVariable> var(new UnsafeVariable(type, *token));
                     var->setDebugInfo(m_debugInfo);
                     push_back(std::move(var));
                 }
@@ -1295,7 +1295,7 @@ void Unsafe::loadFromTokens(SourceBlock::TokenVector &tokens, SourceBlock::Token
             case TokenType::TYPE:
             {
                 if(parameterList) {
-                    auto param = std::make_unique<FunctionParameter>(it->second, "");
+                    std::unique_ptr<FunctionParameter> param(new FunctionParameter(it->second, ""));
                     param->setDebugInfo(it->toDebugInfo());
                     m_parameters.push_back(std::move(param));
                 }

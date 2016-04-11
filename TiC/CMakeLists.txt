@@ -64,17 +64,17 @@ set(SRCS
     ${SRC}/ast/Return.cpp
 )
 
-# Macro for CXX14
-macro(Use_CXX14)
+# Macro for CXX11
+macro(Use_CXX11)
     if (CMAKE_VERSION VERSION_LESS "3.1")
         if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-            set (CMAKE_CXX_FLAGS "-std=c++14 ${CMAKE_CXX_FLAGS}")
+            set (CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
         endif ()
     else ()
-        set (CMAKE_CXX_STANDARD 14)
+        set(CMAKE_CXX_STANDARD 11)
     endif ()
-endmacro(Use_CXX14)
-Use_CXX14()
+endmacro(Use_CXX11)
+Use_CXX11()
 
 add_library(tic SHARED ${SRCS} ${HDRS})
 add_executable(ticf ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)

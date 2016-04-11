@@ -59,9 +59,9 @@ TiCCompile::TiCCompile(tic::ErrorHandler *errorHandler)
 {
     ui->setupUi(this);
     
-    m_lexer = std::make_unique<tic::Lexer>();
-    m_outputMGR = std::make_unique<tic::OutputMgr>();
-    m_ast = std::make_unique<tic::AST>(errorHandler, m_outputMGR.get());
+    m_lexer.reset(new tic::Lexer());
+    m_outputMGR.reset(new tic::OutputMgr());
+    m_ast.reset(new tic::AST(errorHandler, m_outputMGR.get()));
     
     m_ast->initPython(QCoreApplication::arguments().count(), 
                    QCoreApplication::arguments().toVector().data()->toLocal8Bit().data());
@@ -113,7 +113,7 @@ void TiCCompile::compile(const QString& file, const QString& toolkit)
     
     cout << "Using TiC version " << TIC_VERSION << endl;
     
-    std::unique_ptr<SourceBlock> block = std::make_unique<SourceBlock>();
+    std::unique_ptr<SourceBlock> block(new SourceBlock());
     block->readFromFile(file.toStdString());
     m_lexer->lex(std::move(block));
     m_lexer->setRootBlock(file.toStdString());

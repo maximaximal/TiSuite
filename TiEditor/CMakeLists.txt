@@ -36,6 +36,18 @@ set(RSCS
 
 )
 
+# Macro for CXX11
+macro(Use_CXX11)
+    if (CMAKE_VERSION VERSION_LESS "3.1")
+        if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+            set (CMAKE_CXX_FLAGS "-std=gnu++11 ${CMAKE_CXX_FLAGS}")
+        endif ()
+    else ()
+        set (CMAKE_CXX_STANDARD 11)
+    endif ()
+endmacro(Use_CXX11)
+Use_CXX11()
+
 # Find Qt
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -62,9 +74,6 @@ if(${TiC_FOUND})
     target_link_libraries(tiedit ${TiC_LIBRARY})
     include_directories(STATUS ${TiC_INCLUDE_DIRS})
 endif()
-
-# C++14
-set (CMAKE_CXX_FLAGS "--std=gnu++14 ${CMAKE_CXX_FLAGS}")
 
 # Config
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.hpp.in"

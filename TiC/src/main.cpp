@@ -63,7 +63,7 @@ int main(int argc, char** argv)
         for(auto &file : vm["input-file"].as<std::vector<std::string>>())
         {
             cout << "    \"" << file << "\"" << endl;
-            std::unique_ptr<SourceBlock> block = std::make_unique<SourceBlock>();
+            std::unique_ptr<SourceBlock> block(new SourceBlock());
             block->readFromFile(file);
             lexer.lex(std::move(block));
             lexer.setRootBlock(file);

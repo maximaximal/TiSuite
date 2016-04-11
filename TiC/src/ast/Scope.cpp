@@ -43,7 +43,7 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
                 // Nothing to do at this stage. 
             } 
             if(command) {
-                auto cmd = std::make_unique<Command>(it->second);
+                std::unique_ptr<Command> cmd(new Command(it->second));
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
             }
@@ -53,7 +53,7 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
                 functionCall = false;
             } 
             if(command) {
-                auto cmd = std::make_unique<Command>(it->second);
+                std::unique_ptr<Command> cmd(new Command(it->second));
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
             }
@@ -61,7 +61,7 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         case TokenType::VAR_SCOPE_BEGIN:
         {
             if(command) {
-                auto cmd = std::make_unique<Command>(it->second);
+                std::unique_ptr<Command> cmd(new Command(it->second));
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
             }
@@ -70,7 +70,7 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         case TokenType::VAR_SCOPE_END:
         {
             if(command) {
-                auto cmd = std::make_unique<Command>(it->second);
+                std::unique_ptr<Command> cmd(new Command(it->second));
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
             }
@@ -101,7 +101,7 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
             break;
             */
             if(command) {
-                auto cmd = std::make_unique<Command>(it->second);
+                std::unique_ptr<Command> cmd(new Command(it->second));
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
             }
@@ -109,7 +109,7 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         }
         case TokenType::SCOPE_END:
             if(command) {
-                auto cmd = std::make_unique<Command>(it->second);
+                std::unique_ptr<Command> cmd(new Command(it->second));
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
             }
@@ -118,12 +118,12 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         case TokenType::TYPE:
         {
             if(command) {
-                auto cmd = std::make_unique<Command>(it->second);
+                std::unique_ptr<Command> cmd(new Command(it->second));
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
             } else {
                 //A type has to be a variable declaration in a scope. 
-                auto decl = std::make_unique<VariableDeclaration>(it->second, "");
+                std::unique_ptr<VariableDeclaration> decl(new VariableDeclaration(it->second, ""));
                 decl->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(decl));
                 variableDeclarationInProgress = true;
@@ -138,12 +138,12 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
             } else if(functionCall) {
                 boost::static_pointer_cast<FunctionCall>(back())->pushArg(it->second, *this);
             } else if(returning) {
-                std::unique_ptr<Return> retr = std::make_unique<Return>(it->second);
+                std::unique_ptr<Return> retr(new Return(it->second));
                 retr->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(retr));
                 returning = false;
             } else {
-                std::unique_ptr<Variable> var = std::make_unique<Variable>(it->second);
+                std::unique_ptr<Variable> var(new Variable(it->second));
                 var->setDebugInfo(it->toDebugInfo());
                 //The declaration has to be searched!
                 //If no declaration was found, this is a command and should be added as one. 
@@ -151,7 +151,7 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
                 if(varFound) {
                     push_back(std::move(var));
                 } else {
-                    auto cmd = std::make_unique<Command>(it->second);
+                    std::unique_ptr<Command> cmd(new Command(it->second));
                     cmd->setDebugInfo(it->toDebugInfo());
                     push_back(std::move(cmd));
                     command = true;
@@ -161,23 +161,23 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         }
         case TokenType::NUMBER:
             if(functionCall) {
-                boost::static_pointer_cast<FunctionCall>(back())->pushArg(std::make_unique<Number>(it->second));
+                boost::static_pointer_cast<FunctionCall>(back())->pushArg(std::unique_ptr<Number>(new Number(it->second)));
                 cout << "FUNC CALL" << endl;
             } else if(returning) {
-                std::unique_ptr<Return> retr = std::make_unique<Return>(std::make_unique<Command>(it->second));
+                std::unique_ptr<Return> retr(new Return(std::unique_ptr<Command>(new Command(it->second))));
                 retr->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(retr));
             cout << "RETURNING NODE NUMBEr" << endl;
                 returning = false;
             } else {
-                auto cmd = std::make_unique<Command>(it->second);
+                std::unique_ptr<Command> cmd(new Command(it->second));
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
             }
             break;
         case TokenType::FUNCTION_CALL:
         {
-            auto funcCall = std::make_unique<FunctionCall>(it->second);
+            std::unique_ptr<FunctionCall> funcCall(new FunctionCall(it->second));
             funcCall->setDebugInfo(it->toDebugInfo());
             bool found = funcCall->searchDeclaration(rootList);
             if(found) {
@@ -185,7 +185,7 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
                 functionCall = true;
             } else {
                 // This is not a function call, this is a command.
-                auto cmd = std::make_unique<Command>(it->second);
+                std::unique_ptr<Command> cmd(new Command(it->second));
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
                 command = true;
@@ -195,11 +195,11 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         case TokenType::STRING_LITERAL:
         {
             if(command) {
-                auto cmd = std::make_unique<Command>(it->second);
+                std::unique_ptr<Command> cmd(new Command(it->second));
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
             } else if(returning) {
-                std::unique_ptr<Return> retr = std::make_unique<Return>(std::make_unique<Command>(it->second));
+                std::unique_ptr<Return> retr(new Return(std::unique_ptr<Command>(new Command(it->second))));
                 retr->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(retr));
                 returning = false;
@@ -209,7 +209,7 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         case TokenType::STRING_LITERAL_MARK:
         {
             if(command) {
-                auto cmd = std::make_unique<Command>(it->second);
+                std::unique_ptr<Command> cmd(new Command(it->second));
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
             }
@@ -218,7 +218,7 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         case TokenType::STRING_LITERAL_MARK_END:
         {
             if(command) {
-                auto cmd = std::make_unique<Command>(it->second);
+                std::unique_ptr<Command> cmd(new Command(it->second));
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
             }
@@ -227,7 +227,7 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         case TokenType::PARAM_ITEM_SEPERATOR:
         {
             if(command) {
-                auto cmd = std::make_unique<Command>(it->second);
+                std::unique_ptr<Command> cmd(new Command(it->second));
                 cmd->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(cmd));
             }
@@ -235,10 +235,10 @@ bool Scope::parseToken(SourceBlock::TokenVector &tokens, SourceBlock::TokenVecto
         }
         case TokenType::COMMAND:
         {
-            auto cmd = std::make_unique<Command>(it->second);
+            std::unique_ptr<Command> cmd(new Command(it->second));
             cmd->setDebugInfo(it->toDebugInfo());
             if(returning) {
-                std::unique_ptr<Return> retr = std::make_unique<Return>(std::make_unique<Command>(it->second));
+                std::unique_ptr<Return> retr(new Return(std::unique_ptr<Command>(new Command(it->second))));
                 retr->setDebugInfo(it->toDebugInfo());
                 push_back(std::move(retr));
                 returning = false;

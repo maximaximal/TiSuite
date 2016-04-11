@@ -122,7 +122,7 @@ void AST::generateFromTokenizedBlock(SourceBlock *block)
                 break;
             case tic::TokenType::FUNCTION_NAME:
                 if(functionDefinition) {
-                    std::unique_ptr<ast::Function> function = std::make_unique<ast::Function>(it->second);
+                    std::unique_ptr<ast::Function> function(new ast::Function(it->second));
                     function->setDebugInfo(it->toDebugInfo());
                     function->loadFromTokens(tokens, it, *m_rootList);
                     functionDefinition = false;
@@ -132,7 +132,7 @@ void AST::generateFromTokenizedBlock(SourceBlock *block)
                 break;
             case tic::TokenType::PROGRAM_NAME:
                 if(programDefinition) {
-                    std::unique_ptr<ast::Program> program = std::make_unique<ast::Program>(it->second);
+                    std::unique_ptr<ast::Program> program(new ast::Program(it->second));
                     program->setDebugInfo(it->toDebugInfo());
                     program->loadFromTokens(tokens, it, *m_rootList);
                     programDefinition = false;
@@ -142,7 +142,7 @@ void AST::generateFromTokenizedBlock(SourceBlock *block)
             case tic::TokenType::UNSAFE_NAME:
             {
                 if(unsafeDefinition) {
-                    std::unique_ptr<ast::Unsafe> uns = std::make_unique<ast::Unsafe>(it->second);
+                    std::unique_ptr<ast::Unsafe> uns(new ast::Unsafe(it->second));
                     uns->setDebugInfo(it->toDebugInfo());
                     uns->loadFromTokens(tokens, it, *m_rootList);
                     unsafeDefinition = false;
