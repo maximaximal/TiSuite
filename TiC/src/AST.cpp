@@ -23,8 +23,23 @@ AST::~AST()
     if(m_rootList)
         delete m_rootList;
 }
+void AST::setErrorHandler(ErrorHandler *handler)
+{
+    m_errorHandler = handler;
+    ast::Node::errorHandler = handler;
+}
+void AST::clear()
+{
+    m_rootBlock = nullptr;
+    if(m_rootList) {
+        delete m_rootList;
+        m_rootList = nullptr;
+    }
+}
 void AST::generateFromTokenizedBlock(SourceBlock *block)
 {
+    clear();
+    
     m_rootBlock = nullptr;
     m_rootList = new ast::List("RootList", ast::NodeType::List);
     

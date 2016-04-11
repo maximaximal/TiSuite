@@ -17,6 +17,10 @@ public:
     AST(ErrorHandler *errorHandler, OutputMgr *outputMgr);
     virtual ~AST();
     
+    void clear();
+    
+    void setErrorHandler(ErrorHandler *handler);
+    
     void generateFromTokenizedBlock(SourceBlock *block);
     
     void initPython(int argc, char* argv);

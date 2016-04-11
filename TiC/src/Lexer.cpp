@@ -29,6 +29,11 @@ void Lexer::lex(std::unique_ptr< SourceBlock > block)
         // We already have this sourceblock, it doesn't need to be loaded. 
     }
 }
+void Lexer::clear()
+{
+    m_sourceBlocks.clear();
+    m_rootBlock = "";
+}
 void Lexer::addFileToParse(const std::string &path)
 {
     std::unique_ptr<SourceBlock> block = std::make_unique<SourceBlock>();

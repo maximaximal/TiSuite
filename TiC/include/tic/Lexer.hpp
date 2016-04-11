@@ -21,6 +21,7 @@ public:
     
     void lex(std::unique_ptr<SourceBlock> block);
     void readTokens(SourceBlock *block);
+    void clear();
     
     TokenType::Type typeOfToken(TokenizerIterator begin, TokenizerIterator token, TokenizerIterator end, tic::SourceBlock::TokenVector &tokens, bool *incLine);
     bool isScopeCloseInUnsafe(SourceBlock::TokenVector &tokens, std::size_t i);
