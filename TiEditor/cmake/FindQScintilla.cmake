@@ -46,7 +46,7 @@
 find_path ( QSCINTILLA_INCLUDE_DIR
   NAMES qsciscintilla.h
   HINTS ${QT_INCLUDE_DIR} qt
-  PATH_SUFFIXES Qsci qt/Qsci qt
+  PATH_SUFFIXES Qsci qt/Qsci qt qt5
 )
 
 set ( QSCINTILLA_INCLUDE_DIRS ${QSCINTILLA_INCLUDE_DIR} )

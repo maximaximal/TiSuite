@@ -1,7 +1,7 @@
 cmake_policy(SET CMP0048 NEW)
 
 project(TiEditor
-    VERSION 0.2.1
+    VERSION 0.2.2
 )
 cmake_minimum_required(VERSION 3.0.2)
 
@@ -84,7 +84,7 @@ set(CPACK_PACKAGE_VERSION ${TiEditor_VERSION})
 set(CPACK_PACKAGE_VERSION_MAJOR ${TiEditor_VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR ${TiEditor_VERSION_MINOR})
 set(CPACK_PACKAGE_VERSION_PATCH ${TiEditor_VERSION_PATCH})
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "tic-lib (>= 0.2.1), libqt5widgets5 (>= 5.2.1), libqscintilla2-11 (>= 2.8.1-2)")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "tic-lib (>= 0.2.1), libqt5widgets5 (>= 5.2.1), libqt5scintilla2-11 (>= 2.8.1-2)")
 set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/maximaximal/TiSuite")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "TiC")
 
