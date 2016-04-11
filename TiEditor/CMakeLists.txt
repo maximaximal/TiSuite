@@ -1,7 +1,7 @@
 cmake_policy(SET CMP0048 NEW)
 
 project(TiEditor
-    VERSION 0.3.2
+    VERSION 0.3.3
 )
 cmake_minimum_required(VERSION 3.0.2)
 
@@ -56,6 +56,8 @@ set(CMAKE_AUTOUIC ON)
 find_package(Qt5Widgets)
 
 add_executable(tiedit ${SRCS} ${HDRS} ${RSCS})
+
+add_definitions(${Qt5Widgets_DEFINITIONS})
 
 target_link_libraries(tiedit Qt5::Widgets)
 
