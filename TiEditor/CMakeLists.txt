@@ -52,7 +52,7 @@ ExternalProject_Add(project_qscintilla
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/qscintilla-2.9.1
     SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/qscintilla-2.9.1/src/project_qscintilla/
     UPDATE_COMMAND ""
-    CONFIGURE_COMMAND cd Qt4Qt5 && qmake qscintilla.pro
+    CONFIGURE_COMMAND cd Qt4Qt5 && qmake -qt=qt5 qscintilla.pro
     BUILD_IN_SOURCE 1
     BUILD_COMMAND cd Qt4Qt5 && make
     INSTALL_COMMAND ""

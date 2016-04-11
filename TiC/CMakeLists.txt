@@ -146,7 +146,7 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/
 )
 install(
     FILES
-        ${CMAKE_CURRENT_SOURCE_DIR}/cmake//DetectDistro.cmake
+        ${CMAKE_CURRENT_SOURCE_DIR}/cmake/DetectDistro.cmake
         ${CMAKE_CURRENT_BINARY_DIR}/TiCConfigVersion.cmake
         ${CMAKE_CURRENT_BINARY_DIR}/TiCConfig.cmake
     DESTINATION 
