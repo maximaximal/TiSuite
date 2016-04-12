@@ -218,7 +218,7 @@ QColor TiCLexer::defaultColor(int style) const
         return QColor("#93a1a1");
 
     case UserLiteral:
-        return QColor("#859900");
+        return QColor("#839496");
 
     case InactiveUserLiteral:
         return QColor("#93a1a1");
@@ -230,7 +230,7 @@ QColor TiCLexer::defaultColor(int style) const
         return QColor("#d33682");
     }
 
-    return QsciLexer::defaultColor(style);
+    return QColor("#839496");
 }
 
 
