@@ -156,6 +156,9 @@ void EditorWindow::on_actionCompile_triggered()
             m_compileWindow = new TiCCompile(this);
         }
         m_compileWindow->show();
+        m_compileWindow->setWindowState( (windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
+        m_compileWindow->raise();
+        m_compileWindow->activateWindow();
         
         QSettings settings;
         settings.beginGroup("EditorWindow");
