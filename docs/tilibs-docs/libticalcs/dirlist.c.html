@@ -1,0 +1,259 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Directory listing management
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="ticalcs_dirlist_destroy"></a>ticalcs_dirlist_destroy</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 void TICALL ticalcs_dirlist_destroy(GNode** tree)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Destroy the whole tree create by #ticalcs_calc_get_dirlist.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">tree :<br></td>
+<td style="vertical-align: top;">the tree to destroy.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_dirlist_display"></a>ticalcs_dirlist_display</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 void TICALL ticalcs_dirlist_display(GNode* tree)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Display to stdout the tree content formatted in a tab.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">tree :<br></td>
+<td style="vertical-align: top;">the tree to display.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_dirlist_ve_exist"></a>ticalcs_dirlist_ve_exist</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 VarEntry *TICALL ticalcs_dirlist_ve_exist(GNode* tree, VarEntry *s)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Parse the tree for the given varname & folder or appname.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">tree :<br></td>
+<td style="vertical-align: top;">the tree to parse.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">s :<br></td>
+<td style="vertical-align: top;">the full name of the variable or application to search for.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a pointer on the #VarEntry found or NULL if not found.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_dirlist_ve_count"></a>ticalcs_dirlist_ve_count</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_dirlist_ve_count(GNode* tree)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Count how many entries (vars or apps) are listed in the tree.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">tree :<br></td>
+<td style="vertical-align: top;">a tree (var or app).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the number of entries.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_dirlist_ram_used"></a>ticalcs_dirlist_ram_used</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_dirlist_ram_used(GNode* tree)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Count how much memory is used by variables listed in the tree.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">tree :<br></td>
+<td style="vertical-align: top;">a tree (var only).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">size of all variables in bytes.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_dirlist_flash_used"></a>ticalcs_dirlist_flash_used</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_dirlist_flash_used(GNode* vars, GNode* apps)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Count how much memory is used by archived variables and apps listed in the trees.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">tree :<br></td>
+<td style="vertical-align: top;">a tree (app only).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">size of all FLASH in bytes.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_dirlist_ve_add"></a>ticalcs_dirlist_ve_add</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 void TICALL ticalcs_dirlist_ve_add(GNode* tree, VarEntry *entry)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Add an entry into the main tree (if it doesn't exist yet).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">tree :<br></td>
+<td style="vertical-align: top;">source tree.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">entry :<br></td>
+<td style="vertical-align: top;">entry to add.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_dirlist_ve_del"></a>ticalcs_dirlist_ve_del</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 void TICALL ticalcs_dirlist_ve_del(GNode* tree, VarEntry *entry)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Remove an entry into the main tree (if it doesn't exist yet).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">tree :<br></td>
+<td style="vertical-align: top;">source tree.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">entry :<br></td>
+<td style="vertical-align: top;">entry to remove.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

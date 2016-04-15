@@ -1,0 +1,276 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Entry Points
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="ticalcs_library_init"></a>ticalcs_library_init</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_library_init(void)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function must be the first one to call. It inits library internals.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the instance count.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_library_exit"></a>ticalcs_library_exit</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function must be the last one to call. Used to release internal resources.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the instance count.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_version_get"></a>ticalcs_version_get</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 const char *TICALL ticalcs_version_get(void)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function returns the library version like "X.Y.Z".
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a string.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_handle_new"></a>ticalcs_handle_new</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 CalcHandle* TICALL ticalcs_handle_new(CalcModel model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Create a new handle associated with the given cable on the given port.
+Must be freed with ticables_handle_del when no longer needed.
+Note: the handle is a pointer on an opaque structure and should not be modified.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a hand-held model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">NULL if error, an handle otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_handle_del"></a>ticalcs_handle_del</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_handle_del(CalcHandle* handle)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Release the cable and free the associated resources.
+If cable has not been detached with #ticalcs_cable_detach,
+it will be detached.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">the handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">always 0.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_handle_show"></a>ticalcs_handle_show</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_handle_show(CalcHandle* handle)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Show information stored in the handle.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">the handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">always 0.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_cable_attach"></a>ticalcs_cable_attach</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_cable_attach(CalcHandle* handle, CableHandle* cable)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Attach and open the given cable for use with the hand-held.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">the handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">cable :<br></td>
+<td style="vertical-align: top;">a cable to use
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_cable_detach"></a>ticalcs_cable_detach</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_cable_detach(CalcHandle* handle)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Close and detach the cable associated with the hand-held.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">the handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">cable :<br></td>
+<td style="vertical-align: top;">a cable to use
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_update_set"></a>ticalcs_update_set</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_update_set(CalcHandle* handle, CalcUpdate* upd)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Set the callbacks to use for the given handle.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">the handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">update :<br></td>
+<td style="vertical-align: top;">the callbacks to use
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

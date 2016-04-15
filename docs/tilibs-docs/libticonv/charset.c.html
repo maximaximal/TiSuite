@@ -1,0 +1,680 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">TI8x/TI9x charset <=> UTF-16 conversion routines
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="ticonv_utf16_to_ti9x"></a>ticonv_utf16_to_ti9x</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_utf16_to_ti9x(const unsigned short *utf16, char *ti)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 to TI89,92,92+,V200,Titanium charset conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_ti9x_to_utf16"></a>ticonv_ti9x_to_utf16</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_ti9x_to_utf16(const char *ti, unsigned short *utf16)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+TI89,92,92+,V200,Titanium charset to UTF-16 conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_ti73_to_utf16"></a>ticonv_ti73_to_utf16</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_ti73_to_utf16(const char *ti, unsigned short *utf16)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+TI73 charset to UTF-16 conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_utf16_to_ti73"></a>ticonv_utf16_to_ti73</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_utf16_to_ti73(const unsigned short *utf16, char *ti)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 to TI73 charset conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">empty string (not implemented)
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_ti80_to_utf16"></a>ticonv_ti80_to_utf16</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_ti80_to_utf16(const char *ti, unsigned short *utf16)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+TI80 charset to UTF-16 conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_utf16_to_ti80"></a>ticonv_utf16_to_ti80</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_utf16_to_ti80(const unsigned short *utf16, char *ti)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 to TI80 charset conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_ti82_to_utf16"></a>ticonv_ti82_to_utf16</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_ti82_to_utf16(const char *ti, unsigned short *utf16)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+TI82 charset to UTF-16 conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_utf16_to_ti82"></a>ticonv_utf16_to_ti82</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_utf16_to_ti82(const unsigned short *utf16, char *ti)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 to TI82 charset conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">empty string (not implemented)
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_ti83_to_utf16"></a>ticonv_ti83_to_utf16</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_ti83_to_utf16(const char *ti, unsigned short *utf16)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+TI82 charset to UTF-16 conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_utf16_to_ti83"></a>ticonv_utf16_to_ti83</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_utf16_to_ti83(const unsigned short *utf16, char *ti)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 to TI83 charset conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">empty string (not implemented)
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_ti83p_to_utf16"></a>ticonv_ti83p_to_utf16</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_ti83p_to_utf16(const char *ti, unsigned short *utf16)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+TI83+ charset to UTF-16 conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_utf16_to_ti83p"></a>ticonv_utf16_to_ti83p</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_utf16_to_ti83p(const unsigned short *utf16, char *ti)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 to TI83+ charset conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_ti85_to_utf16"></a>ticonv_ti85_to_utf16</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_ti85_to_utf16(const char *ti, unsigned short *utf16)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+TI85 charset to UTF-16 conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_utf16_to_ti85"></a>ticonv_utf16_to_ti85</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_utf16_to_ti85(const unsigned short *utf16, char *ti)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 to TI85 charset conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">empty string (not implemented)
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_ti86_to_utf16"></a>ticonv_ti86_to_utf16</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_ti86_to_utf16(const char *ti, unsigned short *utf16)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+TI86 charset to UTF-16 conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_utf16_to_ti86"></a>ticonv_utf16_to_ti86</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_utf16_to_ti86(const unsigned short *utf16, char *ti)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 to TI86 charset conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">empty string (not implemented)
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_ti84pusb_to_utf16"></a>ticonv_ti84pusb_to_utf16</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_ti84pusb_to_utf16(const char *ti, unsigned short *utf16)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+TI84+/USB charset to UTF-16 conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_utf16_to_ti84pusb"></a>ticonv_utf16_to_ti84pusb</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_utf16_to_ti84pusb(const unsigned short *utf16, char *ti)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 to TI84+/USB charset conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_ti89tpusb_to_utf16"></a>ticonv_ti89tpusb_to_utf16</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_ti89tusb_to_utf16(const char *ti, unsigned short *utf16)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Titanium/USB charset to UTF-16 conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_utf16_to_ti89tpusb"></a>ticonv_utf16_to_ti89tpusb</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_utf16_to_ti89tusb(const unsigned short *utf16, char *ti)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 to Titanium/USB charset conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">returns the destination pointer.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

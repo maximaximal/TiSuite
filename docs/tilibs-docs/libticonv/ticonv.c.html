@@ -1,0 +1,664 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">General functions and Generic TI charset <=> UTF-16 conversions
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="ticonv_version_get"></a>ticonv_version_get</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 const char *TICALL ticonv_version_get(void)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function returns the library version like "X.Y.Z".
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a constant string.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_utf16_strlen"></a>ticonv_utf16_strlen</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 size_t TICALL ticonv_utf16_strlen(const unsigned short *str)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 version of strlen (same as wcslen if wchar_t is UTF-16, but portable).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">str :<br></td>
+<td style="vertical-align: top;">null terminated UTF-16 string
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">number of characters. Surrogate pairs are counted as 2
+              characters each.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_utf8_to_utf16"></a>ticonv_utf8_to_utf16</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* ticonv_utf8_to_utf16(const char *str)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-8 to UTF-16 conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">null terminated UTF-8 string
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a newly allocated string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_utf16_to_utf8"></a>ticonv_utf16_to_utf8</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* ticonv_utf16_to_utf8(const unsigned short *str)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 to UTF-8 conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">null terminated UTF-16 string
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a newly allocated string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_charset_utf16_to_ti_s"></a>ticonv_charset_utf16_to_ti_s</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_charset_utf16_to_ti_s(CalcModel model, const unsigned short *utf16, char *ti)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 to TI charset conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">calculator model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the %ti string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_charset_utf16_to_ti"></a>ticonv_charset_utf16_to_ti</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_charset_utf16_to_ti(CalcModel model, const unsigned short *utf16)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+UTF-16 to TI charset conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">calculator model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a newly allocated string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_charset_ti_to_utf16_s"></a>ticonv_charset_ti_to_utf16_s</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_charset_ti_to_utf16_s(CalcModel model, const char *ti, unsigned short *utf16)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+TI charset to UTF-16 conversion.
+The %utf16 destination buffer will hold the result. It must be big enough.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the %utf16 string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_charset_ti_to_utf16"></a>ticonv_charset_ti_to_utf16</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_charset_ti_to_utf16(CalcModel model, const char *ti)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+TI charset to UTF-16 conversion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ti :<br></td>
+<td style="vertical-align: top;">null terminated string (input)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">utf16 :<br></td>
+<td style="vertical-align: top;">null terminated string (output)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a newly allocated string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_varname_to_utf16"></a>ticonv_varname_to_utf16</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_varname_to_utf16(CalcModel model, const char *src, unsigned char type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Some calculators (like TI73/82/83/83+/84+) does not return the real name of the 
+variable (like L1) but uses a special encoded way. This functions expands the name 
+and converts it to UTF-16.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">a name of variable to detokenize and translate (17 chars max).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">vartype :<br></td>
+<td style="vertical-align: top;">the type of variable.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a newly allocated string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_varname_to_utf16_s"></a>ticonv_varname_to_utf16_s</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 unsigned short* TICALL ticonv_varname_to_utf16_s(CalcModel model, const char *src, unsigned short *dst, unsigned char type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Some calculators (like TI73/82/83/83+/84+) does not return the real name of the 
+variable (like L1) but uses a special encoded way. This functions expands the name 
+and converts it to UTF-16.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">a name of variable to detokenize and translate (17 chars max).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst :<br></td>
+<td style="vertical-align: top;">a buffer where to placed the result (big enough).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">vartype :<br></td>
+<td style="vertical-align: top;">the type of variable.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the %dst string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_varname_to_utf8"></a>ticonv_varname_to_utf8</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_varname_to_utf8(CalcModel model, const char *src, unsigned char type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Some calculators (like TI73/82/83/83+/84+) does not return the real name of the 
+variable (like L1) but uses a special encoded way. This functions expands the name 
+and converts it to UTF-16.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">a name of variable to detokenize and translate.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">vartype :<br></td>
+<td style="vertical-align: top;">the type of variable.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a newly allocated string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_varname_to_utf8_s"></a>ticonv_varname_to_utf8_s</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_varname_to_utf8_s(CalcModel model, const char *src, char *dst, unsigned char type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Some calculators (like TI73/82/83/83+/84+) does not return the real name of the 
+variable (like L1) but uses a special encoded way. This functions expands the name 
+and converts it to UTF-16.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">a name of variable to detokenize and translate (17 chars max).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst :<br></td>
+<td style="vertical-align: top;">a buffer where to placed the result (big enough).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">vartype :<br></td>
+<td style="vertical-align: top;">the type of variable.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the %dst string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_varname_to_filename"></a>ticonv_varname_to_filename</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_varname_to_filename(CalcModel model, const char *src, unsigned char type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function converts a varname into a valid filename (depends on locale).
+Example: 'foobar' => foobar, 'alpha' => _alpha_/alpha.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model taken in #CalcModel.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">the name of variable to convert (raw/binary name).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">%dst as a newly allocated string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_varname_to_filename_s"></a>ticonv_varname_to_filename_s</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_varname_to_filename_s(CalcModel model, const char *src, char *dst, unsigned char type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function converts a varname into a valid filename (depends on locale).
+Example: 'foobar' => foobar, 'alpha' => _alpha_/alpha.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model taken in #CalcModel.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">the name of variable to convert (raw/binary name).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst :<br></td>
+<td style="vertical-align: top;">a buffer to place result in the GLib filename encoding (64 bytes max).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">%dst or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_varname_to_tifile"></a>ticonv_varname_to_tifile</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_varname_to_tifile(CalcModel model, const char *src, unsigned char type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function converts a raw varname into a TI file varname.
+Needed because USB hand-helds use TI-UTF-8 while TI files are still encoded in
+raw varname encoding.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model taken in #CalcModel.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">the name of variable to convert (raw/binary name).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">%dst as a newly allocated string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_varname_to_tifile_s"></a>ticonv_varname_to_tifile_s</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_varname_to_tifile_s(CalcModel model, const char *src, char *dst, unsigned char type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function converts a raw varname into a TI file varname.
+Needed because USB hand-helds use TI-UTF-8 while TI files are still encoded in
+raw varname encoding.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model taken in #CalcModel.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">the name of variable to convert (raw/binary name).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst :<br></td>
+<td style="vertical-align: top;">the location where to place the result (big enough).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">%dst as a newly allocated string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_varname_from_tifile"></a>ticonv_varname_from_tifile</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_varname_from_tifile(CalcModel model, const char *src, unsigned char type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function converts a raw varname into a TI file varname.
+Needed because USB hand-helds use TI-UTF-8 while TI files are still encoded in
+raw varname encoding.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model taken in #CalcModel.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">the name of variable to convert (raw/binary name).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">%dst as a newly allocated string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_varname_from_tifile_s"></a>ticonv_varname_from_tifile_s</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_varname_from_tifile_s(CalcModel model, const char *src, char *dst, unsigned char type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function converts a raw varname into a TI file varname.
+Needed because USB hand-helds use TI-UTF-8 while TI files are still encoded in
+raw varname encoding.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model taken in #CalcModel.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">the name of variable to convert (raw/binary name).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst :<br></td>
+<td style="vertical-align: top;">the location where to place the result (big enough).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">%dst as a newly allocated string or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

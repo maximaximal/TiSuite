@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Automatic probing of cables<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="ticables_probing_do"></a>ticables_probing_do</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 int TICALL ticables_probing_do(int ***result, int timeout, ProbingMethod method)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns cables which have been detected. All cables should be closed before !
+The array is like a matrix which contains 5 columns (PORT_0 to PORT_4) and 
+7 lines (CABLE_GRY to CABLE_USB).
+The array must be freed by #ticables_probing_finish when no longer used.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">result :<br></td>
+<td style="vertical-align: top;">address of an array of integers to put the result.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">timeout :<br></td>
+<td style="vertical-align: top;">timeout to set during probing
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">method :<br></td>
+<td style="vertical-align: top;">defines which link cables you want to search for.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, ERR_NO_CABLE if no cables found.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_probing_finish"></a>ticables_probing_finish</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 int TICALL ticables_probing_finish(int ***result)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Free the array created by #ticables_probing_do.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">result :<br></td>
+<td style="vertical-align: top;">address of an array of integers. 
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">always 0.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_is_usb_enabled"></a>ticables_is_usb_enabled</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 int TICALL ticables_is_usb_enabled(void)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Checks whether USB support is available. Can be called at any time.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">!0 if available, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticables_get_usb_devices"></a>ticables_get_usb_devices</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT1 int TICALL ticables_get_usb_devices(int **list, int *len)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the list of detected USB PIDs. Note that list is in the 
+same order as PORT#x.
+The array must be freed when no longer used.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">array :<br></td>
+<td style="vertical-align: top;">address of a NULL-terminated allocated array of integers (PIDs).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">length :<br></td>
+<td style="vertical-align: top;">number of detected USB devices.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

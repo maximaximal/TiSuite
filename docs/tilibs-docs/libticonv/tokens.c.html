@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Generic detokenization support
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="ticonv_varname_detokenize"></a>ticonv_varname_detokenize</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_varname_detokenize(CalcModel model, const char *src, unsigned char type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function translates a binary variable name (as used on TI8x) into a human readable one.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">hand-held model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">binary string to detokenize
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a newly allocated string. Must be freed when no longer used.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticonv_varname_tokenize"></a>ticonv_varname_tokenize</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT4 char* TICALL ticonv_varname_tokenize(CalcModel model, const char *src_, unsigned char type)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function tries andtranslates a human readable variable name into a binary name (as used on TI8x).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">hand-held model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">binary string to tokenize
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a newly allocated string. Must be freed when no longer used.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

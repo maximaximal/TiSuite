@@ -1,0 +1,207 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Automatic probing of hand-held model
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="ticalcs_probe_calc_2"></a>ticalcs_probe_calc_2</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">static int ticalcs_probe_calc_2(CalcHandle* handle, CalcModel* model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function tries and detect the calculator type for non-silent models
+by requesting a screedump and analyzing the Machine ID. 
+It supposes your calc is on and plugged.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">type :<br></td>
+<td style="vertical-align: top;">the calculator model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">08  6D 00 00		PC request a screen dump
+TI: MId 56 00 00		TI reply OK
+Beware: the call sequence is very important: 86, 85, 73, 83, 82 !!!
+Return value: 0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_probe_calc_1"></a>ticalcs_probe_calc_1</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">static int ticalcs_probe_calc_1(CalcHandle* handle, CalcModel* model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Check if the calculator is ready and detect the type.
+Works only on FLASH calculators with an AMS2.08 or OS2.00 by requesting the
+version. A previous version was based on MID but TI83+/84+, TI89/TI89t, TI92+/V200 
+could not be distinguished ;-(
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">handle :<br></td>
+<td style="vertical-align: top;">a previously allocated handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">type :<br></td>
+<td style="vertical-align: top;">the calculator model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_probe_calc"></a>ticalcs_probe_calc</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_probe_calc (CableHandle* cable, CalcModel* model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function attempts to detect the calculator model plugged onto the cable.
+It works in a heuristic fashion.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">cable :<br></td>
+<td style="vertical-align: top;">a valid (=opened/attached) link cable handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">the calculator model which have been detected
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_probe_usb_calc"></a>ticalcs_probe_usb_calc</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_probe_usb_calc(CableHandle* cable, CalcModel* model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function attempts to detect the calculator model plugged onto the cable.
+It works in a heuristic fashion and with FLASH hand-helds only.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">cable :<br></td>
+<td style="vertical-align: top;">a valid (=opened/attached) link cable handle
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">the calculator model which have been detected
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_probe"></a>ticalcs_probe</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_probe(CableModel c_model, CablePort c_port, CalcModel* model, int all)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function attempts to detect the calculator model plugged onto a
+given link cable model/port. It works in a heuristic fashion.
+This function handles device opening/closing for you.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">c_model :<br></td>
+<td style="vertical-align: top;">link cable model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">c_port :<br></td>
+<td style="vertical-align: top;">link cable port
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">hand-held model detected/found [out]
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">all :<br></td>
+<td style="vertical-align: top;">which hand-helds to detect (FLASH only or all)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

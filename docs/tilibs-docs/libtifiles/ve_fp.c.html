@@ -1,0 +1,444 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">VarEntry & FlashPage structures creation/deletion
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="tifiles_ve_create"></a>tifiles_ve_create</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 VarEntry*	TICALL tifiles_ve_create(void)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocate a new VarEntry structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the entry or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_ve_alloc_data"></a>tifiles_ve_alloc_data</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 void *tifiles_ve_alloc_data(size_t size)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocate space for data field of VarEntry.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">size :<br></td>
+<td style="vertical-align: top;">length of data.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">allocated space or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_ve_create_with_data"></a>tifiles_ve_create_with_data</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 VarEntry*	TICALL tifiles_ve_create_with_data(uint32_t size)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocate a new VarEntry structure and space for data.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">size :<br></td>
+<td style="vertical-align: top;">length of data.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the entry or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_ve_create_array"></a>tifiles_ve_create_array</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 VarEntry**	TICALL tifiles_ve_create_array(int nelts)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocate a NULL-terminated array of VarEntry structures. You have to allocate
+each elements of the array by yourself.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">nelts :<br></td>
+<td style="vertical-align: top;">size of NULL-terminated array (number of VarEntry structures).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the array or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_ve_resize_array"></a>tifiles_ve_resize_array</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 VarEntry**	TICALL tifiles_ve_resize_array(VarEntry** array, int nelts)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Re-allocate a NULL-terminated array of VarEntry structures. You have to allocate
+each elements of the array by yourself.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">array :<br></td>
+<td style="vertical-align: top;">address of array
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">nelts :<br></td>
+<td style="vertical-align: top;">size of NULL-terminated array (number of VarEntry structures).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the array or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_ve_delete"></a>tifiles_ve_delete</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 void			TICALL tifiles_ve_delete(VarEntry* ve)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Free data buffer and the structure itself.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ve :<br></td>
+<td style="vertical-align: top;">var entry.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_ve_delete_array"></a>tifiles_ve_delete_array</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 void			TICALL tifiles_ve_delete_array(VarEntry** array)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Free the whole array (data buffer, VarEntry structure and array itself).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">array :<br></td>
+<td style="vertical-align: top;">an NULL-terminated array of VarEntry structures.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_ve_copy"></a>tifiles_ve_copy</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 VarEntry*	TICALL tifiles_ve_copy(VarEntry* dst, VarEntry* src)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Copy VarEntry and its content from src to dst.
+If data is NULL, a new buffer is allocated before copying.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">dst :<br></td>
+<td style="vertical-align: top;">destination entry.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">source entry.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the dst pointer or NULL if malloc error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_ve_dup"></a>tifiles_ve_dup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 VarEntry*	TICALL tifiles_ve_dup(VarEntry* src)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Duplicate VarEntry and its content from src to dst (full copy).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src :<br></td>
+<td style="vertical-align: top;">source entry.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a newly allocated entry (must be freed with #tifiles_ve_delete when no longer needed).
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_fp_create"></a>tifiles_fp_create</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 FlashPage*	TICALL tifiles_fp_create(void)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocate a new FlashPage structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the entry or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_fp_alloc_data"></a>tifiles_fp_alloc_data</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 void *tifiles_fp_alloc_data(size_t size)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocate space for data field of FlashPage.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">size :<br></td>
+<td style="vertical-align: top;">length of data.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">allocated space or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_fp_create_with_data"></a>tifiles_fp_create_with_data</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 FlashPage*	TICALL tifiles_fp_create_with_data(uint32_t size)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocate a new FlashPage structure and space for data.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">size :<br></td>
+<td style="vertical-align: top;">length of data.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the entry or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_fp_create_array"></a>tifiles_fp_create_array</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 FlashPage**	TICALL tifiles_fp_create_array(int nelts)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocate a NULL-terminated array of FlashPage structures. You have to allocate
+each elements of the array by yourself.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">nelts :<br></td>
+<td style="vertical-align: top;">size of NULL-terminated array (number of FlashPage structures).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the array or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_fp_delete"></a>tifiles_fp_delete</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 void			TICALL tifiles_fp_delete(FlashPage* fp)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Free data buffer and the structure itself.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">ve :<br></td>
+<td style="vertical-align: top;">var entry.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_fp_delete_array"></a>tifiles_fp_delete_array</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 void			TICALL tifiles_fp_delete_array(FlashPage** array)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Free the whole array (data buffer, FlashPage structure and array itself).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">array :<br></td>
+<td style="vertical-align: top;">an NULL-terminated array of FlashPage structures.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

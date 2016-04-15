@@ -1,0 +1,642 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Operations on Ti Groups (*.tig)<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="tifiles_te_create"></a>tifiles_te_create</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 TigEntry* TICALL tifiles_te_create(const char *filename, FileClass type, CalcModel model)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocates a TigEntry structure and allocates fields (aka call #tifiles_content_create_flash/regular for you).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">internal filename in archive.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">type :<br></td>
+<td style="vertical-align: top;">file type (regular or flash)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">calculator model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the allocated block.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_te_delete"></a>tifiles_te_delete</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_te_delete(TigEntry* entry)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Destroy a #TigEntry structure as well as fields.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">entry :<br></td>
+<td style="vertical-align: top;">a #TigEntry structure.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_te_create_array"></a>tifiles_te_create_array</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 TigEntry**	TICALL tifiles_te_create_array(int nelts)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocate a NULL-terminated array of #TigEntry structures. You have to allocate
+each elements of the array by yourself.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">nelts :<br></td>
+<td style="vertical-align: top;">size of NULL-terminated array (number of #TigEntry structures).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the array or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_te_resize_array"></a>tifiles_te_resize_array</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 TigEntry**	TICALL tifiles_te_resize_array(TigEntry** array, int nelts)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Re-allocate a NULL-terminated array of #TigEntry structures. You have to allocate
+each elements of the array by yourself.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">array :<br></td>
+<td style="vertical-align: top;">address of array
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">nelts :<br></td>
+<td style="vertical-align: top;">size of NULL-terminated array (number of #TigEntry structures).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the array or NULL if error.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_ve_delete_array"></a>tifiles_ve_delete_array</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 void			TICALL tifiles_te_delete_array(TigEntry** array)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Free the whole array (data buffer, TigEntry structure and array itself).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">array :<br></td>
+<td style="vertical-align: top;">an NULL-terminated array of TigEntry structures.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_te_sizeof_array"></a>tifiles_te_sizeof_array</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_te_sizeof_array(TigEntry** array)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Returns the size of a #TigEntry array.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">array :<br></td>
+<td style="vertical-align: top;">an NULL-terminated array of TigEntry structures.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">r :<br></td>
+<td style="vertical-align: top;">number of FileContent entries
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">f :<br></td>
+<td style="vertical-align: top;">number of FlashContent entries
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_add_te"></a>tifiles_content_add_te</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_content_add_te(TigContent *content, TigEntry *te)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Adds the entry to the file content and updates internal structures.
+Beware: the entry is not duplicated.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">a file content (TiGroup).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">te :<br></td>
+<td style="vertical-align: top;">the entry to add
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the number of entries.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_del_te"></a>tifiles_content_del_te</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_content_del_te(TigContent *content, TigEntry *te)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Search for entry name and remove it from file content.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">a file content (TiGroup).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">te :<br></td>
+<td style="vertical-align: top;">the entry to remove
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the number of entries or -1 if not found.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_tigroup_add_file"></a>tifiles_tigroup_add_file</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_tigroup_add_file(const char *src_filename, const char *dst_filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Add src_filename content to dst_filename content and write to dst_filename.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src_filename :<br></td>
+<td style="vertical-align: top;">the file to add to TiGroup file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst_filename :<br></td>
+<td style="vertical-align: top;">the TiGroup file (must exist!)
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_tigroup_del_file"></a>tifiles_tigroup_del_file</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_tigroup_del_file(TigEntry *entry, const char *filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Search for entry and remove it from file.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src_filename :<br></td>
+<td style="vertical-align: top;">the file to remove from TiGroup file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst_filename :<br></td>
+<td style="vertical-align: top;">the TiGroup file
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">0 if successful, an error code otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_tigroup_contents"></a>tifiles_tigroup_contents</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_tigroup_contents(FileContent **src_contents1, FlashContent **src_contents2, TigContent **dst_content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Group several #FileContent/#FlashContent structures into a single one.
+Must be freed when no longer used by a call to #tifiles_content_delete_tigroup.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src_contents1 :<br></td>
+<td style="vertical-align: top;">a pointer on an array of #FileContent structures or NULL. The array must be NULL-terminated.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">src_contents2 :<br></td>
+<td style="vertical-align: top;">a pointer on an array of #FlashContent structures or NULL. The array must be NULL-terminated.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst_content :<br></td>
+<td style="vertical-align: top;">the address of a pointer. This pointer will see the allocated TiGroup file.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code if unsuccessful, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_untigroup_content"></a>tifiles_untigroup_content</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_untigroup_content(TigContent *src_content, FileContent ***dst_contents1, FlashContent ***dst_contents2)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src_content :<br></td>
+<td style="vertical-align: top;">a pointer on the structure to unpack.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst_contents1 :<br></td>
+<td style="vertical-align: top;">the address of your pointer. This pointers will point on a 
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst_contents2 :<br></td>
+<td style="vertical-align: top;">the address of your pointer. This pointers will point on a 
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code if unsuccessful, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_group_files"></a>tifiles_group_files</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_tigroup_files(char **src_filenames, const char *dst_filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Group several TI files (regular/flash) into a single one (TiGroup file).
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src_filenames :<br></td>
+<td style="vertical-align: top;">a NULL-terminated array of strings (list of files to group).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst_filename :<br></td>
+<td style="vertical-align: top;">the filename where to store the TiGroup.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code if unsuccessful, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_ungroup_file"></a>tifiles_ungroup_file</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_untigroup_file(const char *src_filename, char ***dst_filenames)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">src_filename :<br></td>
+<td style="vertical-align: top;">full path of file to ungroup.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">dst_filenames :<br></td>
+<td style="vertical-align: top;">NULL or the address of a pointer where to store a NULL-terminated 
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">there is no existence check; files may be overwritten !
+%dst_filenames must be freed when no longer used.
+Return value: an error code if unsuccessful, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_create_tigroup"></a>tifiles_content_create_tigroup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 TigContent* TICALL tifiles_content_create_tigroup(CalcModel model, int n)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Allocates a TigContent structure. Note: the calculator model is not required
+if the content is used for file reading but is compulsory for file writing.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model or CALC_NONE.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">n :<br></td>
+<td style="vertical-align: top;">number of #tigEntry entries
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">the allocated block.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_content_delete_tigroup"></a>tifiles_content_delete_tigroup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_content_delete_tigroup(TigContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Free the whole content of a @TigContent structure and the content itself.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">none.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_read_tigroup"></a>tifiles_file_read_tigroup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_file_read_tigroup(const char *filename, TigContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function loads a TiGroup from \a filename and places its content into \a content.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">the name of file to load.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">where to store content (may be re-allocated).
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code if unsuccessful, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_write_tigroup"></a>tifiles_file_write_tigroup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_file_write_tigroup(const char *filename, TigContent *content)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function store TiGroup contents to file. Please note that contents 
+can contains no data. In this case, the file is void but created.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">the name of file to load.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">content :<br></td>
+<td style="vertical-align: top;">where to store content.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code if unsuccessful, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="tifiles_file_display_tigroup"></a>tifiles_file_display_tigroup</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT2 int TICALL tifiles_file_display_tigroup(const char *filename)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+This function shows file contents (similar to "unzip -l filename").
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">filename :<br></td>
+<td style="vertical-align: top;">the name of file to load.
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">an error code if unsuccessful, 0 otherwise.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

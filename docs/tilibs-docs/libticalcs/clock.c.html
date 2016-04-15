@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>Header File Index</title>
+<link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+<tbody>
+<tr>
+<td class="NOBORDER" width="40"><img src="info.gif" border="0"
+height="32" width="32"> </td>
+<td class="TITLE">Clock support
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3><a name="ticalcs_clock_format2date"></a>ticalcs_clock_format2date</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 const char *TICALL ticalcs_clock_format2date(CalcModel model, int value)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Convert a format type into a format string.
+Example: 1 -> "MM/DD/YY"
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">value :<br></td>
+<td style="vertical-align: top;">a format type
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a format string.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_clock_date2format"></a>ticalcs_clock_date2format</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_clock_date2format(CalcModel model, const char *format)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Convert a format string into a format type.
+Example: "MM/DD/YY" -> 1
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">a calculator model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">format :<br></td>
+<td style="vertical-align: top;">a format string
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">a format string.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a name="ticalcs_clock_show"></a>ticalcs_clock_show</h3>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">TIEXPORT3 int TICALL ticalcs_clock_show(CalcModel model, CalcClock* s)
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+Display to stdout the content of the structure.
+<br>
+<br>
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">model :<br></td>
+<td style="vertical-align: top;">calc model
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">clock :<br></td>
+<td style="vertical-align: top;">a #CalcClock structure
+<br></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Return value :<br></td>
+<td style="vertical-align: top;">always 0.
+<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3><a href="file:index.html">Return to the main index</a> </h3><br><br><br></body>
+</html>

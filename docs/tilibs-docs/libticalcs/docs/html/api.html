@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Header File Index</title>
+  <link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+  <tbody>
+    <tr>
+      <td class="NOBORDER" width="40"><img src="info.gif" border="0"
+ height="32" width="32"> </td>
+      <td class="TITLE">TiCalcs Library API</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<p>The ticalcs library provide a complete API (Application Programming
+Interface) &nbsp;which makes use of TI hand-helds and their link protocols
+easy and transparent. <br>
+<br>
+Functions and data types are grouped in different topics, depending on
+their purpose. Click on a topic for the description of all functions
+and data types defined in this topic.<br>
+</p>
+<span style="font-weight:bold;">Enumerations, structures and type definitions
+</span><br>
+<ul>
+<li><a href="ticalcs.h.html#CalcScreenFormat">CalcScreenFormat</a></li>
+<li><a href="ticalcs.h.html#CalcPathType">CalcPathType</a></li>
+<li><a href="ticalcs.h.html#CalcMemType">CalcMemType</a></li>
+<li><a href="ticalcs.h.html#CalcMode">CalcMode</a></li>
+<li><a href="ticalcs.h.html#CalcRomDumpSize">CalcRomDumpSize</a></li>
+<li><a href="ticalcs.h.html#CalcShellType">CalcShellType</a></li>
+<li><a href="ticalcs.h.html#CalcOperations">CalcOperations</a></li>
+<li><a href="ticalcs.h.html#CalcAction">CalcAction</a></li>
+<li><a href="ticalcs.h.html#InfosMask">InfosMask</a></li>
+<li><a href="ticalcs.h.html#CalcFnctsIdx">CalcFnctsIdx</a></li>
+<li><a href="ticalcs.h.html#TigMode">TigMode</a></li>
+<li><a href="ticalcs.h.html#DUSBRawPacket">DUSBRawPacket</a></li>
+<li><a href="ticalcs.h.html#NSPRawPacket">NSPRawPacket</a></li>
+<li><a href="ticalcs.h.html#CalcScreenCoord">CalcScreenCoord</a></li>
+<li><a href="ticalcs.h.html#TreeInfo">TreeInfo</a></li>
+<li><a href="ticalcs.h.html#KeyPair">KeyPair</a></li>
+<li><a href="ticalcs.h.html#CalcKey">CalcKey</a></li>
+<li><a href="ticalcs.h.html#CalcClock">CalcClock</a></li>
+<li><a href="ticalcs.h.html#CalcUpdate">CalcUpdate</a></li>
+<li><a href="ticalcs.h.html#CalcInfos">CalcInfos</a></li>
+<li><a href="ticalcs.h.html#CalcFncts">CalcFncts</a></li>
+<li><a href="ticalcs.h.html#CalcHandle">CalcHandle</a></li>
+<li><a href="ticalcs.h.html#DeviceOptions">DeviceOptions</a></li>
+</ul>
+<span style="font-weight:bold;">Entry Points
+</span><br>
+<ul>
+<li><a href="ticalcs.c.html#ticalcs_library_init">ticalcs_library_init</a></li>
+<li><a href="ticalcs.c.html#ticalcs_library_exit">ticalcs_library_exit</a></li>
+<li><a href="ticalcs.c.html#ticalcs_version_get">ticalcs_version_get</a></li>
+<li><a href="ticalcs.c.html#ticalcs_handle_new">ticalcs_handle_new</a></li>
+<li><a href="ticalcs.c.html#ticalcs_handle_del">ticalcs_handle_del</a></li>
+<li><a href="ticalcs.c.html#ticalcs_handle_show">ticalcs_handle_show</a></li>
+<li><a href="ticalcs.c.html#ticalcs_cable_attach">ticalcs_cable_attach</a></li>
+<li><a href="ticalcs.c.html#ticalcs_cable_detach">ticalcs_cable_detach</a></li>
+<li><a href="ticalcs.c.html#ticalcs_update_set">ticalcs_update_set</a></li>
+</ul>
+<span style="font-weight:bold;">General Functions
+</span><br>
+<ul>
+<li><a href="error.c.html#ticalcs_error_get">ticalcs_error_get</a></li>
+</ul>
+<span style="font-weight:bold;">Types / Strings conversions
+</span><br>
+<ul>
+<li><a href="type2str.c.html#ticalcs_model_to_string">ticalcs_model_to_string</a></li>
+<li><a href="type2str.c.html#ticalcs_string_to_model">ticalcs_string_to_model</a></li>
+</ul>
+<span style="font-weight:bold;">Hand-held management layer
+</span><br>
+<ul>
+<li><a href="calc_xx.c.html#ticalcs_calc_features">ticalcs_calc_features</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_isready">ticalcs_calc_isready</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_key">ticalcs_calc_send_key</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_execute">ticalcs_calc_execute</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_recv_screen">ticalcs_calc_recv_screen</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_get_dirlist">ticalcs_calc_get_dirlist</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_get_memfree">ticalcs_calc_get_memfree</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_recv_backup">ticalcs_calc_recv_backup</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_backup">ticalcs_calc_send_backup</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_var">ticalcs_calc_send_var</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_recv_var">ticalcs_calc_recv_var</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_var_ns">ticalcs_calc_send_var_ns</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_recv_var_ns">ticalcs_calc_recv_var_ns</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_app">ticalcs_calc_send_app</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_recv_app">ticalcs_calc_recv_app</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_os">ticalcs_calc_send_os</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_recv_idlist">ticalcs_calc_recv_idlist</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_dump_rom_1">ticalcs_calc_dump_rom_1</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_dump_rom_2">ticalcs_calc_dump_rom_2</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_set_clock">ticalcs_calc_set_clock</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_get_clock">ticalcs_calc_get_clock</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_cert">ticalcs_calc_send_cert</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_recv_cert">ticalcs_calc_recv_cert</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_recv_backup2">ticalcs_calc_recv_backup2</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_backup2">ticalcs_calc_send_backup2</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_var2">ticalcs_calc_send_var2</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_recv_var2">ticalcs_calc_recv_var2</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_var_ns2">ticalcs_calc_send_var_ns2</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_recv_var_ns2">ticalcs_calc_recv_var_ns2</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_app2">ticalcs_calc_send_app2</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_recv_app2">ticalcs_calc_recv_app2</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_new_fld">ticalcs_calc_new_fld</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_del_var">ticalcs_calc_del_var</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_rename_var">ticalcs_calc_rename_var</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_change_attr">ticalcs_calc_change_attr</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_get_version">ticalcs_calc_get_version</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_cert2">ticalcs_calc_send_cert2</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_recv_cert2">ticalcs_calc_recv_cert2</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_os2">ticalcs_calc_send_os2</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_send_tigroup2">ticalcs_calc_send_tigroup2</a></li>
+<li><a href="calc_xx.c.html#ticalcs_calc_recv_tigroup2">ticalcs_calc_recv_tigroup2</a></li>
+</ul>
+<span style="font-weight:bold;">Directory listing management
+</span><br>
+<ul>
+<li><a href="dirlist.c.html#ticalcs_dirlist_destroy">ticalcs_dirlist_destroy</a></li>
+<li><a href="dirlist.c.html#ticalcs_dirlist_display">ticalcs_dirlist_display</a></li>
+<li><a href="dirlist.c.html#ticalcs_dirlist_ve_exist">ticalcs_dirlist_ve_exist</a></li>
+<li><a href="dirlist.c.html#ticalcs_dirlist_ve_count">ticalcs_dirlist_ve_count</a></li>
+<li><a href="dirlist.c.html#ticalcs_dirlist_ram_used">ticalcs_dirlist_ram_used</a></li>
+<li><a href="dirlist.c.html#ticalcs_dirlist_flash_used">ticalcs_dirlist_flash_used</a></li>
+<li><a href="dirlist.c.html#ticalcs_dirlist_ve_add">ticalcs_dirlist_ve_add</a></li>
+<li><a href="dirlist.c.html#ticalcs_dirlist_ve_del">ticalcs_dirlist_ve_del</a></li>
+</ul>
+<span style="font-weight:bold;">Clock support
+</span><br>
+<ul>
+<li><a href="clock.c.html#ticalcs_clock_format2date">ticalcs_clock_format2date</a></li>
+<li><a href="clock.c.html#ticalcs_clock_date2format">ticalcs_clock_date2format</a></li>
+<li><a href="clock.c.html#ticalcs_clock_show">ticalcs_clock_show</a></li>
+</ul>
+<span style="font-weight:bold;">Getting scancode for TI keys
+</span><br>
+<ul>
+<li><a href="tikeys.c.html#ticalcs_keys_73">ticalcs_keys_73</a></li>
+<li><a href="tikeys.c.html#ticalcs_keys_83">ticalcs_keys_83</a></li>
+<li><a href="tikeys.c.html#ticalcs_keys_83p">ticalcs_keys_83p</a></li>
+<li><a href="tikeys.c.html#ticalcs_keys_86">ticalcs_keys_86</a></li>
+<li><a href="tikeys.c.html#ticalcs_keys_89">ticalcs_keys_89</a></li>
+<li><a href="tikeys.c.html#ticalcs_keys_92p">ticalcs_keys_92p</a></li>
+</ul>
+<span style="font-weight:bold;">Automatic probing of hand-held model
+</span><br>
+<ul>
+<li><a href="probe.c.html#ticalcs_probe_calc_2">ticalcs_probe_calc_2</a></li>
+<li><a href="probe.c.html#ticalcs_probe_calc_1">ticalcs_probe_calc_1</a></li>
+<li><a href="probe.c.html#ticalcs_probe_calc">ticalcs_probe_calc</a></li>
+<li><a href="probe.c.html#ticalcs_probe_usb_calc">ticalcs_probe_usb_calc</a></li>
+<li><a href="probe.c.html#ticalcs_probe">ticalcs_probe</a></li>
+</ul>
+<span style="font-weight:bold;">General backup support (backup and tig)</span><br>
+<ul>
+<li><a href="backup.c.html#ticalcs_calc_send_tigroup">ticalcs_calc_send_tigroup</a></li>
+<li><a href="backup.c.html#ticalcs_calc_recv_tigroup">ticalcs_calc_recv_tigroup</a></li>
+</ul>
+</p>
+<b></b>
+<h3> <a href="index.html">Return to the main index</a> </h3>
+</body>
+</html>
+</html>

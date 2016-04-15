@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Header File Index</title>
+  <link rel="STYLESHEET" type="TEXT/CSS" href="style.css">
+</head>
+<body bgcolor="#fffff8">
+<table class="INVTABLE" width="100%">
+  <tbody>
+    <tr>
+      <td class="NOBORDER" width="40"><img src="info.gif" border="0"
+ height="32" width="32"> </td>
+      <td class="TITLE">TiConv Library API</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<p>The ticonv library provide a complete API (Application Programming
+Interface) &nbsp;which makes use of TI charsets easy and transparent. <br>
+<br>
+Functions and data types are grouped in different topics, depending on
+their purpose. Click on a topic for the description of all functions
+and
+data types defined in this topic.<br>
+</p>
+<p>Note: functions suffixed with _s (like <span
+ style="font-style: italic;">ticonv_charset_utf16_to_ti_s</span>) are
+static version (of <span style="font-style: italic;">ticonv_charset_utf16_to_ti</span>).<br>
+</p>
+<p><span
+ style="text-decoration: underline; font-style: italic; font-weight: bold;">Important
+note:</span> the library uses UTF-16 natively but some functions allow
+use of UTF-8. For more information, take a look at &lt;<a
+ href="http://www.unicode.org/charts">http://www.unicode.org/charts</a>&gt;
+and &lt;<a href="http://www.czyborra.com/utf">http://www.czyborra.com/utf</a>&gt;<br>
+</p>
+<span style="font-weight:bold;">Type definitions and Exports
+</span><br>
+<ul>
+<li><a href="ticonv.h.html#CalcModel">CalcModel</a></li>
+<li><a href="ticonv.h.html#ticonv_iconv_t">ticonv_iconv_t</a></li>
+</ul>
+<span style="font-weight:bold;">General functions and Generic TI charset <=> UTF-16 conversions
+</span><br>
+<ul>
+<li><a href="ticonv.c.html#ticonv_version_get">ticonv_version_get</a></li>
+<li><a href="ticonv.c.html#ticonv_utf16_strlen">ticonv_utf16_strlen</a></li>
+<li><a href="ticonv.c.html#ticonv_utf8_to_utf16">ticonv_utf8_to_utf16</a></li>
+<li><a href="ticonv.c.html#ticonv_utf16_to_utf8">ticonv_utf16_to_utf8</a></li>
+<li><a href="ticonv.c.html#ticonv_charset_utf16_to_ti_s">ticonv_charset_utf16_to_ti_s</a></li>
+<li><a href="ticonv.c.html#ticonv_charset_utf16_to_ti">ticonv_charset_utf16_to_ti</a></li>
+<li><a href="ticonv.c.html#ticonv_charset_ti_to_utf16_s">ticonv_charset_ti_to_utf16_s</a></li>
+<li><a href="ticonv.c.html#ticonv_charset_ti_to_utf16">ticonv_charset_ti_to_utf16</a></li>
+<li><a href="ticonv.c.html#ticonv_varname_to_utf16">ticonv_varname_to_utf16</a></li>
+<li><a href="ticonv.c.html#ticonv_varname_to_utf16_s">ticonv_varname_to_utf16_s</a></li>
+<li><a href="ticonv.c.html#ticonv_varname_to_utf8">ticonv_varname_to_utf8</a></li>
+<li><a href="ticonv.c.html#ticonv_varname_to_utf8_s">ticonv_varname_to_utf8_s</a></li>
+<li><a href="ticonv.c.html#ticonv_varname_to_filename">ticonv_varname_to_filename</a></li>
+<li><a href="ticonv.c.html#ticonv_varname_to_filename_s">ticonv_varname_to_filename_s</a></li>
+<li><a href="ticonv.c.html#ticonv_varname_to_tifile">ticonv_varname_to_tifile</a></li>
+<li><a href="ticonv.c.html#ticonv_varname_to_tifile_s">ticonv_varname_to_tifile_s</a></li>
+<li><a href="ticonv.c.html#ticonv_varname_from_tifile">ticonv_varname_from_tifile</a></li>
+<li><a href="ticonv.c.html#ticonv_varname_from_tifile_s">ticonv_varname_from_tifile_s</a></li>
+</ul>
+<span style="font-weight:bold;">TI8x/TI9x charset <=> UTF-16 conversion routines
+</span><br>
+<ul>
+<li><a href="charset.c.html#ticonv_utf16_to_ti9x">ticonv_utf16_to_ti9x</a></li>
+<li><a href="charset.c.html#ticonv_ti9x_to_utf16">ticonv_ti9x_to_utf16</a></li>
+<li><a href="charset.c.html#ticonv_ti73_to_utf16">ticonv_ti73_to_utf16</a></li>
+<li><a href="charset.c.html#ticonv_utf16_to_ti73">ticonv_utf16_to_ti73</a></li>
+<li><a href="charset.c.html#ticonv_ti80_to_utf16">ticonv_ti80_to_utf16</a></li>
+<li><a href="charset.c.html#ticonv_utf16_to_ti80">ticonv_utf16_to_ti80</a></li>
+<li><a href="charset.c.html#ticonv_ti82_to_utf16">ticonv_ti82_to_utf16</a></li>
+<li><a href="charset.c.html#ticonv_utf16_to_ti82">ticonv_utf16_to_ti82</a></li>
+<li><a href="charset.c.html#ticonv_ti83_to_utf16">ticonv_ti83_to_utf16</a></li>
+<li><a href="charset.c.html#ticonv_utf16_to_ti83">ticonv_utf16_to_ti83</a></li>
+<li><a href="charset.c.html#ticonv_ti83p_to_utf16">ticonv_ti83p_to_utf16</a></li>
+<li><a href="charset.c.html#ticonv_utf16_to_ti83p">ticonv_utf16_to_ti83p</a></li>
+<li><a href="charset.c.html#ticonv_ti85_to_utf16">ticonv_ti85_to_utf16</a></li>
+<li><a href="charset.c.html#ticonv_utf16_to_ti85">ticonv_utf16_to_ti85</a></li>
+<li><a href="charset.c.html#ticonv_ti86_to_utf16">ticonv_ti86_to_utf16</a></li>
+<li><a href="charset.c.html#ticonv_utf16_to_ti86">ticonv_utf16_to_ti86</a></li>
+<li><a href="charset.c.html#ticonv_ti84pusb_to_utf16">ticonv_ti84pusb_to_utf16</a></li>
+<li><a href="charset.c.html#ticonv_utf16_to_ti84pusb">ticonv_utf16_to_ti84pusb</a></li>
+<li><a href="charset.c.html#ticonv_ti89tpusb_to_utf16">ticonv_ti89tpusb_to_utf16</a></li>
+<li><a href="charset.c.html#ticonv_utf16_to_ti89tpusb">ticonv_utf16_to_ti89tpusb</a></li>
+</ul>
+<span style="font-weight:bold;">Generic detokenization support
+</span><br>
+<ul>
+<li><a href="tokens.c.html#ticonv_varname_detokenize">ticonv_varname_detokenize</a></li>
+<li><a href="tokens.c.html#ticonv_varname_tokenize">ticonv_varname_tokenize</a></li>
+</ul>
+<span style="font-weight:bold;">Generic TI varname to filename transcoding</span><br>
+<ul>
+<li><a href="filename.c.html#ticonv_utf16_to_gfe">ticonv_utf16_to_gfe</a></li>
+<li><a href="filename.c.html#ticonv_gfe_to_zfe">ticonv_gfe_to_zfe</a></li>
+</ul>
+</p>
+<b></b>
+<h3> <a href="index.html">Return to the main index</a> </h3>
+</body>
+</html>
+</html>
