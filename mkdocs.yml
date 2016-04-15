@@ -6,6 +6,7 @@ pages:
     - "types.md"
     - "unsafe.md"
     - "files.md"
+    - "tilibs.md"
     - "Internals":
         - "internals/tokens.md"
         - "internals/ast.md"
